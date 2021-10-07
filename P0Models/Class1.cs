@@ -6,7 +6,7 @@ namespace P0Models
 {
     public class Store
     {
-        // Customers would go here
-        // So would Employees
+        public string employee { get; set; }
+        public string customer { get; set; }
     }
 }

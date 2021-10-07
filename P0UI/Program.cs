@@ -1,6 +1,6 @@
 ﻿using System;
 
-// Testing Upload
+// Comment for quick change
 
 namespace P0UI
 {
@@ -10,25 +10,33 @@ namespace P0UI
         {
             bool repeat = true;
 
+            IMenu page = new MainMenu();
+
             while (repeat)
             {
                 Console.Clear();
-                Console.WriteLine("Welcome to the Store!");
-                string userChoice;
-                Console.WriteLine("[a] - Are you a customer?");
-                Console.WriteLine("[b] - Are you an employee?");
-                userChoice = Console.ReadLine();
+                
+                page.Menu();
+                MenuType currentPage =  page.YourChoice();
 
-                switch (userChoice)
+
+                switch (currentPage)
                 {
-                    case "a":
-                        Console.WriteLine("What would you like to buy?");
+                    case MenuType.MainMenu:
+                        page = new MainMenu();
                         break;
-                    case "b":
-                        Console.WriteLine("What would you like to do?");
+                    case MenuType.AddCustomer:
+                        page = new AddCustomer();
+                        break;
+                    case MenuType.Exit:
+                        Console.WriteLine("You are exiting the app!");
+                        Console.WriteLine("Press Enter to continue");
+                        Console.ReadLine();
+                        repeat = false;
                         break;
                     default:
-                        Console.WriteLine("Please choose one, try again.");
+                        Console.WriteLine("Coding in progress. Please return later");
+                        repeat = false;
                         break;
                 }
             }
