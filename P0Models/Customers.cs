@@ -1,7 +1,13 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-// Testing Upload
+/* Will Hold:
+Name
+Address
+Email
+Phone Number
+List of Orders
+*/
 
 namespace P0Models
 {
@@ -18,19 +24,6 @@ namespace P0Models
                     throw new Exception("Employee can only hold letters!");
                 }
                 _customer = value;
-            }
-        }
-        private string _storeFront;
-        public string StoreFront
-        { 
-            get { return _storeFront; } 
-            set
-            {
-                if (!Regex.IsMatch(value, @"^[A-Za-z .]+$"))
-                {
-                    throw new Exception("Store Front can only hold letters!");
-                }
-                _storeFront = value;
             }
         }
     }
