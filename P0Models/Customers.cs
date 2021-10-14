@@ -21,7 +21,7 @@ namespace P0Models
             {
                 if (!Regex.IsMatch(value, @"^[A-Za-z .]+$"))
                 {
-                    throw new Exception("Employee can only hold letters!");
+                    throw new Exception("Customer can only hold letters!");
                 }
                 _name = value;
             }
