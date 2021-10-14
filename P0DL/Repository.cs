@@ -13,10 +13,10 @@ namespace P0DL
         private string _jsonString;
 
         /// <summary>
-        /// To start you need to dotnet sln add .\P0DL\
+        /// To start you need to dotnet sln add .\P0DL\ --- will add the project to the solution file
         /// Will cause errors to appear
         /// To set up you need to cd back into P0DL folder then, dotnet add reference ..\P0Models\P0Models.csproj
-        /// This will get rid of red line
+        /// This will get rid of the red line
         /// EDIT OUT TO CREAT BL?
         /// </summary>
         /// <param name="p_cust"></param>

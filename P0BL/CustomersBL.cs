@@ -16,17 +16,19 @@ namespace P0BL
             _repo = p_repo;
         }
         
-        // Try catch to prevent null input
+        // Prevents user from leaving variable spaces empty, stopping a null error from occuring
         public Customers AddCustomer(Customers p_cust)
         {
             if (p_cust.Name == null || p_cust.Address == null || p_cust.Email == null || p_cust.PhoneNumber == null)
             {
+                // Will only be seen by coder
                 throw new Exception("Must have value in all properties");
             }
             return _repo.AddCustomer(p_cust);
         }
         
         // cd .\P0BL\ ----> dotnet add reference ..\P0Models\P0Models.csproj
+        // used to connect to project folder
         public List<Customers> GetAllCustomers()
         {
             return _repo.GetAllCustomers();
