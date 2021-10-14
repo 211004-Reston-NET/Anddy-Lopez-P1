@@ -10,20 +10,8 @@ List of Orders
 
 namespace P0Models
 {
-    public class Store1
+    public class StoreFronts
     {
-        private string _storeFront;
-        public string StoreFront
-        { 
-            get { return _storeFront; } 
-            set
-            {
-                if (!Regex.IsMatch(value, @"^[A-Za-z .]+$"))
-                {
-                    throw new Exception("Store Front can only hold letters!");
-                }
-                _storeFront = value;
-            }
-        }
+        public string StoreFront { get; set; }
     }
 }

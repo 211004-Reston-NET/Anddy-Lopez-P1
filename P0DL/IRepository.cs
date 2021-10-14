@@ -8,5 +8,7 @@ namespace P0DL
         Customers AddCustomer(Customers p_cust);
 
         List<Customers> GetAllCustomers();
+
+        List<StoreFronts> GetAllStoreFronts();
     }
 }

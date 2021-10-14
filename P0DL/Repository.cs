@@ -38,5 +38,11 @@ namespace P0DL
 
             return JsonSerializer.Deserialize<List<Customers>>(_jsonString);
         }
+
+        public List<StoreFronts> GetAllStoreFronts()
+        {
+            _jsonString = File.ReadAllText(_filePath+"StoreFronts.json");
+            return JsonSerializer.Deserialize<List<StoreFronts>>(_jsonString);
+        }
     }
 }
