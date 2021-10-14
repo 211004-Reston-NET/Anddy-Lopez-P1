@@ -4,7 +4,7 @@ namespace P0UI
     {
         MainMenu,
         AddCustomer,
-        FindCustomer,
+        ShowCustomers,
         PlaceOrder,
         OrderHistory,
         StoreInventory,

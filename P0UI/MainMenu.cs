@@ -8,7 +8,7 @@ namespace P0UI
         {
             Console.WriteLine("Welcome to the Main Menu!");
             Console.WriteLine("[a] - Add a new customer");
-            Console.WriteLine("[b] - Search for an exisiting customer");
+            Console.WriteLine("[b] - See exisiting customers");
             Console.WriteLine("[x] - Exit");
         }
 
@@ -20,7 +20,7 @@ namespace P0UI
                 case "a":
                     return MenuType.AddCustomer;
                 case "b":
-                    return MenuType.FindCustomer;
+                    return MenuType.ShowCustomers;
                 case "x":
                     return MenuType.Exit;
                 default:
@@ -28,7 +28,6 @@ namespace P0UI
                     Console.WriteLine("Press Enter to continue");
                     Console.ReadLine();
                     return MenuType.MainMenu;
-
             }
         }
     }
