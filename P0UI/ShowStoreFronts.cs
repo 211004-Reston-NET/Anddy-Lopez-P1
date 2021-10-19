@@ -37,7 +37,7 @@ namespace P0UI
                 case "a":
                     Console.WriteLine("Enter a name for the Store Front you want to find");
                     _findStoreName = Console.ReadLine();
-                    return MenuType.ShowStoreFronts;
+                    return MenuType.CurrentStoreFront;
                 case "x":
                     return MenuType.MainMenu;
                 default:
