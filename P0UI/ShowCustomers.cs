@@ -7,7 +7,7 @@ namespace P0UI
 {
     public class ShowCustomers : IMenu
     {
-        // dotnet add reference ..\P0BL\P0BL.csproj 
+        // dotnet add reference ..\P0BL\P0BL.csproj ------ Do 2nd
         private ICustomersBL _custBL;
         public static string _findCustName;
         public ShowCustomers(ICustomersBL p_custBL)
@@ -19,7 +19,7 @@ namespace P0UI
         {
             Console.WriteLine("List of Customers");
             // make sure you are in P0UI directory
-            // cd .. ---> cd .\P0UI\ ---> dotnet add reference ..\P0Models\P0Models.csproj
+            // cd .. ---> cd .\P0UI\ ---> dotnet add reference ..\P0Models\P0Models.csproj ------ Do 1st
             List<Customers> listOfCustomers = _custBL.GetAllCustomers();
 
             foreach (Customers c in listOfCustomers)
@@ -48,7 +48,6 @@ namespace P0UI
                     Console.WriteLine("Press Enter to continue");
                     Console.ReadLine();
                     return MenuType.ShowCustomers;
-
             }
         }
     }

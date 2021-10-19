@@ -1,14 +1,14 @@
 [
     {
-        "Name": "HEB",
-        "Address": "468 Fake Rd"
+        "SName": "HEB",
+        "SAddress": "468 Fake Rd"
     },
     {
-        "Name": "Walmart",
-        "Address": "864 Unreal St"
+        "SName": "Walmart",
+        "SAddress": "864 Unreal St"
     },
     {
-        "Name": "Target",
-        "Address": "246 Bogus Ave"
+        "SName": "Target",
+        "SAddress": "246 Bogus Ave"
     }
 ]

@@ -11,7 +11,7 @@ namespace P0BL
         //Allows Customer addition
         Customers AddCustomer(Customers p_cust);
 
-        //Allows Customer search
-        List<Customers> GetCustomers(string P_name);
+        //Allows Customer search by name
+        List<Customers> GetCustomers(string p_name);
     }
 }

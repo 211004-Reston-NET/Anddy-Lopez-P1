@@ -11,7 +11,7 @@ namespace P0DL
         //List Customers
         List<Customers> GetAllCustomers();
 
-        //LIst Store Fronts
+        //List Store Fronts
         List<StoreFronts> GetAllStoreFronts();
     }
 }

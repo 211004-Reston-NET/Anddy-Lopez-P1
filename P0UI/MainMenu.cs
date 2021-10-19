@@ -9,6 +9,7 @@ namespace P0UI
             Console.WriteLine("Welcome to the Main Menu!");
             Console.WriteLine("[a] - Add a new customer");
             Console.WriteLine("[b] - See exisiting customers");
+            Console.WriteLine("[c] - See all store fronts");
             Console.WriteLine("[x] - Exit");
         }
 
@@ -21,6 +22,8 @@ namespace P0UI
                     return MenuType.AddCustomer;
                 case "b":
                     return MenuType.ShowCustomers;
+                case "c":
+                    return MenuType.ShowStoreFronts;
                 case "x":
                     return MenuType.Exit;
                 default:

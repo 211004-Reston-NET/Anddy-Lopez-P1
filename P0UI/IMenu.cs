@@ -6,6 +6,7 @@ namespace P0UI
         AddCustomer,
         ShowCustomers,
         CurrentCustomer,
+        ShowStoreFronts,
         PlaceOrder,
         OrderHistory,
         StoreInventory,

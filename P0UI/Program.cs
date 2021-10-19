@@ -37,6 +37,9 @@ namespace P0UI
                     case MenuType.CurrentCustomer:
                         page = new CurrentCustomer(new CustomersBL(new Repository()));
                         break; 
+                    case MenuType.ShowStoreFronts:
+                        page = new ShowStoreFronts(new StoreFrontsBL(new Repository()));
+                        break; 
                     case MenuType.Exit:
                         Console.WriteLine("You are exiting the app!");
                         Console.WriteLine("Press Enter to continue");
