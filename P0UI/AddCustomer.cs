@@ -18,7 +18,7 @@ namespace P0UI
             Console.WriteLine("Welcome to Customer Addition!");
             Console.WriteLine("What would you like to do?");
             Console.WriteLine("Name - "+ _cust.Name);
-            Console.WriteLine("City - "+ _cust.Address);
+            Console.WriteLine("Address - "+ _cust.Address);
             Console.WriteLine("Email - "+ _cust.Email);
             Console.WriteLine("Phone Number - "+ _cust.PhoneNumber);
             Console.WriteLine("[a] - Add customer name");
