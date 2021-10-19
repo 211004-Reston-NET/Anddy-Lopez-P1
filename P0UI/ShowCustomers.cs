@@ -9,6 +9,7 @@ namespace P0UI
     {
         // dotnet add reference ..\P0BL\P0BL.csproj 
         private ICustomersBL _custBL;
+        public static string _findCustName;
         public ShowCustomers(ICustomersBL p_custBL)
         {
             _custBL = p_custBL;
@@ -27,6 +28,7 @@ namespace P0UI
                 Console.WriteLine(c);
                 Console.WriteLine("--------------------");
             }
+            Console.WriteLine("[a] - Search for Customer");
             Console.WriteLine("[x] - Exit");
         }
 
@@ -35,6 +37,10 @@ namespace P0UI
             string userChoice = Console.ReadLine();
             switch (userChoice)
             {
+                case "a":
+                    Console.WriteLine("Enter a name for the Customer you want to find");
+                    _findCustName = Console.ReadLine();
+                    return MenuType.CurrentCustomer;
                 case "x":
                     return MenuType.MainMenu;
                 default:

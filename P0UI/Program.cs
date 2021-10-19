@@ -33,7 +33,10 @@ namespace P0UI
                     case MenuType.ShowCustomers:
                         // cd .. ---> cd .\P0UI\ ---> dotnet add reference ..\P0DL\P0DL.csproj  
                         page = new ShowCustomers(new CustomersBL(new Repository()));
-                        break;  
+                        break;
+                    case MenuType.CurrentCustomer:
+                        page = new CurrentCustomer(new CustomersBL(new Repository()));
+                        break; 
                     case MenuType.Exit:
                         Console.WriteLine("You are exiting the app!");
                         Console.WriteLine("Press Enter to continue");

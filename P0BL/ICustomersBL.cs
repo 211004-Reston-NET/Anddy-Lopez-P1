@@ -8,5 +8,7 @@ namespace P0BL
         List<Customers> GetAllCustomers();
 
         Customers AddCustomer(Customers p_cust);
+
+        List<Customers> GetCustomers(string P_name);
     }
 }

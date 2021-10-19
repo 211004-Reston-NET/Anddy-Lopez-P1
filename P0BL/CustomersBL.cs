@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using P0DL;
 using P0Models;
 
@@ -31,7 +32,16 @@ namespace P0BL
         // used to connect to project folder
         public List<Customers> GetAllCustomers()
         {
+            //This section of code can be used to change how customers will be displayed
+            //Such as All Caps or Lowercase 
             return _repo.GetAllCustomers();
+        }
+
+        public List<Customers> GetCustomers(string p_name)
+        {
+            List<Customers> listOfCustomers = _repo.GetAllCustomers();
+
+            return listOfCustomers.Where(cust => cust.Name.Contains(p_name)).ToList();
         }
     }
 }
