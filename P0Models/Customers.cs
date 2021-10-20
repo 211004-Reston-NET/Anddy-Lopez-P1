@@ -19,9 +19,10 @@ namespace P0Models
             get { return _name; } 
             set
             {
+                //Checks to make sure that customer name is only made up of letters
                 if (!Regex.IsMatch(value, @"^[A-Za-z .]+$"))
                 {
-                    throw new Exception("Customer can only hold letters!");
+                    throw new Exception("Customer name can only hold letters! Please try again.");
                 }
                 _name = value;
             }
@@ -30,6 +31,7 @@ namespace P0Models
         public string Address { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
+        //List<string> listOfOrders = new List<string>();
         
         public override string ToString()
         {

@@ -28,7 +28,7 @@ namespace P0UI
                 Console.WriteLine(c);
                 Console.WriteLine("--------------------");
             }
-            Console.WriteLine("[a] - Search for Customer");
+            Console.WriteLine("[a] - Search for Customer by name");
             Console.WriteLine("[x] - Exit");
         }
 

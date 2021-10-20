@@ -13,7 +13,7 @@ namespace P0Models
     public class Products
     {
         public string PName { get; set; }
-        public int Price { get; set; }
+        public double Price { get; set; }
 
         //Optional
         //public string Description { get; set; }
