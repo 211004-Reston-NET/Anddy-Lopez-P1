@@ -13,5 +13,8 @@ namespace P0DL
 
         //List Store Fronts
         List<StoreFronts> GetAllStoreFronts();
+
+        //List Products
+        List<Products> GetAllProducts();
     }
 }
