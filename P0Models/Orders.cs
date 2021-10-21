@@ -4,12 +4,14 @@ Store Front's Location (that the order was placed)
 Total Price
 */
 
+using System.Collections.Generic;
+
 namespace P0Models
 {
     public class Orders
     {
-        // public string ListOfLineItems { get; set; }
-        // public string SFLocation { get; set; }
+        List<LineItems> listOfLineItems = new List<LineItems>();
+        public string SLocation { get; set; }
         public int TotalPrice { get; set; }
 
         

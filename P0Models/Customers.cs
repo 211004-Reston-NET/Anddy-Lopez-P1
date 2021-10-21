@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 /* Will Hold:
@@ -31,7 +32,7 @@ namespace P0Models
         public string Address { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
-        //List<string> listOfOrders = new List<string>();
+        List<Orders> listOfMyOrders = new List<Orders>();
         
         public override string ToString()
         {

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 /* Will Hold:
@@ -14,9 +15,8 @@ namespace P0Models
     {
         public string SName { get; set; }
         public string SAddress { get; set; }
-        // IDK how list works for inputs
-        // public string ListOfProducts { get; set; }
-        // public string ListOfOrders { get; set; }
+        List<Products> listOfProducts = new List<Products>();
+        List<Orders> listOfStoreOrders = new List<Orders>();
 
         public override string ToString()
         {
