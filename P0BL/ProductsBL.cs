@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using P0DL;
 using P0Models;
 
@@ -17,10 +18,11 @@ namespace P0BL
             return _repo.GetAllProducts();
         }
 
-        //Update if you want to search product by name
-        // public List<Products> GetProducts(string p_pname)
-        // {
-        //     throw new System.NotImplementedException();
-        // }
+        public List<Products> GetProducts(string p_pname)
+        {
+            List<Products> listOfProducts = _repo.GetAllProducts();
+
+            return listOfProducts.Where(prod => prod.PName.Contains(p_pname)).ToList();
+        }
     }
 }

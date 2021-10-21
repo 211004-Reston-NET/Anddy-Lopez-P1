@@ -7,6 +7,7 @@ namespace P0UI
         public void Menu()
         {
             Console.WriteLine("Welcome to the Main Menu!");
+            Console.WriteLine("You must select a customer then store to place an order");
             Console.WriteLine("[a] - Add a new customer");
             Console.WriteLine("[b] - See exisiting customers");
             Console.WriteLine("[c] - See all store fronts");

@@ -8,7 +8,7 @@ namespace P0BL
         //List products
         List<Products> GetAllProducts();
 
-        //Allows Product search by name - Do I need to?
-        // List<Products> GetProducts(string p_pname);
+        //Allows Product search by name
+        List<Products> GetProducts(string p_pname);
     }
 }

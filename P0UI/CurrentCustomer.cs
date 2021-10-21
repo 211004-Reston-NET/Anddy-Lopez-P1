@@ -24,7 +24,8 @@ namespace P0UI
                 Console.WriteLine(cust);
                 Console.WriteLine("--------------");
             }
-            Console.WriteLine("[x] - Go Back");
+            Console.WriteLine("[a] - Select this customer as your User");
+            Console.WriteLine("[x] - Exit");
         }
 
         public MenuType YourChoice()
@@ -33,6 +34,11 @@ namespace P0UI
 
             switch (userChoice)
             {
+                case "a":
+                    // My lines aren't appearing :/
+                    Console.WriteLine("You are now proceeding as a User"); //Perhaps show which User
+                    Console.WriteLine("Please select a store to shop from:");
+                    return MenuType.ShowStoreFronts;
                 case "x":
                     return MenuType.ShowCustomers;
                 default:

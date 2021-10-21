@@ -24,6 +24,8 @@ namespace P0UI
                     return new ShowStoreFronts(new StoreFrontsBL(new Repository()));
                 case MenuType.CurrentStoreFront:
                     return new CurrentStoreFront(new StoreFrontsBL(new Repository()));
+                case MenuType.PlaceOrder:
+                    return new PlaceOrder(new ProductsBL(new Repository()));
                 default:
                     return null;
             }

@@ -24,7 +24,8 @@ namespace P0UI
                 Console.WriteLine(sf);
                 Console.WriteLine("--------------");
             }
-            Console.WriteLine("[x] - Go Back");
+            Console.WriteLine("[a] - Select this Store to place your order");
+            Console.WriteLine("[x] - Exit");
         }
 
         public MenuType YourChoice()
@@ -33,6 +34,11 @@ namespace P0UI
 
             switch (userChoice)
             {
+                case "a":
+                    // My lines aren't appearing :/
+                    Console.WriteLine("You have now chosen a shopping center"); //Perhaps show which Store Front
+                    Console.WriteLine("Select the products you wish to buy:");
+                    return MenuType.PlaceOrder;
                 case "x":
                     return MenuType.ShowStoreFronts;
                 default:

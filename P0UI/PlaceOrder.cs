@@ -8,7 +8,7 @@ namespace P0UI
     public class PlaceOrder : IMenu
     {
         private IProductsBL _prodBL;
-        // public static string _findProdName; - will use if I want to search products
+        public static string _findProdName;
         public PlaceOrder(IProductsBL p_prodBL)
         {
             _prodBL = p_prodBL;
@@ -16,7 +16,7 @@ namespace P0UI
 
         public void Menu()
         {
-            Console.WriteLine("List of Customers");
+            Console.WriteLine("List of Products");
             
             List<Products> listOfProducts = _prodBL.GetAllProducts();
 
@@ -26,13 +26,28 @@ namespace P0UI
                 Console.WriteLine(prod);
                 Console.WriteLine("--------------------");
             }
-            Console.WriteLine("[a] - Place an order");
+            Console.WriteLine("[a] - Search Products by name");
             Console.WriteLine("[x] - Exit");
         }
 
         public MenuType YourChoice()
         {
-            throw new System.NotImplementedException();
+            string userChoice = Console.ReadLine();
+
+            switch (userChoice)
+            {
+                case "a":
+                    Console.WriteLine("Enter a name for the Customer you want to find");
+                    _findProdName = Console.ReadLine();
+                    return MenuType.PlaceOrder;
+                case "x":
+                    return MenuType.ShowStoreFronts;
+                default:
+                    Console.WriteLine("Please input a valid response!");
+                    Console.WriteLine("Press Enter to continue");
+                    Console.ReadLine();
+                    return MenuType.CurrentStoreFront;
+            }
         }
     }
 }
