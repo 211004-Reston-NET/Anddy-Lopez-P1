@@ -15,6 +15,7 @@ namespace P0Models
     public class Customers
     {
         private string _name;
+        private string _phonenum;
         public string Name
         { 
             get { return _name; } 
@@ -31,7 +32,23 @@ namespace P0Models
         
         public string Address { get; set; }
         public string Email { get; set; }
-        public string PhoneNumber { get; set; }
+        public string PhoneNumber 
+        { 
+            get { return _phonenum; } 
+            set 
+            {
+                //Checks to make sure that customer phone number is only made up of numbers
+                if (!Regex.IsMatch(value, @"^[0-9]+$"))
+                {
+                    throw new Exception("Customer phone number can only hold numbers! Please try again.");
+                }
+                // if (PhoneNumber.Length != 7 && PhoneNumber.Length != 10)
+                // {
+                //     throw new Exception("Customer phone number must be 7 digits long. 10 if you include an area code.");
+                // }
+                _phonenum = value;
+            } 
+        }
         List<Orders> listOfMyOrders = new List<Orders>();
         
         public override string ToString()
