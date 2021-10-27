@@ -16,6 +16,7 @@ namespace P0Models
     {
         private string _name;
         private string _phonenum;
+        public int Id { get; set; }
         public string Name
         { 
             get { return _name; } 
@@ -49,7 +50,8 @@ namespace P0Models
                 _phonenum = value;
             } 
         }
-        List<Orders> listOfMyOrders = new List<Orders>();
+        //Correct way to do a list
+        public List<Orders> Orders { get; set; }
         
         public override string ToString()
         {

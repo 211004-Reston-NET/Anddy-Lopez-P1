@@ -13,10 +13,12 @@ namespace P0Models
 {
     public class StoreFronts
     {
+        public int Id { get; set; }
         public string SName { get; set; }
         public string SAddress { get; set; }
-        List<Products> listOfProducts = new List<Products>();
-        List<Orders> listOfStoreOrders = new List<Orders>();
+        
+        public List<Orders> Orders { get; set; }
+        public List<Products> Products { get; set; }
 
         public override string ToString()
         {
