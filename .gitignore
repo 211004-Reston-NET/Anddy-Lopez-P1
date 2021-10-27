@@ -1,3 +1,4 @@
+#Files to ignore. They won't show up when pushed
 bin
 obj
 .vs
