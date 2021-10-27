@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using P0Models;
 using Entity = P0DL.Entities; //comment out for database refresh
 using Model = P0Models;
 
@@ -42,14 +41,14 @@ namespace P0DL
             // throw new System.NotImplementedException();
             // Method Syntax
             return _context.Customers.Select(cust =>
-            new Model.Customers()
-            {
-                Name = cust.CustName,
-                Address = cust.CustAddres,
-                Email = cust.CustEmail,
-                PhoneNumber = cust.CustPhonenumber,
-                Id = cust.CustId
-            }
+                new Model.Customers()
+                {
+                    Name = cust.CustName,
+                    Address = cust.CustAddres, 
+                    Email = cust.CustEmail,
+                    PhoneNumber = cust.CustPhonenumber,
+                    Id = cust.CustId
+                }
             ).ToList();
 
             //Query Syntax for Inner Joins
@@ -71,6 +70,11 @@ namespace P0DL
             // return listOfCust;
         }
 
+        public List<Model.Orders> GetAllOrders(Model.Customers p_cust)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public List<Model.Products> GetAllProducts()
         {
             throw new System.NotImplementedException();
@@ -79,6 +83,20 @@ namespace P0DL
         public List<Model.StoreFronts> GetAllStoreFronts()
         {
             throw new System.NotImplementedException();
+        }
+
+        public Model.Customers GetCustomersById(int p_Id)
+        {
+            throw new System.NotImplementedException();
+            // Entity.Customer custToFind = _context.Customers.Find(p_Id);
+
+            // return new Model.Customers(){
+            //     Id = custToFind.CustId,
+            //     Name = custToFind.CustName,
+            //     Address = custToFind.CustAddres,
+            //     Email = custToFind.CustEmail,
+            //     PhoneNumber = custToFind.CustPhonenumber
+            // }
         }
     }
 }

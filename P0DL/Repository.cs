@@ -50,5 +50,15 @@ namespace P0DL
             _jsonString = File.ReadAllText(_filePath+"Products.json");
             return JsonSerializer.Deserialize<List<Products>>(_jsonString);
         }
+
+        public List<Orders> GetAllOrders(Customers p_cust)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Customers GetCustomersById(int p_Id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

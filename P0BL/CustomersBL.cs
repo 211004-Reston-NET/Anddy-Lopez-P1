@@ -43,5 +43,21 @@ namespace P0BL
 
             return listOfCustomers.Where(cust => cust.Name.Contains(p_name)).ToList();
         }
+
+        public Customers GetCustomersById(int p_Id)
+        {
+            throw new NotImplementedException();
+            // Customers custFound = _repo.GetCustomerByID(p_Id);
+            // if (custFound == null)
+            // {
+            //     throw new Exception("Customer was not found!");
+            // }
+        }
+
+        public List<Orders> GetAllOrders(Customers p_cust)
+        {
+            throw new NotImplementedException();
+            // return _repo.GetAllOrders(p_cust);
+        }
     }
 }
