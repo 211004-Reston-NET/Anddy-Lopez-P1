@@ -35,9 +35,9 @@ namespace P0UI
             switch (userChoice)
             {
                 case "a":
-                    // My lines aren't appearing :/
                     Console.WriteLine("You have now chosen a shopping center"); //Perhaps show which Store Front
-                    Console.WriteLine("Select the products you wish to buy:");
+                    Console.WriteLine("Press Enter to proceed to select the products you wish to buy");
+                    Console.ReadLine();
                     return MenuType.PlaceOrder;
                 case "x":
                     return MenuType.ShowStoreFronts;

@@ -8,6 +8,8 @@ namespace P0UI
     public class CurrentCustomer : IMenu
     {
         private ICustomersBL _custBL;
+        //private Customers _user;
+
         public CurrentCustomer(ICustomersBL p_custBL)
         {
             this._custBL = p_custBL;
@@ -23,6 +25,7 @@ namespace P0UI
                 Console.WriteLine("--------------");
                 Console.WriteLine(cust);
                 Console.WriteLine("--------------");
+                //_user = cust;
             }
             Console.WriteLine("[a] - Select this customer as your User");
             Console.WriteLine("[x] - Exit");
@@ -35,9 +38,9 @@ namespace P0UI
             switch (userChoice)
             {
                 case "a":
-                    // My lines aren't appearing :/
-                    Console.WriteLine("You are now proceeding as a User"); //Perhaps show which User
-                    Console.WriteLine("Please select a store to shop from:");
+                    Console.WriteLine("You are now proceeding as a User"); //Perhaps show which User +_user
+                    Console.WriteLine("Press Enter to proceed to select a store to shop from");
+                    Console.ReadLine();
                     return MenuType.ShowStoreFronts;
                 case "x":
                     return MenuType.ShowCustomers;
