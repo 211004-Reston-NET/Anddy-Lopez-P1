@@ -33,12 +33,12 @@ namespace P0UI
                     // cd .. ---> cd .\P0UI\ ---> dotnet add reference ..\P0DL\P0DL.csproj  
                     return new ShowCustomers(new CustomersBL(new RepositoryCloud(new P0DatabaseContext(options))));
                 case MenuType.CurrentCustomer:
-                    return new CurrentCustomer(new CustomersBL(new Repository()));
+                    return new CurrentCustomer(new CustomersBL(new RepositoryCloud(new P0DatabaseContext(options))));
                 case MenuType.ShowStoreFronts:
-                    return new ShowStoreFronts(new StoreFrontsBL(new Repository()));
+                    return new ShowStoreFronts(new StoreFrontsBL(new RepositoryCloud(new P0DatabaseContext(options))));
                 case MenuType.CurrentStoreFront:
-                    return new CurrentStoreFront(new StoreFrontsBL(new Repository()));
-                case MenuType.PlaceOrder:
+                    return new CurrentStoreFront(new StoreFrontsBL(new RepositoryCloud(new P0DatabaseContext(options))));
+                case MenuType.PlaceOrder: //work in progress :(
                     return new PlaceOrder(new ProductsBL(new Repository()));
                 default:
                     return null;

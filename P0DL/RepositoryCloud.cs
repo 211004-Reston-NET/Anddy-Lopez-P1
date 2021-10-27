@@ -62,7 +62,7 @@ namespace P0DL
             //         Name = cust.CustName,
             //         Address = cust.CustAddres,
             //         Email = cust.CustEmail,
-            //         //PhoneNumber = cust.CustPhonenumber,
+            //         PhoneNumber = cust.CustPhonenumber,
             //         Id = cust.CustId
             //     });
             // }
@@ -70,17 +70,25 @@ namespace P0DL
             // return listOfCust;
         }
 
+        public List<Model.StoreFronts> GetAllStoreFronts()
+        {
+            //throw new System.NotImplementedException();
+            // Method Syntax
+            return _context.StoreFronts.Select(store =>
+                new Model.StoreFronts()
+                {
+                    SName = store.StoreName,
+                    SAddress = store.StoreAddres,
+                    Id = store.StoreId
+                }
+            ).ToList();
+        }
         public List<Model.Orders> GetAllOrders(Model.Customers p_cust)
         {
             throw new System.NotImplementedException();
         }
 
         public List<Model.Products> GetAllProducts()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public List<Model.StoreFronts> GetAllStoreFronts()
         {
             throw new System.NotImplementedException();
         }
