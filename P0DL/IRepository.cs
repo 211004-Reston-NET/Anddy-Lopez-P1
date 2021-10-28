@@ -13,19 +13,24 @@ namespace P0DL
 
         //List Store Fronts
         List<StoreFronts> GetAllStoreFronts();
-
-        //List Products
         List<Products> GetAllProducts();
+
+        /// <summary>
+        /// this will hopefully get all the products from a store
+        /// will probably only get the products i seeded for know
+        /// </summary>
+        /// <returns>will return a list of products</returns>
+        List<Products> GetAllProducts(Products p_prod);
 
         /// <summary>
         /// Will give all orders from a customer
         /// </summary>
         /// <param name="p_cust"></param>
         /// <returns>returns a list of orders</returns>
-        List<Orders> GetAllOrders(Customers p_cust);
+        List<Orders> GetAllOrders(Customers p_cust); //You are not read for this in the slightest
 
         /// <summary>
-        /// Returns a customer based on ID
+        /// Returns a specific customer based on ID
         /// </summary>
         /// <param name="p_Id">ID that it will check</param>
         /// <returns>Returns customer</returns>

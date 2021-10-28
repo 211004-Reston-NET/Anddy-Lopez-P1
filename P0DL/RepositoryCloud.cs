@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using P0Models;
 using Entity = P0DL.Entities; //comment out for database refresh
 using Model = P0Models;
 
@@ -83,28 +84,52 @@ namespace P0DL
                 }
             ).ToList();
         }
-        public List<Model.Orders> GetAllOrders(Model.Customers p_cust)
+        public List<Model.Orders> GetAllOrders(Model.Customers p_cust)//Try again later
         {
             throw new System.NotImplementedException();
+            //Query Syntax
+            //var result = (from ord in _context.Orders)
         }
 
-        public List<Model.Products> GetAllProducts()
+        public List<Model.Products> GetAllProducts(Model.Products p_prod)
         {
-            throw new System.NotImplementedException();
+            //throw new System.NotImplementedException();
+            //Query Syntax
+            var result = (from prod in _context.Products
+                        where prod.InvId == 1 // You need to import a invertory first -- p_inv.Id instead of 1
+                        select prod); 
+
+            //Mapping the Queryable<Entity.Products> into a list<Model.Products>
+            List<Model.Products> listOfProd = new List<Model.Products>();
+            foreach (Entity.Product prod in result)
+            {
+                listOfProd.Add(new Model.Products(){
+                    Id = prod.ProdId,
+                    PName = prod.ProdName,
+                    Price = prod.ProdPrice,
+                    InveId = prod.InvId
+                });
+            }
+            return listOfProd;
         }
 
         public Model.Customers GetCustomersById(int p_Id)
         {
-            throw new System.NotImplementedException();
-            // Entity.Customer custToFind = _context.Customers.Find(p_Id);
+            //throw new System.NotImplementedException();
+            Entity.Customer custToFind = _context.Customers.Find(p_Id);
 
-            // return new Model.Customers(){
-            //     Id = custToFind.CustId,
-            //     Name = custToFind.CustName,
-            //     Address = custToFind.CustAddres,
-            //     Email = custToFind.CustEmail,
-            //     PhoneNumber = custToFind.CustPhonenumber
-            // }
+            return new Model.Customers(){
+                Id = custToFind.CustId,
+                Name = custToFind.CustName,
+                Address = custToFind.CustAddres,
+                Email = custToFind.CustEmail,
+                PhoneNumber = custToFind.CustPhonenumber
+            };
+        }
+
+        public List<Products> GetAllProducts()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

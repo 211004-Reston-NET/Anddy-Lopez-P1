@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
@@ -57,6 +57,11 @@ namespace P0DL
         }
 
         public Customers GetCustomersById(int p_Id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Products> GetAllProducts(Products p_prod)
         {
             throw new NotImplementedException();
         }

@@ -39,7 +39,8 @@ namespace P0UI
                 case MenuType.CurrentStoreFront:
                     return new CurrentStoreFront(new StoreFrontsBL(new RepositoryCloud(new P0DatabaseContext(options))));
                 case MenuType.PlaceOrder: //work in progress :(
-                    return new PlaceOrder(new ProductsBL(new Repository()));
+                    //return new PlaceOrder(new ProductsBL(new Repository()));
+                    return new MainMenu();
                 default:
                     return null;
             }

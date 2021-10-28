@@ -15,6 +15,7 @@ namespace P0Models
         public int Quantity { get; set; }
         public int OrderId { get; set; }
 
+        public Inventory Inv { get; set; }
         public Orders Orders { get; set; }
 
         public override string ToString()
