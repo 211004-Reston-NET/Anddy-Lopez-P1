@@ -12,11 +12,14 @@ namespace P0BL
         {
             _repo = p_repo;
         }
+        
+        //List the Products
         public List<Products> GetAllProducts()
         {
             return _repo.GetAllProducts();
         }
 
+        //For searching Products by name
         public List<Products> GetProducts(string p_prod)
         {
             List<Products> listOfProds = _repo.GetAllProducts();

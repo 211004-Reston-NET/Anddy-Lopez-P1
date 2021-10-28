@@ -8,13 +8,12 @@ namespace P0UI
     public class CurrentCustomer : IMenu
     {
         private ICustomersBL _custBL;
-        //private Customers _user;
-
+        //private ICustomersBL _user;
         public CurrentCustomer(ICustomersBL p_custBL)
         {
             this._custBL = p_custBL;
         }
-
+        
         public void Menu()
         {
             List<Customers> listOfCust = _custBL.GetCustomers(ShowCustomers._findCustName);
@@ -25,7 +24,7 @@ namespace P0UI
                 Console.WriteLine("--------------");
                 Console.WriteLine(cust);
                 Console.WriteLine("--------------");
-                //_user = cust;
+                //_user = (ICustomersBL)cust;
             }
             Console.WriteLine("[a] - Select this customer as your User");
             Console.WriteLine("[x] - Exit");
@@ -38,7 +37,6 @@ namespace P0UI
             switch (userChoice)
             {
                 case "a":
-                    //MyUser = 1;
                     Console.WriteLine("You are now proceeding as a User"); //Perhaps show which User +_user
                     Console.WriteLine("Press Enter to proceed to select a store to shop from");
                     Console.ReadLine();

@@ -2,6 +2,9 @@ namespace P0Models
 {
     public class User : Customers
     {
-        public int MyUser { get; set; }
+        public override string ToString()
+        {
+            return $"{Name}";
+        }
     }
 }
