@@ -19,6 +19,7 @@ namespace P0Models
         public int LiId { get; set; }
 
         public Inventory Inventory { get; set; }
+        public LineItems LineItems { get; set; }
 
         //Optional
         //public string Description { get; set; }
