@@ -11,9 +11,15 @@ namespace P0DL
         //List Customers
         List<Customers> GetAllCustomers();
 
+        /// <summary>
+        /// Returns a specific customer based on ID
+        /// </summary>
+        /// <param name="p_Id">ID that it will check</param>
+        /// <returns>Returns customer</returns>
+        Customers GetCustomersById(int p_Id);
+
         //List Store Fronts
         List<StoreFronts> GetAllStoreFronts();
-        List<Products> GetAllProducts();
 
         /// <summary>
         /// this will hopefully get all the products from a store
@@ -28,13 +34,6 @@ namespace P0DL
         /// <param name="p_cust"></param>
         /// <returns>returns a list of orders</returns>
         List<Orders> GetAllOrders(Customers p_cust); //You are not read for this in the slightest
-
-        /// <summary>
-        /// Returns a specific customer based on ID
-        /// </summary>
-        /// <param name="p_Id">ID that it will check</param>
-        /// <returns>Returns customer</returns>
-        Customers GetCustomersById(int p_Id);
 
         List<LineItems> GetAllLineItems();
     }

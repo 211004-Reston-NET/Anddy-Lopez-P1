@@ -125,11 +125,6 @@ namespace P0DL
             };
         }
 
-        public List<Products> GetAllProducts()
-        {
-            throw new System.NotImplementedException();
-        }
-
         public List<LineItems> GetAllLineItems()
         {
             // Method Syntax
