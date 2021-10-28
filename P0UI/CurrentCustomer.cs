@@ -38,6 +38,7 @@ namespace P0UI
             switch (userChoice)
             {
                 case "a":
+                    //MyUser = 1;
                     Console.WriteLine("You are now proceeding as a User"); //Perhaps show which User +_user
                     Console.WriteLine("Press Enter to proceed to select a store to shop from");
                     Console.ReadLine();

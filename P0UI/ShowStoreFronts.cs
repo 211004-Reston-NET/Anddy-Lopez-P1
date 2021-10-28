@@ -25,7 +25,11 @@ namespace P0UI
                 Console.WriteLine(sf);
                 Console.WriteLine("--------------------");
             }
-            Console.WriteLine("[a] - Search for Store Front");
+            // if (MyUser == 1)
+            // {
+            //     Console.WriteLine("[a] - Search for specific Store Front");
+            // }
+            Console.WriteLine("[a] - Search for specific Store Front");
             Console.WriteLine("[x] - Exit");
         }
 
