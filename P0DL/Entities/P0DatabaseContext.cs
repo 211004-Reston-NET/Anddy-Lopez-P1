@@ -38,21 +38,25 @@ namespace P0DL.Entities
                 entity.Property(e => e.CustId).HasColumnName("cust_id");
 
                 entity.Property(e => e.CustAddres)
+                    .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("cust_addres");
 
                 entity.Property(e => e.CustEmail)
+                    .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("cust_email");
 
                 entity.Property(e => e.CustName)
+                    .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("cust_name");
 
                 entity.Property(e => e.CustPhonenumber)
+                    .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("cust_phonenumber");
@@ -61,13 +65,14 @@ namespace P0DL.Entities
             modelBuilder.Entity<Inventory>(entity =>
             {
                 entity.HasKey(e => e.InvId)
-                    .HasName("PK__Inventor__A8749C298D9B0BAA");
+                    .HasName("PK__Inventor__A8749C29C4B81E06");
 
                 entity.ToTable("Inventory");
 
                 entity.Property(e => e.InvId).HasColumnName("inv_id");
 
                 entity.Property(e => e.InvProduct)
+                    .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("inv_product");
@@ -79,21 +84,21 @@ namespace P0DL.Entities
                 entity.HasOne(d => d.Store)
                     .WithMany(p => p.Inventories)
                     .HasForeignKey(d => d.StoreId)
-                    .HasConstraintName("FK__Inventory__store__208CD6FA");
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Inventory__store__3F115E1A");
             });
 
             modelBuilder.Entity<LineItem>(entity =>
             {
                 entity.HasKey(e => e.LiId)
-                    .HasName("PK__LineItem__1A6BDF65B3EE17E7");
+                    .HasName("PK__LineItem__1A6BDF65975CEFB2");
 
                 entity.ToTable("LineItem");
 
                 entity.Property(e => e.LiId).HasColumnName("li_id");
 
-                entity.Property(e => e.InvId).HasColumnName("inv_id");
-
                 entity.Property(e => e.LiProduct)
+                    .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("li_product");
@@ -102,15 +107,10 @@ namespace P0DL.Entities
 
                 entity.Property(e => e.OrderId).HasColumnName("order_id");
 
-                entity.HasOne(d => d.Inv)
-                    .WithMany(p => p.LineItems)
-                    .HasForeignKey(d => d.InvId)
-                    .HasConstraintName("FK__LineItem__inv_id__3587F3E0");
-
                 entity.HasOne(d => d.Order)
                     .WithMany(p => p.LineItems)
                     .HasForeignKey(d => d.OrderId)
-                    .HasConstraintName("FK__LineItem__order___3493CFA7");
+                    .HasConstraintName("FK__LineItem__order___41EDCAC5");
             });
 
             modelBuilder.Entity<MyOrder>(entity =>
@@ -125,6 +125,7 @@ namespace P0DL.Entities
                 entity.Property(e => e.CustId).HasColumnName("cust_id");
 
                 entity.Property(e => e.OrderAddress)
+                    .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("order_address");
@@ -147,7 +148,7 @@ namespace P0DL.Entities
             modelBuilder.Entity<Product>(entity =>
             {
                 entity.HasKey(e => e.ProdId)
-                    .HasName("PK__Product__56958AB2A8056F2F");
+                    .HasName("PK__Product__56958AB2CAE42C3E");
 
                 entity.ToTable("Product");
 
@@ -155,7 +156,10 @@ namespace P0DL.Entities
 
                 entity.Property(e => e.InvId).HasColumnName("inv_id");
 
+                entity.Property(e => e.LiId).HasColumnName("li_id");
+
                 entity.Property(e => e.ProdName)
+                    .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("prod_name");
@@ -165,7 +169,12 @@ namespace P0DL.Entities
                 entity.HasOne(d => d.Inv)
                     .WithMany(p => p.Products)
                     .HasForeignKey(d => d.InvId)
-                    .HasConstraintName("FK__Product__inv_id__3864608B");
+                    .HasConstraintName("FK__Product__inv_id__489AC854");
+
+                entity.HasOne(d => d.Li)
+                    .WithMany(p => p.Products)
+                    .HasForeignKey(d => d.LiId)
+                    .HasConstraintName("FK__Product__li_id__498EEC8D");
             });
 
             modelBuilder.Entity<StoreFront>(entity =>
@@ -178,11 +187,13 @@ namespace P0DL.Entities
                 entity.Property(e => e.StoreId).HasColumnName("store_id");
 
                 entity.Property(e => e.StoreAddres)
+                    .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("store_addres");
 
                 entity.Property(e => e.StoreName)
+                    .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("store_name");

@@ -37,6 +37,7 @@ namespace P0UI
                 case "a":
                     Console.WriteLine("You have now chosen a shopping center"); //Perhaps show which Store Front
                     Console.WriteLine("Press Enter to proceed to select the products you wish to buy");
+                    Console.WriteLine("Please be advised. This is still a work in progress.");
                     Console.ReadLine();
                     return MenuType.PlaceOrder;
                 case "x":

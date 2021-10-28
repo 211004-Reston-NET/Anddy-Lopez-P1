@@ -12,6 +12,7 @@ namespace P0UI
             Console.WriteLine("[b] - See exisiting customers");
             Console.WriteLine("[c] - See all store fronts");
             Console.WriteLine("[d] - Place an order");
+            Console.WriteLine("[e] - View Order History");
             Console.WriteLine("[x] - Exit");
         }
 
@@ -31,6 +32,11 @@ namespace P0UI
                     Console.WriteLine("Press Enter to continue and select one of the following");
                     Console.ReadLine();
                     return MenuType.ShowCustomers;
+                case "e":
+                    Console.WriteLine("No order history to report");
+                    Console.WriteLine("Press Enter to continue");
+                    Console.ReadLine();
+                    return MenuType.MainMenu;
                 case "x":
                     return MenuType.Exit;
                 default:

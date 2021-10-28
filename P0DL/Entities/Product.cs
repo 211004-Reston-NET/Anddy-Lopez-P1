@@ -11,7 +11,9 @@ namespace P0DL.Entities
         public string ProdName { get; set; }
         public int ProdPrice { get; set; }
         public int InvId { get; set; }
+        public int LiId { get; set; }
 
         public virtual Inventory Inv { get; set; }
+        public virtual LineItem Li { get; set; }
     }
 }
