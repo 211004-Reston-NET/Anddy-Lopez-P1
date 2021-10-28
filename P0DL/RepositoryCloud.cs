@@ -98,7 +98,7 @@ namespace P0DL
                 {
                     PName = prod.ProdName,
                     Price = prod.ProdPrice,
-                    InveId = prod.InvId,
+                    InvId = prod.InvId,
                     LiId = prod.LiId,
                     Id = prod.ProdId
                 }

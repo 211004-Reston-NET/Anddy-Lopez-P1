@@ -15,8 +15,8 @@ namespace P0DL.Entities
         public int OrderId { get; set; }
         public string OrderAddress { get; set; }
         public int OrderPrice { get; set; }
-        public int CustId { get; set; }
-        public int StoreId { get; set; }
+        public int? CustId { get; set; }
+        public int? StoreId { get; set; }
 
         public virtual Customer Cust { get; set; }
         public virtual StoreFront Store { get; set; }

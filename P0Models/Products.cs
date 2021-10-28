@@ -15,7 +15,7 @@ namespace P0Models
         public int Id { get; set; }
         public string PName { get; set; }
         public double Price { get; set; }
-        public int InveId { get; set; }
+        public int InvId { get; set; }
         public int LiId { get; set; }
 
         public Inventory Inventory { get; set; }

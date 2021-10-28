@@ -18,7 +18,7 @@ namespace P0Models
         public string SAddress { get; set; }
         
         public List<Orders> Orders { get; set; }
-        public List<Products> Products { get; set; }
+        public List<Inventory> Inventory { get; set; }
 
         public override string ToString()
         {

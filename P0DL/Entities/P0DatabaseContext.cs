@@ -148,7 +148,7 @@ namespace P0DL.Entities
             modelBuilder.Entity<Product>(entity =>
             {
                 entity.HasKey(e => e.ProdId)
-                    .HasName("PK__Product__56958AB2CAE42C3E");
+                    .HasName("PK__Product__56958AB2AC479E44");
 
                 entity.ToTable("Product");
 
@@ -159,7 +159,6 @@ namespace P0DL.Entities
                 entity.Property(e => e.LiId).HasColumnName("li_id");
 
                 entity.Property(e => e.ProdName)
-                    .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("prod_name");
@@ -169,12 +168,12 @@ namespace P0DL.Entities
                 entity.HasOne(d => d.Inv)
                     .WithMany(p => p.Products)
                     .HasForeignKey(d => d.InvId)
-                    .HasConstraintName("FK__Product__inv_id__489AC854");
+                    .HasConstraintName("FK__Product__inv_id__503BEA1C");
 
                 entity.HasOne(d => d.Li)
                     .WithMany(p => p.Products)
                     .HasForeignKey(d => d.LiId)
-                    .HasConstraintName("FK__Product__li_id__498EEC8D");
+                    .HasConstraintName("FK__Product__li_id__51300E55");
             });
 
             modelBuilder.Entity<StoreFront>(entity =>
