@@ -26,7 +26,7 @@ namespace P0DL
         /// will probably only get the products i seeded for know
         /// </summary>
         /// <returns>will return a list of products</returns>
-        List<Products> GetAllProducts(Products p_prod);
+        List<Products> GetAllProducts();
 
         /// <summary>
         /// Will give all orders from a customer

@@ -18,11 +18,11 @@ namespace P0BL
             return _repo.GetAllLineItems();
         }
 
-        public List<LineItems> GetLineItems(string p_prod)
+        public List<LineItems> GetLineItems(string p_item)
         {
             List<LineItems> listOfLineItems = _repo.GetAllLineItems();
 
-            return listOfLineItems.Where(item => item.Product.Contains(p_prod)).ToList();
+            return listOfLineItems.Where(item => item.Product.Contains(p_item)).ToList();
         }
     }
 }

@@ -90,25 +90,19 @@ namespace P0DL
         }
 
         // Converts from Entity to Model?
-        public List<Model.Products> GetAllProducts(Model.Products p_prod)
+        public List<Model.Products> GetAllProducts()
         {
-            //Query Syntax
-            var result = (from prod in _context.Products
-                        where prod.InvId == 1 // You need to import a invertory first -- p_inv.Id instead of 1
-                        select prod); 
-
-            //Mapping the Queryable<Entity.Products> into a list<Model.Products>
-            List<Model.Products> listOfProd = new List<Model.Products>();
-            foreach (Entity.Product prod in result)
-            {
-                listOfProd.Add(new Model.Products(){
-                    Id = prod.ProdId,
+            // Method Syntax
+            return _context.Products.Select(prod =>
+                new Model.Products()
+                {
                     PName = prod.ProdName,
                     Price = prod.ProdPrice,
-                    InveId = prod.InvId
-                });
-            }
-            return listOfProd;
+                    InveId = prod.InvId,
+                    LiId = prod.LiId,
+                    Id = prod.ProdId
+                }
+            ).ToList();
         }
 
         // Finds customer by Id?

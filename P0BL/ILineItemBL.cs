@@ -7,6 +7,6 @@ namespace P0BL
     {
         List<LineItems> GetAllLineItems();
 
-        List<LineItems> GetLineItems(string p_prod);
+        List<LineItems> GetLineItems(string p_item);
     }
 }
