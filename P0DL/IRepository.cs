@@ -35,5 +35,7 @@ namespace P0DL
         /// <param name="p_Id">ID that it will check</param>
         /// <returns>Returns customer</returns>
         Customers GetCustomersById(int p_Id);
+
+        List<LineItems> GetAllLineItems();
     }
 }

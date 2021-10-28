@@ -1,24 +1,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using P0Models;
-using Entity = P0DL.Entities; //comment out for database refresh
+using Entity = P0DL.Entities; 
 using Model = P0Models;
 
 namespace P0DL
 {
     public class RepositoryCloud : IRepository
     {
-        // public Customers AddCustomer(Customers p_cust)
-        // {
-        //     throw new System.NotImplementedException();
-        // }
-
-        //comment out for database refresh
         private Entity.P0DatabaseContext _context;
         public RepositoryCloud(Entity.P0DatabaseContext p_context)
         {
             _context = p_context;
         }
+        
+        // Adds customers
         public Model.Customers AddCustomer(Model.Customers p_cust)
         {
             _context.Customers.Add
@@ -37,9 +33,9 @@ namespace P0DL
             return p_cust;
         }
 
+        // Converts from Entity to Model
         public List<Model.Customers> GetAllCustomers()
         {
-            // throw new System.NotImplementedException();
             // Method Syntax
             return _context.Customers.Select(cust =>
                 new Model.Customers()
@@ -71,9 +67,9 @@ namespace P0DL
             // return listOfCust;
         }
 
+        // Converts from Entity to Model
         public List<Model.StoreFronts> GetAllStoreFronts()
         {
-            //throw new System.NotImplementedException();
             // Method Syntax
             return _context.StoreFronts.Select(store =>
                 new Model.StoreFronts()
@@ -84,6 +80,8 @@ namespace P0DL
                 }
             ).ToList();
         }
+        
+        // No idea
         public List<Model.Orders> GetAllOrders(Model.Customers p_cust)//Try again later
         {
             throw new System.NotImplementedException();
@@ -91,9 +89,9 @@ namespace P0DL
             //var result = (from ord in _context.Orders)
         }
 
+        // Converts from Entity to Model?
         public List<Model.Products> GetAllProducts(Model.Products p_prod)
         {
-            //throw new System.NotImplementedException();
             //Query Syntax
             var result = (from prod in _context.Products
                         where prod.InvId == 1 // You need to import a invertory first -- p_inv.Id instead of 1
@@ -113,9 +111,9 @@ namespace P0DL
             return listOfProd;
         }
 
+        // Finds customer by Id?
         public Model.Customers GetCustomersById(int p_Id)
         {
-            //throw new System.NotImplementedException();
             Entity.Customer custToFind = _context.Customers.Find(p_Id);
 
             return new Model.Customers(){
@@ -130,6 +128,20 @@ namespace P0DL
         public List<Products> GetAllProducts()
         {
             throw new System.NotImplementedException();
+        }
+
+        public List<LineItems> GetAllLineItems()
+        {
+            // Method Syntax
+            return _context.LineItems.Select(item =>
+                new Model.LineItems()
+                {
+                    Product = item.LiProduct,
+                    Quantity = item.LiQuantity,
+                    OrderId = item.OrderId,
+                    Id = item.LiId
+                }
+            ).ToList();
         }
     }
 }
