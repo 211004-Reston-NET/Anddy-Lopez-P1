@@ -83,11 +83,19 @@ namespace P0DL
         }
         
         // Will hopefully converts from Entity to Model for Order... one day
-        public List<Model.Orders> GetAllOrders(Model.Customers p_cust)//Try again later
+        public List<Model.Orders> GetAllOrders()//Try again later
         {
-            throw new System.NotImplementedException();
-            //Query Syntax
-            //var result = (from ord in _context.Orders)
+            // Method Syntax
+            return _context.MyOrders.Select(ord =>
+                new Model.Orders()
+                {
+                    SLocation = ord.OrderAddress,
+                    TotalPrice = ord.OrderPrice,
+                    CustId = ord.CustId,
+                    StoreId = ord.StoreId,
+                    Id = ord.OrderId
+                }
+            ).ToList();
         }
 
         // Converts from Entity to Model
@@ -138,7 +146,16 @@ namespace P0DL
         // Converts from Entity to Model for Inventory?
         public List<Inventory> GetAllInventory()
         {
-            throw new System.NotImplementedException();
+            // Method Syntax
+            return _context.Inventories.Select(inv =>
+                new Model.Inventory()
+                {
+                    Product = inv.InvProduct,
+                    Quantity = inv.InvQuantity,
+                    StoreId = inv.StoreId,
+                    Id = inv.InvId
+                }
+            ).ToList();
         }
     }
 }

@@ -33,7 +33,7 @@ namespace P0DL
         /// </summary>
         /// <param name="p_cust"></param>
         /// <returns>returns a list of orders</returns>
-        List<Orders> GetAllOrders(Customers p_cust); //You are not read for this in the slightest
+        List<Orders> GetAllOrders(); //You are not read for this in the slightest
 
         //List the Line Items
         List<LineItems> GetAllLineItems();
