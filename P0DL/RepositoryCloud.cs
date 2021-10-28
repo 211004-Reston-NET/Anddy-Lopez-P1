@@ -8,6 +8,7 @@ namespace P0DL
 {
     public class RepositoryCloud : IRepository
     {
+        //Dependency Injection for variables
         private Entity.P0DatabaseContext _context;
         public RepositoryCloud(Entity.P0DatabaseContext p_context)
         {
@@ -33,7 +34,7 @@ namespace P0DL
             return p_cust;
         }
 
-        // Converts from Entity to Model
+        // Converts from Entity to Model for Customers
         public List<Model.Customers> GetAllCustomers()
         {
             // Method Syntax
@@ -67,7 +68,7 @@ namespace P0DL
             // return listOfCust;
         }
 
-        // Converts from Entity to Model
+        // Converts from Entity to Model for Stores
         public List<Model.StoreFronts> GetAllStoreFronts()
         {
             // Method Syntax
@@ -81,7 +82,7 @@ namespace P0DL
             ).ToList();
         }
         
-        // No idea
+        // Will hopefully converts from Entity to Model for Order... one day
         public List<Model.Orders> GetAllOrders(Model.Customers p_cust)//Try again later
         {
             throw new System.NotImplementedException();
@@ -89,7 +90,7 @@ namespace P0DL
             //var result = (from ord in _context.Orders)
         }
 
-        // Converts from Entity to Model?
+        // Converts from Entity to Model
         public List<Model.Products> GetAllProducts()
         {
             // Method Syntax
@@ -105,7 +106,7 @@ namespace P0DL
             ).ToList();
         }
 
-        // Finds customer by Id?
+        // Finds customer by Id? - Not necessary?
         public Model.Customers GetCustomersById(int p_Id)
         {
             Entity.Customer custToFind = _context.Customers.Find(p_Id);
@@ -119,6 +120,7 @@ namespace P0DL
             };
         }
 
+        // Converts from Entity to Model for Line Items
         public List<LineItems> GetAllLineItems()
         {
             // Method Syntax
@@ -131,6 +133,12 @@ namespace P0DL
                     Id = item.LiId
                 }
             ).ToList();
+        }
+
+        // Converts from Entity to Model for Inventory?
+        public List<Inventory> GetAllInventory()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

@@ -35,6 +35,10 @@ namespace P0DL
         /// <returns>returns a list of orders</returns>
         List<Orders> GetAllOrders(Customers p_cust); //You are not read for this in the slightest
 
+        //List the Line Items
         List<LineItems> GetAllLineItems();
+
+        //List the Inventory
+        List<Inventory> GetAllInventory();
     }
 }

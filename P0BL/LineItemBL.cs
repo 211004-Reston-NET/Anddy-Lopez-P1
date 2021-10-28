@@ -7,17 +7,20 @@ namespace P0BL
 {
     public class LineItemBL : ILineItemBL
     {
+        //Dependency Injection
         private IRepository _repo;
         public LineItemBL(IRepository p_repo) 
         {
             _repo = p_repo;
         }
         
+        //Returns Line Items with no changes
         public List<LineItems> GetAllLineItems()
         {
             return _repo.GetAllLineItems();
         }
 
+        //Searches Line Items
         public List<LineItems> GetLineItems(string p_item)
         {
             List<LineItems> listOfLineItems = _repo.GetAllLineItems();

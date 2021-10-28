@@ -37,6 +37,7 @@ namespace P0BL
             return _repo.GetAllCustomers();
         }
 
+        //Searches customer by name
         public List<Customers> GetCustomers(string p_name)
         {
             List<Customers> listOfCustomers = _repo.GetAllCustomers();
@@ -44,6 +45,7 @@ namespace P0BL
             return listOfCustomers.Where(cust => cust.Name.Contains(p_name)).ToList();
         }
 
+        //Searches customer by ID -- not complete
         public Customers GetCustomersById(int p_Id)
         {
             throw new NotImplementedException();
@@ -54,6 +56,7 @@ namespace P0BL
             // }
         }
 
+        // Will hopefully list the orders from a specific customer... one day
         public List<Orders> GetAllOrders(Customers p_cust)
         {
             throw new NotImplementedException();

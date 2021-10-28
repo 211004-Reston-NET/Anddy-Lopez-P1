@@ -7,6 +7,7 @@ namespace P0BL
 {
     public class ProductsBL : IProductsBL
     {
+        //Dependency Injection
         private IRepository _repo;
         public ProductsBL(IRepository p_repo) 
         {
