@@ -5,11 +5,11 @@ using P0Models;
 
 namespace P0UI
 {
-    public class PlaceOrder : IMenu
+    public class ShowProducts : IMenu
     {
         private IProductsBL _prodBL;
         public static string _findProdName;
-        public PlaceOrder(IProductsBL p_prodBL)
+        public ShowProducts(IProductsBL p_prodBL)
         {
             _prodBL = p_prodBL;
         }
@@ -25,27 +25,26 @@ namespace P0UI
                 Console.WriteLine(prod);
                 Console.WriteLine("--------------------");
             }
-            Console.WriteLine("[a] - Search Products by name");
+            Console.WriteLine("[a] - Search for specific Product");
             Console.WriteLine("[x] - Exit");
         }
 
         public MenuType YourChoice()
         {
             string userChoice = Console.ReadLine();
-
             switch (userChoice)
             {
                 case "a":
-                    Console.WriteLine("Enter the name of the Product you want to find");
+                    Console.WriteLine("Enter a name for the Product you want to find");
                     _findProdName = Console.ReadLine();
-                    return MenuType.PlaceOrder;
+                    return MenuType.CurrentProduct;
                 case "x":
-                    return MenuType.ShowStoreFronts;
+                    return MenuType.MainMenu;
                 default:
                     Console.WriteLine("Please input a valid response!");
                     Console.WriteLine("Press Enter to continue");
                     Console.ReadLine();
-                    return MenuType.PlaceOrder;
+                    return MenuType.ShowProducts;
             }
         }
     }

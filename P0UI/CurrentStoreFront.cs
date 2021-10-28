@@ -39,7 +39,7 @@ namespace P0UI
                     Console.WriteLine("Press Enter to proceed to select the products you wish to buy");
                     Console.WriteLine("Please be advised. This is still a work in progress.");
                     Console.ReadLine();
-                    return MenuType.PlaceOrder;
+                    return MenuType.ShowProducts;
                 case "x":
                     return MenuType.ShowStoreFronts;
                 default:
