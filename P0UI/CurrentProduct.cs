@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using P0BL;
 using P0Models;
 
@@ -17,15 +18,24 @@ namespace P0UI
         {
             List<Products> listOfProds = _prodBL.GetProducts(ShowProducts._findProdName);
 
-            Console.WriteLine("This is the search result");
+            Console.WriteLine("The following are the search results:");
             foreach (Products prod in listOfProds)
             {
                 Console.WriteLine("--------------");
                 Console.WriteLine(prod);
                 Console.WriteLine("--------------");
             }
-            Console.WriteLine("[a] - Select this product to add to your order");
-            Console.WriteLine("[x] - Exit");
+            //checks to see if any product is found
+            if (listOfProds.Any() == false)
+            {
+                Console.WriteLine("\nProduct not found. Please try again.\n");
+                Console.WriteLine("[x] - Try again");
+            }
+            else
+            {
+                Console.WriteLine("[a] - Select this product to add to your order");
+                Console.WriteLine("[x] - Exit");
+            }  
         }
 
         public MenuType YourChoice()

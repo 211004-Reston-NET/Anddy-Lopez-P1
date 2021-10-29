@@ -41,7 +41,7 @@ namespace P0BL
         public List<Customers> GetCustomers(string p_name)
         {
             List<Customers> listOfCustomers = _repo.GetAllCustomers();
-
+            
             return listOfCustomers.Where(cust => cust.Name.Contains(p_name)).ToList();
         }
 
