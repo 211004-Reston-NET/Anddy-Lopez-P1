@@ -7,6 +7,9 @@ namespace P0BL
     {
         //List the orders
         List<Orders> GetAllOrders();
+        
+        //Allows Order addition
+        Orders AddOrder(Orders p_ord);
 
         //Allows order search -- might not need
         List<Orders> GetOrders(string p_item);

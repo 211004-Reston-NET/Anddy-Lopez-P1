@@ -28,6 +28,9 @@ namespace P0DL
         /// <returns>will return a list of products</returns>
         List<Products> GetAllProducts();
 
+        //Allows Order addition
+        Orders AddOrder(Orders p_ord);
+
         /// <summary>
         /// Will give all orders from a customer
         /// </summary>

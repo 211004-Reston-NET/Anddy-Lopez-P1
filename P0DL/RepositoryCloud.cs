@@ -82,6 +82,25 @@ namespace P0DL
             ).ToList();
         }
         
+        //Allows order addition
+        public Model.Orders AddOrder(Model.Orders p_ord)
+        {
+            _context.MyOrders.Add
+            (
+                new Entity.MyOrder()
+                {
+                    OrderAddress = p_ord.SLocation,
+                    OrderPrice = p_ord.TotalPrice,
+                    CustId = p_ord.CustId,
+                    StoreId = p_ord.StoreId
+                }
+            );
+
+            //This method wil save the changes made to the database
+            _context.SaveChanges();
+            return p_ord;
+        }
+        
         // Will hopefully converts from Entity to Model for Order... one day
         public List<Model.Orders> GetAllOrders()//Try again later
         {
@@ -129,7 +148,7 @@ namespace P0DL
         }
 
         // Converts from Entity to Model for Line Items
-        public List<LineItems> GetAllLineItems()
+        public List<Model.LineItems> GetAllLineItems()
         {
             // Method Syntax
             return _context.LineItems.Select(item =>
@@ -144,7 +163,7 @@ namespace P0DL
         }
 
         // Converts from Entity to Model for Inventory?
-        public List<Inventory> GetAllInventory()
+        public List<Model.Inventory> GetAllInventory()
         {
             // Method Syntax
             return _context.Inventories.Select(inv =>
