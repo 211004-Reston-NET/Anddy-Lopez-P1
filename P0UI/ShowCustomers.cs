@@ -10,6 +10,9 @@ namespace P0UI
         // dotnet add reference ..\P0BL\P0BL.csproj ------ Do 2nd
         private ICustomersBL _custBL;
         public static string _findCustName;
+        public static string _findCustAddress;
+        public static string _findCustEmail;
+        public static string _findCustPhone;
         public ShowCustomers(ICustomersBL p_custBL)
         {
             _custBL = p_custBL;
@@ -28,7 +31,10 @@ namespace P0UI
                 Console.WriteLine(c);
                 Console.WriteLine("--------------------");
             }
-            Console.WriteLine("[a] - Search for Customer by name");
+            Console.WriteLine("[a] - Search for Customer by name (Case Sensitive)");
+            Console.WriteLine("[b] - Search for Customer by address (Case Sensitive)");
+            Console.WriteLine("[c] - Search for Customer by email (Case Sensitive)");
+            Console.WriteLine("[d] - Search for Customer by phone number (Case Sensitive)");
             Console.WriteLine("[x] - Exit");
         }
 
@@ -40,6 +46,30 @@ namespace P0UI
                 case "a":
                     Console.WriteLine("Enter a name for the Customer you want to find");
                     _findCustName = Console.ReadLine();
+                    _findCustAddress = null;
+                    _findCustEmail = null;
+                    _findCustPhone = null;
+                    return MenuType.CurrentCustomer;
+                case "b":
+                    Console.WriteLine("Enter an address for the Customer you want to find");
+                    _findCustAddress = Console.ReadLine();
+                    _findCustName = null;
+                    _findCustEmail = null;
+                    _findCustPhone = null;
+                    return MenuType.CurrentCustomer;
+                case "c":
+                    Console.WriteLine("Enter an email for the Customer you want to find");
+                    _findCustEmail = Console.ReadLine();
+                    _findCustAddress = null;
+                    _findCustName = null;
+                    _findCustPhone = null;
+                    return MenuType.CurrentCustomer;
+                case "d":
+                    Console.WriteLine("Enter a phone number for the Customer you want to find");
+                    _findCustPhone = Console.ReadLine();
+                    _findCustAddress = null;
+                    _findCustEmail = null;
+                    _findCustName = null;
                     return MenuType.CurrentCustomer;
                 case "x":
                     return MenuType.MainMenu;

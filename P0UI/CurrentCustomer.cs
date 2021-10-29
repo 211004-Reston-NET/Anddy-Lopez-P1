@@ -14,30 +14,104 @@ namespace P0UI
             this._custBL = p_custBL;
         }
         public static int _userSelected;
-        //public User MyUser { get; set; }
         
         public void Menu()
         {
-            List<Customers> listOfCust = _custBL.GetCustomers(ShowCustomers._findCustName);
+            if (ShowCustomers._findCustName != null)
+            {
+                List<Customers> listOfCust = _custBL.GetCustomers(ShowCustomers._findCustName);
 
-            Console.WriteLine("The following are the search results:");
-            foreach (Customers cust in listOfCust)
-            {
-                Console.WriteLine("--------------");
-                Console.WriteLine(cust);
-                Console.WriteLine("--------------");
-                //MyUser = (User)cust;
+                Console.WriteLine("The following are the search results:");
+                foreach (Customers cust in listOfCust)
+                {
+                    Console.WriteLine("--------------");
+                    Console.WriteLine(cust);
+                    Console.WriteLine("--------------");
+                }
+                
+                //checks to see if any customer is found
+                if (listOfCust.Any() == false)
+                {
+                    Console.WriteLine("\nCustomer not found. Please try again.\n");
+                    Console.WriteLine("[x] - Try again");
+                }
+                else
+                {
+                    Console.WriteLine("[a] - Select this customer as your User");
+                    Console.WriteLine("[x] - Exit");
+                }
             }
-            //checks to see if any customer is found
-            if (listOfCust.Any() == false)
+            else if (ShowCustomers._findCustAddress != null)
             {
-                Console.WriteLine("\nCustomer not found. Please try again.\n");
-                Console.WriteLine("[x] - Try again");
+                List<Customers> listOfCust = _custBL.GetCustomersAdd(ShowCustomers._findCustAddress);
+
+                Console.WriteLine("The following are the search results:");
+                foreach (Customers cust in listOfCust)
+                {
+                    Console.WriteLine("--------------");
+                    Console.WriteLine(cust);
+                    Console.WriteLine("--------------");
+                }
+                
+                //checks to see if any customer is found
+                if (listOfCust.Any() == false)
+                {
+                    Console.WriteLine("\nCustomer not found. Please try again.\n");
+                    Console.WriteLine("[x] - Try again");
+                }
+                else
+                {
+                    Console.WriteLine("[a] - Select this customer as your User");
+                    Console.WriteLine("[x] - Exit");
+                }
             }
-            else
+            else if (ShowCustomers._findCustEmail != null)
             {
-                Console.WriteLine("[a] - Select this customer as your User");
-                Console.WriteLine("[x] - Exit");
+                List<Customers> listOfCust = _custBL.GetCustomersEmail(ShowCustomers._findCustEmail);
+
+                Console.WriteLine("The following are the search results:");
+                foreach (Customers cust in listOfCust)
+                {
+                    Console.WriteLine("--------------");
+                    Console.WriteLine(cust);
+                    Console.WriteLine("--------------");
+                }
+                
+                //checks to see if any customer is found
+                if (listOfCust.Any() == false)
+                {
+                    Console.WriteLine("\nCustomer not found. Please try again.\n");
+                    Console.WriteLine("[x] - Try again");
+                }
+                else
+                {
+                    Console.WriteLine("[a] - Select this customer as your User");
+                    Console.WriteLine("[x] - Exit");
+                }
+            }
+            else if (ShowCustomers._findCustPhone != null)
+            {
+                List<Customers> listOfCust = _custBL.GetCustomersPhone(ShowCustomers._findCustPhone);
+
+                Console.WriteLine("The following are the search results:");
+                foreach (Customers cust in listOfCust)
+                {
+                    Console.WriteLine("--------------");
+                    Console.WriteLine(cust);
+                    Console.WriteLine("--------------");
+                }
+                
+                //checks to see if any customer is found
+                if (listOfCust.Any() == false)
+                {
+                    Console.WriteLine("\nCustomer not found. Please try again.\n");
+                    Console.WriteLine("[x] - Try again");
+                }
+                else
+                {
+                    Console.WriteLine("[a] - Select this customer as your User");
+                    Console.WriteLine("[x] - Exit");
+                }
             }
         }
 
@@ -49,7 +123,7 @@ namespace P0UI
             {
                 case "a":
                     _userSelected = 1; 
-                    Console.WriteLine("You are now proceeding as your chosen Customer"); //Perhaps show which User +MyUser
+                    Console.WriteLine("You are now proceeding as your chosen Customer");
                     Console.WriteLine("Press Enter to proceed to select a store to shop from");
                     Console.ReadLine();
                     return MenuType.ShowStoreFronts;

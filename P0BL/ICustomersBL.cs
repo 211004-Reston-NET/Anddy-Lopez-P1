@@ -14,6 +14,15 @@ namespace P0BL
         //Allows Customer search by name
         List<Customers> GetCustomers(string p_name);
 
+        //Allows Customer search by address
+        List<Customers> GetCustomersAdd(string p_address);
+
+        //Allows Customer search by email
+        List<Customers> GetCustomersEmail(string p_email);
+
+        //Allows Customer search by phone number
+        List<Customers> GetCustomersPhone(string p_phone);
+
         /// <summary>
         /// Returns a customer based on ID
         /// </summary>

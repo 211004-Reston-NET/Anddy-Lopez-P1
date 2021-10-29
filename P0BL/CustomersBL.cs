@@ -45,6 +45,30 @@ namespace P0BL
             return listOfCustomers.Where(cust => cust.Name.Contains(p_name)).ToList();
         }
 
+        //Searches customer by address
+        public List<Customers> GetCustomersAdd(string p_address)
+        {
+            List<Customers> listOfCustomers = _repo.GetAllCustomers();
+            
+            return listOfCustomers.Where(cust => cust.Address.Contains(p_address)).ToList();
+        }
+
+        //Searches customer by email
+        public List<Customers> GetCustomersEmail(string p_email)
+        {
+            List<Customers> listOfCustomers = _repo.GetAllCustomers();
+            
+            return listOfCustomers.Where(cust => cust.Email.Contains(p_email)).ToList();
+        }
+
+        //Searches customer by phone number
+        public List<Customers> GetCustomersPhone(string p_phone)
+        {
+            List<Customers> listOfCustomers = _repo.GetAllCustomers();
+            
+            return listOfCustomers.Where(cust => cust.PhoneNumber.Contains(p_phone)).ToList();
+        }
+
         //Searches customer by ID -- not complete
         public Customers GetCustomersById(int p_Id)
         {
