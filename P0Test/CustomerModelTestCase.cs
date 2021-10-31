@@ -51,7 +51,7 @@ namespace P0Test
         {
             //Arrange
             Customers _custTest = new Customers();
-            string phonenum = "5550001";
+            string phonenum = "4095550001";
 
             //Act
             _custTest.PhoneNumber = phonenum;
@@ -69,8 +69,8 @@ namespace P0Test
         [InlineData("555Test")] //shouldn't work cuz letters
         [InlineData("555.bad")] //shouldn't work cuz letters and "."
         [InlineData("555#@bs")] //shouldn't work cuz letters and symbols
-        // [InlineData("55544")] //shouldn't work cuz too short
-        // [InlineData("55544332")] //shouldn't work cuz too long
+        [InlineData("55544")] //shouldn't work cuz only 5 numbers (not 7 or 10)
+        [InlineData("55544332")] //shouldn't work cuz 8 numbers long (not 7 or 10)
         public void PhoneNumberShouldFailIfSetWithInvaildData(string p_input)
         {
             //Arrange

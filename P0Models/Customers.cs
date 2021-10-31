@@ -43,10 +43,10 @@ namespace P0Models
                 {
                     throw new Exception("Customer phone number can only hold numbers! Please try again.");
                 }
-                // if (PhoneNumber.Length != 7 && PhoneNumber.Length != 10)
-                // {
-                //     throw new Exception("Customer phone number must be 7 digits long. 10 if you include an area code.");
-                // }
+                if (value.Length != 7 && value.Length != 10)
+                {
+                    throw new Exception("Customer phone number must be 7 digits long. 10 if you include an area code.");
+                }
                 _phonenum = value;
             } 
         }
