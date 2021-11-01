@@ -35,9 +35,13 @@ namespace P0UI
                     Console.WriteLine("\nCustomer not found. Please try again.\n");
                     Console.WriteLine("[x] - Try again");
                 }
-                else
+                else if (listOfCust.Count == 1)
                 {
                     Console.WriteLine("[a] - Select this customer as your User");
+                    Console.WriteLine("[x] - Exit");
+                }
+                else
+                {
                     Console.WriteLine("[x] - Exit");
                 }
             }
@@ -59,9 +63,13 @@ namespace P0UI
                     Console.WriteLine("\nCustomer not found. Please try again.\n");
                     Console.WriteLine("[x] - Try again");
                 }
-                else
+                else if (listOfCust.Count == 1)
                 {
                     Console.WriteLine("[a] - Select this customer as your User");
+                    Console.WriteLine("[x] - Exit");
+                }
+                else
+                {
                     Console.WriteLine("[x] - Exit");
                 }
             }
@@ -83,9 +91,13 @@ namespace P0UI
                     Console.WriteLine("\nCustomer not found. Please try again.\n");
                     Console.WriteLine("[x] - Try again");
                 }
-                else
+                else if (listOfCust.Count == 1)
                 {
                     Console.WriteLine("[a] - Select this customer as your User");
+                    Console.WriteLine("[x] - Exit");
+                }
+                else
+                {
                     Console.WriteLine("[x] - Exit");
                 }
             }
@@ -107,9 +119,13 @@ namespace P0UI
                     Console.WriteLine("\nCustomer not found. Please try again.\n");
                     Console.WriteLine("[x] - Try again");
                 }
-                else
+                else if (listOfCust.Count == 1)
                 {
                     Console.WriteLine("[a] - Select this customer as your User");
+                    Console.WriteLine("[x] - Exit");
+                }
+                else
+                {
                     Console.WriteLine("[x] - Exit");
                 }
             }

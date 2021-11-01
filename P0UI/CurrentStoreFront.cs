@@ -31,7 +31,7 @@ namespace P0UI
                 Console.WriteLine("\nStore not found. Please try again.\n");
                 Console.WriteLine("[x] - Try again");
             }
-            else
+            else if (listOfStoreF.Count == 1)
             {
                 if (CurrentCustomer._userSelected == 1)
                 {
@@ -42,6 +42,10 @@ namespace P0UI
                 {
                     Console.WriteLine("[x] - Exit");
                 }
+            }
+            else
+            {
+                Console.WriteLine("[x] - Exit");
             }
         }
 

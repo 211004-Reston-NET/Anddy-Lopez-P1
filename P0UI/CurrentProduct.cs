@@ -31,9 +31,13 @@ namespace P0UI
                 Console.WriteLine("\nProduct not found. Please try again.\n");
                 Console.WriteLine("[x] - Try again");
             }
-            else
+            else if (listOfProds.Count == 1)
             {
                 Console.WriteLine("[a] - Select this product to add to your order");
+                Console.WriteLine("[x] - Exit");
+            }
+            else
+            {
                 Console.WriteLine("[x] - Exit");
             }  
         }
