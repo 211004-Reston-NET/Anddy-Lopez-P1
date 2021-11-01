@@ -175,7 +175,7 @@ namespace P0UI
                     //_userSelected = _custMo.Id; 
                     _userSelected = 1;
                     Console.WriteLine("You are now proceeding as your chosen Customer");
-                    Console.WriteLine(_userSelected);
+                    //Console.WriteLine(_userSelected);
                     Console.WriteLine("Press Enter to proceed to select a store to shop from");
                     Console.ReadLine();
                     return MenuType.ShowStoreFronts;

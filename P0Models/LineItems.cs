@@ -13,14 +13,14 @@ namespace P0Models
         public int Id { get; set; }
         public string Product { get; set; }
         public int Quantity { get; set; }
-        public int OrderId { get; set; }
+        public int? OrderId { get; set; }
 
         public Inventory Inv { get; set; }
         public Orders Orders { get; set; }
 
         public override string ToString()
         {
-            return $"Product: {Product}\nQuantity: {Quantity}";
+            return $"Product ID: {Id}\nProduct: {Product}\nQuantity: {Quantity}";
         }
     }
 }

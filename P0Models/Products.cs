@@ -27,7 +27,7 @@ namespace P0Models
 
         public override string ToString()
         {
-            return $"Product name: {PName}\nPrice: {Price}";
+            return $"Product ID: {Id}\nProduct name: {PName}\nPrice: {Price}";
         }
     }
 }

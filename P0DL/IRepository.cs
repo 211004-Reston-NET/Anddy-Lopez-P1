@@ -42,9 +42,10 @@ namespace P0DL
 
 
         //List the Line Items
-        List<LineItems> GetAllLineItems();
-        //Allows customer addition
-        LineItems AddLineItem(LineItems p_item);
+        List<LineItems> GetAllLineItems(LineItems p_item);
+        //Allows Line Item addition
+        LineItems UpdateLineItem(LineItems p_item);
+        LineItems GetItemsById(int p_itemId);
 
 
         //List the Inventory

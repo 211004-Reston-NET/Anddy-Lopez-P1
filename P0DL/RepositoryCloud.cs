@@ -81,7 +81,7 @@ namespace P0DL
 
             // return listOfCust;
         }
-        // Finds customer by Id? - Not necessary?
+        // Finds customer by Id
         public Model.Customers GetCustomersById(int p_Id)
         {
             Entity.Customer custToFind = _context.Customers.Find(p_Id);
@@ -132,9 +132,10 @@ namespace P0DL
         // Will hopefully converts from Entity to Model for Order... one day
         public List<Model.Orders> GetAllOrders(Model.Customers p_cust)//Try again later
         {
-            // Method Syntax
-            return _context.MyOrders.Select(ord =>
-                new Model.Orders()
+            // Method Syntax - looks cleaner
+            return _context.MyOrders
+                .Where(ord => ord.OrderId == p_cust.Id) //we find the orders that match customer ID
+                .Select(ord => new Model.Orders() //convert to model.order
                 {
                     SLocation = ord.OrderAddress,
                     TotalPrice = ord.OrderPrice,
@@ -150,8 +151,8 @@ namespace P0DL
         public List<Model.Products> GetAllProducts()
         {
             // Method Syntax
-            return _context.Products.Select(prod =>
-                new Model.Products()
+            return _context.Products
+                .Select(prod => new Model.Products()
                 {
                     PName = prod.ProdName,
                     Price = prod.ProdPrice,
@@ -164,32 +165,48 @@ namespace P0DL
 
 
         // Converts from Entity to Model for Line Items
-        public List<Model.LineItems> GetAllLineItems()
+        public List<Model.LineItems> GetAllLineItems(Model.LineItems p_item)
         {
             // Method Syntax
-            return _context.LineItems.Select(item =>
-                new Model.LineItems()
+            return _context.LineItems
+                .Where(item => item.LiId == p_item.Id)
+                .Select(item => new Model.LineItems()
                 {
                     Product = item.LiProduct,
                     Quantity = item.LiQuantity,
-                    OrderId = item.OrderId,
+                    //OrderId = item.OrderId,
                     Id = item.LiId
                 }
             ).ToList();
         }
-        public Model.LineItems AddLineItem(Model.LineItems p_item)
+        //line item addition
+        public Model.LineItems UpdateLineItem(Model.LineItems p_item)
         {
-            _context.LineItems.Add
+            _context.LineItems.Update
             (
                 new Entity.LineItem()
                 {
-                    LiQuantity = p_item.Quantity
+                    LiProduct = p_item.Product,
+                    LiQuantity = p_item.Quantity,
+                    //OrderId = p_item.OrderId,
+                    LiId = p_item.Id
                 }
             );
 
             //This method wil save the changes made to the database
             _context.SaveChanges();
             return p_item;
+        }
+        public Model.LineItems GetItemsById(int p_itemId)
+        {
+            Entity.LineItem itemToFind = _context.LineItems.Find(p_itemId);
+
+            return new Model.LineItems(){
+                Id = itemToFind.LiId,
+                Product = itemToFind.LiProduct,
+                //OrderId = itemToFind.OrderId,
+                Quantity = itemToFind.LiQuantity
+            };
         }
 
 

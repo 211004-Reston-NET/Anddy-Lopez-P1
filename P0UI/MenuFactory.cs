@@ -46,6 +46,8 @@ namespace P0UI
                     return new ReplenishInventory(new LineItemBL(new RepositoryCloud(new P0DatabaseContext(options))));
                 case MenuType.OrderMenu:
                     return new OrderMenu(new CustomersBL(new RepositoryCloud(new P0DatabaseContext(options))));
+                case MenuType.ItemMenu:
+                    return new ItemMenu(new LineItemBL(new RepositoryCloud(new P0DatabaseContext(options))));
                 default:
                     return null;
             }

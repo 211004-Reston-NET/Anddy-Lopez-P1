@@ -15,29 +15,36 @@ namespace P0BL
             _repo = p_repo;
         }
 
-        //allows line item addition
-        public LineItems AddLineItem(LineItems p_item)
+        //allows line item modification - not even close
+        public LineItems UpdateLineItem(LineItems p_item)
         {
             if (p_item.Quantity== 0)
             {
                 // Will only be seen by coder
-                throw new Exception("Must have value in all properties");
+                throw new Exception("Must have value in designated properties");
             }
-            return _repo.AddLineItem(p_item);
+            return _repo.UpdateLineItem(p_item);
         }
 
-        //Returns Line Items with no changes
-        public List<LineItems> GetAllLineItems()
+
+        public LineItems GetItemsByID(int p_itemId)
         {
-            return _repo.GetAllLineItems();
+            LineItems itemFound = _repo.GetItemsById(p_itemId);
+            if (itemFound == null)
+            {
+                throw new Exception("Item not found!");
+            }
+            return itemFound;
         }
 
-        //Searches Line Items
+        public List<LineItems> GetAllLineItems(LineItems p_item)
+        {
+            return _repo.GetAllLineItems(p_item);
+        }
+
         public List<LineItems> GetLineItems(string p_item)
         {
-            List<LineItems> listOfLineItems = _repo.GetAllLineItems();
-
-            return listOfLineItems.Where(item => item.Product.Contains(p_item)).ToList();
+            throw new NotImplementedException();
         }
     }
 }

@@ -37,7 +37,7 @@ namespace P0UI
                     Console.WriteLine("Press Enter to continue");
                     Console.ReadLine();
                     return MenuType.MainMenu;
-                case "aa":
+                case "1":
                     return MenuType.CurrentProduct;
                 case "g":
                     return MenuType.ReplenishInventory;

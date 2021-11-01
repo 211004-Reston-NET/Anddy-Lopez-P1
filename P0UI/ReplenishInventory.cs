@@ -20,7 +20,8 @@ namespace P0UI
             Console.WriteLine("What would you like to do?");
             Console.WriteLine("Quantity - "+ _item.Quantity);
             Console.WriteLine("[a] - Add quantity amount to current inventory");
-            Console.WriteLine("[b] - Set inventory amount");
+            Console.WriteLine("[b] - Set new inventory amount");
+            Console.WriteLine("[c] - Implement changes");
             Console.WriteLine("[x] - Go back to Main Menu");
         }
 
@@ -33,15 +34,26 @@ namespace P0UI
                     Console.WriteLine("Type in value for Quantity to add");
                     _addAmount = Int32.Parse(Console.ReadLine());
                     _item.Quantity += _addAmount;
+                    _item.Id = _item.Id;
+                    _item.Product = _item.Product;
+                    _item.OrderId = _item.OrderId;
                     return MenuType.ReplenishInventory;
                 case "b":
+                    Console.WriteLine("Type in new value for Quantity");
+                    _addAmount = Int32.Parse(Console.ReadLine());
+                    _item.Quantity = _addAmount;
+                    _item.Id = _item.Id;
+                    _item.Product = _item.Product;
+                    _item.OrderId = _item.OrderId;
+                    return MenuType.ReplenishInventory;
+                case "c":
                     // try
                     // {
-                        _itemBL.AddLineItem(_item);
+                        _itemBL.UpdateLineItem(_item);
                     // }
                     // catch (System.Exception)
                     // {
-                    //     Console.WriteLine("Please input a value in all fields!");
+                    //     Console.WriteLine("Please input a value in designated fields!");
                     //     Console.WriteLine("Press Enter to continue");
                     //     Console.ReadLine();
                     //     return MenuType.ReplenishInventory;
