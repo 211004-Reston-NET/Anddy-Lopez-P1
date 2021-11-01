@@ -7,10 +7,8 @@ namespace P0DL
     {
         //Allows customer addition
         Customers AddCustomer(Customers p_cust);
-
         //List Customers
         List<Customers> GetAllCustomers();
-
         /// <summary>
         /// Returns a specific customer based on ID
         /// </summary>
@@ -18,8 +16,10 @@ namespace P0DL
         /// <returns>Returns customer</returns>
         Customers GetCustomersById(int p_Id);
 
+
         //List Store Fronts
         List<StoreFronts> GetAllStoreFronts();
+
 
         /// <summary>
         /// this will hopefully get all the products from a store
@@ -28,9 +28,9 @@ namespace P0DL
         /// <returns>will return a list of products</returns>
         List<Products> GetAllProducts();
 
+
         //Allows Order addition
         Orders AddOrder(Orders p_ord);
-
         /// <summary>
         /// Will give all orders from a customer
         /// </summary>
@@ -38,8 +38,12 @@ namespace P0DL
         /// <returns>returns a list of orders</returns>
         List<Orders> GetAllOrders(); //You are not read for this in the slightest
 
+
         //List the Line Items
         List<LineItems> GetAllLineItems();
+        //Allows customer addition
+        LineItems AddLineItem(LineItems p_item);
+
 
         //List the Inventory
         List<Inventory> GetAllInventory();

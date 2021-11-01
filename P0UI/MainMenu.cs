@@ -37,8 +37,10 @@ namespace P0UI
                     Console.WriteLine("Press Enter to continue");
                     Console.ReadLine();
                     return MenuType.MainMenu;
-                case "f":
-                    return MenuType.ShowProducts;
+                case "aa":
+                    return MenuType.CurrentProduct;
+                case "g":
+                    return MenuType.ReplenishInventory;
                 case "x":
                     return MenuType.Exit;
                 default:

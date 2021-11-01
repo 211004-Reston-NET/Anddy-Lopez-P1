@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using P0DL;
@@ -13,7 +14,18 @@ namespace P0BL
         {
             _repo = p_repo;
         }
-        
+
+        //allows line item addition
+        public LineItems AddLineItem(LineItems p_item)
+        {
+            if (p_item.Quantity== 0)
+            {
+                // Will only be seen by coder
+                throw new Exception("Must have value in all properties");
+            }
+            return _repo.AddLineItem(p_item);
+        }
+
         //Returns Line Items with no changes
         public List<LineItems> GetAllLineItems()
         {

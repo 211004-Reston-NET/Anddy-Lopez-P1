@@ -10,5 +10,8 @@ namespace P0BL
 
         //Allows item search
         List<LineItems> GetLineItems(string p_item);
+
+        //Allows LineItem addition
+        LineItems AddLineItem(LineItems p_item);
     }
 }

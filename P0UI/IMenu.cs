@@ -13,7 +13,7 @@ namespace P0UI
         PlaceOrder,
         OrderHistory,
         StoreInventory,
-        RefillInventory,
+        ReplenishInventory,
         Exit
     }
 

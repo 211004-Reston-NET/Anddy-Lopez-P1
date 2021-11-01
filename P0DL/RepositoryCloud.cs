@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using P0Models;
 using Entity = P0DL.Entities; 
 using Model = P0Models;
 
@@ -14,7 +13,8 @@ namespace P0DL
         {
             _context = p_context;
         }
-        
+
+
         // Adds customers
         public Model.Customers AddCustomer(Model.Customers p_cust)
         {
@@ -33,7 +33,6 @@ namespace P0DL
             _context.SaveChanges();
             return p_cust;
         }
-
         // Converts from Entity to Model for Customers
         public List<Model.Customers> GetAllCustomers()
         {
@@ -67,6 +66,20 @@ namespace P0DL
 
             // return listOfCust;
         }
+        // Finds customer by Id? - Not necessary?
+        public Model.Customers GetCustomersById(int p_Id)
+        {
+            Entity.Customer custToFind = _context.Customers.Find(p_Id);
+
+            return new Model.Customers(){
+                Id = custToFind.CustId,
+                Name = custToFind.CustName,
+                Address = custToFind.CustAddres,
+                Email = custToFind.CustEmail,
+                PhoneNumber = custToFind.CustPhonenumber
+            };
+        }
+
 
         // Converts from Entity to Model for Stores
         public List<Model.StoreFronts> GetAllStoreFronts()
@@ -82,6 +95,7 @@ namespace P0DL
             ).ToList();
         }
         
+
         //Allows order addition
         public Model.Orders AddOrder(Model.Orders p_ord)
         {
@@ -100,7 +114,6 @@ namespace P0DL
             _context.SaveChanges();
             return p_ord;
         }
-        
         // Will hopefully converts from Entity to Model for Order... one day
         public List<Model.Orders> GetAllOrders()//Try again later
         {
@@ -117,7 +130,8 @@ namespace P0DL
             ).ToList();
         }
 
-        // Converts from Entity to Model
+
+        // Converts from Entity to Model for products
         public List<Model.Products> GetAllProducts()
         {
             // Method Syntax
@@ -133,19 +147,6 @@ namespace P0DL
             ).ToList();
         }
 
-        // Finds customer by Id? - Not necessary?
-        public Model.Customers GetCustomersById(int p_Id)
-        {
-            Entity.Customer custToFind = _context.Customers.Find(p_Id);
-
-            return new Model.Customers(){
-                Id = custToFind.CustId,
-                Name = custToFind.CustName,
-                Address = custToFind.CustAddres,
-                Email = custToFind.CustEmail,
-                PhoneNumber = custToFind.CustPhonenumber
-            };
-        }
 
         // Converts from Entity to Model for Line Items
         public List<Model.LineItems> GetAllLineItems()
@@ -161,6 +162,21 @@ namespace P0DL
                 }
             ).ToList();
         }
+        public Model.LineItems AddLineItem(Model.LineItems p_item)
+        {
+            _context.LineItems.Add
+            (
+                new Entity.LineItem()
+                {
+                    LiQuantity = p_item.Quantity
+                }
+            );
+
+            //This method wil save the changes made to the database
+            _context.SaveChanges();
+            return p_item;
+        }
+
 
         // Converts from Entity to Model for Inventory?
         public List<Model.Inventory> GetAllInventory()
