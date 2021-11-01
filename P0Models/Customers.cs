@@ -55,7 +55,7 @@ namespace P0Models
         
         public override string ToString()
         {
-            return $"Customer name: {Name}\nAddress: {Address}\nEmail: {Email}\nPhone Number: {PhoneNumber}";
+            return $"Customer ID: {Id}\nCustomer name: {Name}\nAddress: {Address}\nEmail: {Email}\nPhone Number: {PhoneNumber}";
         }
     }
 }

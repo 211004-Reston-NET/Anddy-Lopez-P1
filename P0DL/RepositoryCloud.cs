@@ -28,10 +28,25 @@ namespace P0DL
                     CustPhonenumber = p_cust.PhoneNumber
                 }
             );
-
             //This method wil save the changes made to the database
             _context.SaveChanges();
             return p_cust;
+        }
+        //Modifies Customer?
+        public Model.Customers UpdateCustomer(Model.Customers p_update)
+        {
+            _context.Customers.Update
+            (
+                new Entity.Customer()
+                {
+                    CustName = p_update.Name,
+                    CustAddres = p_update.Address,
+                    CustEmail = p_update.Email,
+                    CustPhonenumber = p_update.PhoneNumber
+                }
+            );
+            _context.SaveChanges();
+            return p_update;
         }
         // Converts from Entity to Model for Customers
         public List<Model.Customers> GetAllCustomers()
@@ -115,7 +130,7 @@ namespace P0DL
             return p_ord;
         }
         // Will hopefully converts from Entity to Model for Order... one day
-        public List<Model.Orders> GetAllOrders()//Try again later
+        public List<Model.Orders> GetAllOrders(Model.Customers p_cust)//Try again later
         {
             // Method Syntax
             return _context.MyOrders.Select(ord =>

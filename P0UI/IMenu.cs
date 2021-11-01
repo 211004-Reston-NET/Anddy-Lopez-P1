@@ -11,7 +11,7 @@ namespace P0UI
         ShowProducts,
         CurrentProduct,
         PlaceOrder,
-        OrderHistory,
+        OrderMenu,
         StoreInventory,
         ReplenishInventory,
         Exit

@@ -72,19 +72,25 @@ namespace P0BL
         //Searches customer by ID -- not complete
         public Customers GetCustomersById(int p_Id)
         {
-            throw new NotImplementedException();
-            // Customers custFound = _repo.GetCustomerByID(p_Id);
-            // if (custFound == null)
-            // {
-            //     throw new Exception("Customer was not found!");
-            // }
+            //throw new NotImplementedException();
+            Customers custFound = _repo.GetCustomersById(p_Id);
+            if (custFound == null)
+            {
+                throw new Exception("Customer was not found!");
+            }
+            return custFound;
         }
 
         // Will hopefully list the orders from a specific customer... one day
         public List<Orders> GetAllOrders(Customers p_cust)
         {
-            throw new NotImplementedException();
-            // return _repo.GetAllOrders(p_cust);
+            return _repo.GetAllOrders(p_cust);
+        }
+
+        //Modifies customer?
+        public Customers UpdateCustomer(Customers p_update)
+        {
+            return _repo.UpdateCustomer(p_update);
         }
     }
 }

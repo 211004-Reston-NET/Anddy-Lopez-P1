@@ -13,6 +13,12 @@ namespace P0UI
         {
             this._custBL = p_custBL;
         }
+        // This will be used to sign in as a user, so it can save one's order to the right location
+        // private Customers _custMo;
+        // public CurrentCustomer(Customers p_custMo)
+        // {
+        //     this._custMo = p_custMo;
+        // }
         public static int _userSelected;
         
         public void Menu()
@@ -129,6 +135,34 @@ namespace P0UI
                     Console.WriteLine("[x] - Exit");
                 }
             }
+            // else if (ShowCustomers._findID != 0)
+            // {
+            //     List<Customers> listOfCust = _custBL.GetCustomersById(ShowCustomers._findID);
+
+            //     Console.WriteLine("The following are the search results:");
+            //     foreach (Customers cust in listOfCust)
+            //     {
+            //         Console.WriteLine("--------------");
+            //         Console.WriteLine(cust);
+            //         Console.WriteLine("--------------");
+            //     }
+                
+            //     //checks to see if any customer is found
+            //     if (listOfCust.Any() == false)
+            //     {
+            //         Console.WriteLine("\nCustomer not found. Please try again.\n");
+            //         Console.WriteLine("[x] - Try again");
+            //     }
+            //     else if (listOfCust.Count == 1)
+            //     {
+            //         Console.WriteLine("[a] - Select this customer as your User");
+            //         Console.WriteLine("[x] - Exit");
+            //     }
+            //     else
+            //     {
+            //         Console.WriteLine("[x] - Exit");
+            //     }
+            // }
         }
 
         public MenuType YourChoice()
@@ -138,8 +172,10 @@ namespace P0UI
             switch (userChoice)
             {
                 case "a":
-                    _userSelected = 1; 
+                    //_userSelected = _custMo.Id; 
+                    _userSelected = 1;
                     Console.WriteLine("You are now proceeding as your chosen Customer");
+                    Console.WriteLine(_userSelected);
                     Console.WriteLine("Press Enter to proceed to select a store to shop from");
                     Console.ReadLine();
                     return MenuType.ShowStoreFronts;

@@ -11,6 +11,9 @@ namespace P0BL
         //Allows Customer addition
         Customers AddCustomer(Customers p_cust);
 
+        //Customer Modification?
+        Customers UpdateCustomer(Customers p_update);
+
         //Allows Customer search by name
         List<Customers> GetCustomers(string p_name);
 
@@ -36,5 +39,6 @@ namespace P0BL
         /// <param name="p_cust"></param>
         /// <returns>returns a list of orders</returns>
         List<Orders> GetAllOrders(Customers p_cust);
+        //List<Orders> GetAllOrders(string findID);
     }
 }

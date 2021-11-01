@@ -15,6 +15,8 @@ namespace P0DL
         /// <param name="p_Id">ID that it will check</param>
         /// <returns>Returns customer</returns>
         Customers GetCustomersById(int p_Id);
+        //Modify Customer?
+        Customers UpdateCustomer(Customers p_update);
 
 
         //List Store Fronts
@@ -36,7 +38,7 @@ namespace P0DL
         /// </summary>
         /// <param name="p_cust"></param>
         /// <returns>returns a list of orders</returns>
-        List<Orders> GetAllOrders(); //You are not read for this in the slightest
+        List<Orders> GetAllOrders(Customers p_cust); //You are not ready for this in the slightest
 
 
         //List the Line Items
