@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using P0DL;
 using P0Models;
 
@@ -40,6 +39,13 @@ namespace P0BL
         public List<LineItems> GetLineItems(string p_item)
         {
             throw new NotImplementedException();
+        }
+
+        public LineItems UpdateItemQuantity(LineItems p_li, int p_addedQuantity)
+        {
+            p_li.Quantity += p_addedQuantity;
+
+            return _repo.UpdateItemQuantity(p_li);
         }
     }
 }

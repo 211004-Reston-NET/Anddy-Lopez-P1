@@ -33,10 +33,10 @@ namespace P0UI
                     Console.ReadLine();
                     return MenuType.ShowCustomers;
                 case "e":
-                    Console.WriteLine("No order history to report");
+                    Console.WriteLine("Search order history through Customer search menu");
                     Console.WriteLine("Press Enter to continue");
                     Console.ReadLine();
-                    return MenuType.MainMenu;
+                    return MenuType.ShowCustomers;
                 case "1":
                     return MenuType.CurrentProduct;
                 case "g":

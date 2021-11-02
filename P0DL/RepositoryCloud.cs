@@ -207,13 +207,26 @@ namespace P0DL
                 }
             ).ToList();
         }
-        //line item addition
+        //line item update
         void IRepository.UpdateLineItem(int p_itemID, int p_quan)
         {
             var query = _context.LineItems
                 .FirstOrDefault<Entity.LineItem>(item => item.LiId == p_itemID);
             query.LiQuantity = p_quan;
             _context.SaveChanges();
+        }
+        Model.LineItems IRepository.UpdateItemQuantity(Model.LineItems p_li)
+        {
+            Entity.LineItem itemUpdated = new Entity.LineItem()
+            {
+                LiId = p_li.Id,
+                LiProduct = p_li.Product,
+                LiQuantity = p_li.Quantity,
+                OrderId = p_li.OrderId
+            };
+            _context.LineItems.Update(itemUpdated);
+            _context.SaveChanges();
+            return p_li;
         }
         public Model.LineItems GetItemsById(int p_itemId)
         {

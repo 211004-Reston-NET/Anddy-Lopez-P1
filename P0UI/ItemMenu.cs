@@ -47,6 +47,26 @@ namespace P0UI
             switch (userChoice)
             {
                 case "a":
+                    // Console.WriteLine("Enter Item ID you want to change")
+                    // {
+                    //     //Selects one of the items
+                    //     int itemId = Int32.Parse(Console.ReadLine());
+                    //     LineItems itemFound = _itemBL.GetItemById(itemId);
+
+                    //     //Asks how much you want to add to the rating
+                    //     Console.WriteLine("Input how much you want to add to the quantity");
+                    //     int addedQuantity = Int32.Parse(Console.ReadLine());
+
+                    //     //Business layer UpdateItemQuantity method will update the quantity
+                    //     _itemBL.UpdateItemQuantity(itemFound, addedQuantity);
+                    // }
+                    // catch (System.FormatException)
+                    // {
+                    //     Console.WriteLine("Please input a number and not a character!");
+                    //     Console.WriteLine("Press Enter to continue");
+                    //     Console.ReadLine();
+                    //     return MenuType.ShowProducts;
+                    // }
                     return MenuType.ReplenishInventory;
                 case "x":
                     return MenuType.ShowProducts;

@@ -33,7 +33,7 @@ namespace P0UI
             Console.WriteLine("[b] - Select and search for Customer by address (Case Sensitive)");
             Console.WriteLine("[c] - Select and search for Customer by email (Case Sensitive)");
             Console.WriteLine("[d] - Select and search for Customer by phone number (Case Sensitive)");
-            Console.WriteLine("[e] - Select and search for Customer Order History");
+            Console.WriteLine("[e] - Search for Customer Order History");
             Console.WriteLine("[x] - Exit");
         }
 
