@@ -18,7 +18,6 @@ namespace P0UI
         public static string _findCustAddress;
         public static string _findCustEmail;
         public static string _findCustPhone;
-        public static int _findID;
         
         public void Menu()
         {
@@ -52,7 +51,6 @@ namespace P0UI
                     _findCustAddress = null;
                     _findCustEmail = null;
                     _findCustPhone = null;
-                    _findID = 0;
                     return MenuType.CurrentCustomer;
                 case "b":
                     Console.WriteLine("Enter an address for the Customer you want to find");
@@ -60,7 +58,6 @@ namespace P0UI
                     _findCustName = null;
                     _findCustEmail = null;
                     _findCustPhone = null;
-                    _findID = 0;
                     return MenuType.CurrentCustomer;
                 case "c":
                     Console.WriteLine("Enter an email for the Customer you want to find");
@@ -68,7 +65,6 @@ namespace P0UI
                     _findCustAddress = null;
                     _findCustName = null;
                     _findCustPhone = null;
-                    _findID = 0;
                     return MenuType.CurrentCustomer;
                 case "d":
                     Console.WriteLine("Enter a phone number for the Customer you want to find");
@@ -76,7 +72,6 @@ namespace P0UI
                     _findCustAddress = null;
                     _findCustEmail = null;
                     _findCustName = null;
-                    _findID = 0;
                     return MenuType.CurrentCustomer;
                 case "e":
                     Console.WriteLine("Enter Customer ID:");
@@ -95,7 +90,7 @@ namespace P0UI
                     _findCustAddress = null;
                     _findCustEmail = null;
                     _findCustPhone = null;
-                    return MenuType.UpdateCustomer;
+                    return MenuType.OrderMenu;
                 case "x":
                     return MenuType.MainMenu;
                 default:

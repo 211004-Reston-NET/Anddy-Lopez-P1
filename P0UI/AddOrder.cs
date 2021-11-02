@@ -7,8 +7,9 @@ namespace P0UI
 {
     public class AddOrder : IMenu
     {
-        private static Orders _ord = new Orders();
+        private static LineItems _ord = new LineItems();
         private IOrdersBL _ordBL;
+        public static int _newQuan;
         public AddOrder(IOrdersBL p_ordBL)
         {
             _ordBL = p_ordBL;
@@ -19,11 +20,11 @@ namespace P0UI
             Console.WriteLine("Welcome to the Shopping Center!");
             Console.WriteLine("To place an order, type in what you need");
             Console.WriteLine("What would you like to do?");
-            //Console.WriteLine("Product - "+ _cust.Name);
-            //Console.WriteLine("Quantity - "+ _cust.Address);
-            Console.WriteLine("[a] - Add product name");
+            Console.WriteLine("Product ID - "+ _ord.Id);
+            Console.WriteLine("Quantity - "+ _ord.Quantity);
+            Console.WriteLine("[a] - Add product");
             Console.WriteLine("[b] - Add quantity");
-            Console.WriteLine("[c] - Add to Order");
+            Console.WriteLine("[c] - Add to Order and return to product list");
             Console.WriteLine("[x] - Go back to Main Menu");
         }
 
@@ -33,33 +34,24 @@ namespace P0UI
             switch (userChoice)
             {
                 case "a":
-                    Console.WriteLine("Type in value for Product");
-                    //_cust.Name = Console.ReadLine();
-                    return MenuType.AddCustomer;
+                    Console.WriteLine("Type in value for Product ID");
+                    _ord.Id = Int32.Parse(Console.ReadLine());
+                    return MenuType.AddOrder;
                 case "b":
                     Console.WriteLine("Type in value for Quantity");
-                    //_cust.Address = Console.ReadLine();
-                    return MenuType.AddCustomer;
+                    _ord.Quantity = Int32.Parse(Console.ReadLine());
+                    return MenuType.AddOrder;
                 case "c":
-                    try
-                    {
-                        _ordBL.AddOrder(_ord);
-                    }
-                    catch (System.Exception)
-                    {
-                        Console.WriteLine("Please input a value in all fields!");
-                        Console.WriteLine("Press Enter to continue");
-                        Console.ReadLine();
-                        return MenuType.AddCustomer; //Fix
-                    }
-                    return MenuType.MainMenu;
+                    //_ordBL.AddOrder(_ord); //Won't work since can't convert item to order
+                    _newQuan = _ord.Quantity; 
+                    return MenuType.ShowProducts;
                 case "x":
                     return MenuType.MainMenu;
                 default:
                     Console.WriteLine("Please input a valid response!");
                     Console.WriteLine("Press Enter to continue");
                     Console.ReadLine();
-                    return MenuType.AddCustomer;
+                    return MenuType.AddOrder;
             }
         }
     }

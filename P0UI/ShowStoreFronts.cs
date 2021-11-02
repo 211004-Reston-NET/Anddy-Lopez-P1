@@ -13,6 +13,7 @@ namespace P0UI
         {
             _storefBL = p_storefBL;
         }
+        public static StoreFronts _findStore = new StoreFronts();
 
         public void Menu()
         {
@@ -30,6 +31,7 @@ namespace P0UI
             //     Console.WriteLine("[a] - Search for specific Store Front");
             // }
             Console.WriteLine("[a] - Search for specific Store Front");
+            Console.WriteLine("[b] - Search for Store Order History");
             Console.WriteLine("[x] - Exit");
         }
 
@@ -42,6 +44,20 @@ namespace P0UI
                     Console.WriteLine("Enter a name for the Store Front you want to find");
                     _findStoreName = Console.ReadLine();
                     return MenuType.CurrentStoreFront;
+                case "b":
+                    Console.WriteLine("Enter Customer ID:");
+                    try
+                    {
+                         _findStore.Id = Int32.Parse(Console.ReadLine());
+                    }
+                    catch (System.Exception)
+                    {
+                        Console.WriteLine("Please put in a number");
+                        Console.WriteLine("Press Enter to continue");
+                        Console.ReadLine();
+                        return MenuType.ShowStoreFronts;
+                    }
+                    return MenuType.StoreOrderMenu;
                 case "x":
                     return MenuType.MainMenu;
                 default:

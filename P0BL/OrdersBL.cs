@@ -25,11 +25,14 @@ namespace P0BL
             return _repo.AddOrder(p_ord);
         }
 
-        //Returns orders with no changes
-        public List<Orders> GetAllOrders()
+        public List<Orders> GetAllOrders(Customers p_cust)
         {
-            //return _repo.GetAllOrders();
-            throw new System.NotImplementedException();
+             return _repo.GetAllOrders(p_cust);
+        }
+
+        public List<Orders> GetAllStoreOrders(StoreFronts p_store)
+        {
+             return _repo.GetAllStoreOrders(p_store);
         }
 
         //List out the orders

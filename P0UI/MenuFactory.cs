@@ -46,10 +46,14 @@ namespace P0UI
                     return new ReplenishInventory(new LineItemBL(new RepositoryCloud(new P0DatabaseContext(options))));
                 case MenuType.OrderMenu:
                     return new OrderMenu(new CustomersBL(new RepositoryCloud(new P0DatabaseContext(options))));
+                case MenuType.StoreOrderMenu:
+                    return new StoreOrderMenu(new StoreFrontsBL(new RepositoryCloud(new P0DatabaseContext(options))));
                 case MenuType.ItemMenu:
                     return new ItemMenu(new LineItemBL(new RepositoryCloud(new P0DatabaseContext(options))));
                 case MenuType.UpdateCustomer:
                     return new UpdateCustomer(new CustomersBL(new RepositoryCloud(new P0DatabaseContext(options))));
+                case MenuType.AddOrder:
+                    return new AddOrder(new OrdersBL(new RepositoryCloud(new P0DatabaseContext(options))));
                 default:
                     return null;
             }

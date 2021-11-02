@@ -140,14 +140,32 @@ namespace P0DL
             _context.SaveChanges();
             return p_ord;
         }
-        // Will hopefully converts from Entity to Model for Order... one day
-        public List<Model.Orders> GetAllOrders(Model.Customers p_cust)//Try again later
+        // Will hopefully converts from Entity to Model for Order and matches to customer Id
+        public List<Model.Orders> GetAllOrders(Model.Customers p_cust)
         {
             // Method Syntax - looks cleaner
             return _context.MyOrders
-                .Where(ord => ord.OrderId == p_cust.Id) //we find the orders that match customer ID
+                .Where(ord => ord.CustId == p_cust.Id) //we find the orders that match customer ID (entity == model)
                 .Select(ord => new Model.Orders() //convert to model.order
                 {
+                    //model = entity
+                    SLocation = ord.OrderAddress,
+                    TotalPrice = ord.OrderPrice,
+                    CustId = ord.CustId,
+                    StoreId = ord.StoreId,
+                    Id = ord.OrderId
+                }
+            ).ToList();
+        }
+        // Will hopefully converts from Entity to Model for Order and matches to store Id
+        public List<Model.Orders> GetAllStoreOrders(Model.StoreFronts p_store)
+        {
+            // Method Syntax - looks cleaner
+            return _context.MyOrders
+                .Where(ord => ord.StoreId == p_store.Id) //we find the orders that match customer ID (entity == model)
+                .Select(ord => new Model.Orders() //convert to model.order
+                {
+                    //model = entity
                     SLocation = ord.OrderAddress,
                     TotalPrice = ord.OrderPrice,
                     CustId = ord.CustId,

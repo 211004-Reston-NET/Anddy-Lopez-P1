@@ -20,6 +20,11 @@ namespace P0BL
             return _repo.GetAllStoreFronts();
         }
 
+        public List<Orders> GetAllStoreOrders(StoreFronts p_store)
+        {
+            return _repo.GetAllStoreOrders(p_store);
+        }
+
         //Searches stores by name
         public List<StoreFronts> GetStoreFronts(string p_sname)
         {
@@ -27,5 +32,7 @@ namespace P0BL
 
             return listOfStoreFronts.Where(storef => storef.SName.Contains(p_sname)).ToList();
         }
+
+        
     }
 }

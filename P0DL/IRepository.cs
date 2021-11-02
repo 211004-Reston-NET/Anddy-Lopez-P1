@@ -39,6 +39,7 @@ namespace P0DL
         /// <param name="p_cust"></param>
         /// <returns>returns a list of orders</returns>
         List<Orders> GetAllOrders(Customers p_cust); //You are not ready for this in the slightest
+        List<Orders> GetAllStoreOrders(StoreFronts p_store);
 
 
         //List the Line Items

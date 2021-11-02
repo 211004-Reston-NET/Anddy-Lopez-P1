@@ -92,5 +92,10 @@ namespace P0BL
         {
             return _repo.UpdateCustomer(p_update);
         }
+
+        public List<Orders> GetAllStoreOrders(StoreFronts p_store)
+        {
+            return _repo.GetAllStoreOrders(p_store);
+        }
     }
 }

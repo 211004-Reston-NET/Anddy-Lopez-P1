@@ -33,7 +33,7 @@ namespace P0UI
             }
             else if (listOfProds.Count == 1)
             {
-                Console.WriteLine("[a] - Select this product to add to your order");
+                Console.WriteLine("[a] - Go to add to your order");
                 Console.WriteLine("[x] - Exit");
             }
             else
@@ -49,7 +49,7 @@ namespace P0UI
             switch (userChoice)
             {
                 case "a":
-                    return MenuType.CurrentProduct;
+                    return MenuType.AddOrder;
                 case "x":
                     return MenuType.ShowProducts;
                 default:

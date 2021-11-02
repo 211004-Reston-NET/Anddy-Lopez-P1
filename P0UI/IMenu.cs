@@ -12,10 +12,12 @@ namespace P0UI
         CurrentProduct,
         PlaceOrder,
         OrderMenu,
+        StoreOrderMenu,
         StoreInventory,
         ReplenishInventory,
         ItemMenu,
         UpdateCustomer,
+        AddOrder,
         Exit
     }
 
