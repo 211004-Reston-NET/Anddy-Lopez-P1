@@ -97,5 +97,10 @@ namespace P0BL
         {
             return _repo.GetAllStoreOrders(p_store);
         }
+        //order placement by customer
+        public Orders AddOrder(Customers p_cust, Orders p_ord)
+        {
+            return _repo.AddOrder(p_cust, p_ord);
+        }
     }
 }

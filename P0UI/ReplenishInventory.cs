@@ -27,9 +27,7 @@ namespace P0UI
             }
 
             Console.WriteLine("What would you like to do?");
-            Console.WriteLine("[a] - Add quantity amount to current inventory");
-            Console.WriteLine("[b] - Set new inventory amount");
-            Console.WriteLine("[c] - Implement changes");
+            Console.WriteLine("[a] - Set new inventory amount");
             Console.WriteLine("[x] - Go back to Main Menu");
         }
 
@@ -39,19 +37,10 @@ namespace P0UI
             switch (userChoice)
             {
                 case "a":
-                    Console.WriteLine("Type in value for Quantity to add");
-                    _addAmount = Int32.Parse(Console.ReadLine());
-                    _itemBL.UpdateLineItem(_itemList[0].Id , _addAmount);
-                    return MenuType.ReplenishInventory;
-                case "b":
                     Console.WriteLine("Type in new value for Quantity");
                     _addAmount = Int32.Parse(Console.ReadLine());
                     _itemBL.UpdateLineItem(_itemList[0].Id , _addAmount);
-                    
                     return MenuType.ReplenishInventory;
-                case "c":
-                    
-                    return MenuType.MainMenu;
                 case "x":
                     return MenuType.MainMenu;
                 default:

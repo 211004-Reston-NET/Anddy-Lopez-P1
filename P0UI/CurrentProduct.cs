@@ -31,11 +31,11 @@ namespace P0UI
                 Console.WriteLine("\nProduct not found. Please try again.\n");
                 Console.WriteLine("[x] - Try again");
             }
-            else if (listOfProds.Count == 1)
-            {
-                Console.WriteLine("[a] - Go to add to your order");
-                Console.WriteLine("[x] - Exit");
-            }
+            // else if (listOfProds.Count == 1)
+            // {
+            //     Console.WriteLine("[a] - Go to add to your order");
+            //     Console.WriteLine("[x] - Exit");
+            // }
             else
             {
                 Console.WriteLine("[x] - Exit");
@@ -48,8 +48,8 @@ namespace P0UI
 
             switch (userChoice)
             {
-                case "a":
-                    return MenuType.AddOrder;
+                // case "a":
+                //     return MenuType.AddOrder;
                 case "x":
                     return MenuType.ShowProducts;
                 default:

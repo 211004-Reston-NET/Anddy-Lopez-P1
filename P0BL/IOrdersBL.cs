@@ -12,7 +12,7 @@ namespace P0BL
         List<Orders> GetAllStoreOrders(StoreFronts p_store);
         
         //Allows Order addition
-        Orders AddOrder(Orders p_ord);
+        //Orders AddOrder(Orders p_ord);
 
         //Allows order search -- might not need
         List<Orders> GetOrders(string p_item);

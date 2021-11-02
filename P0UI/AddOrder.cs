@@ -7,24 +7,35 @@ namespace P0UI
 {
     public class AddOrder : IMenu
     {
-        private static LineItems _ord = new LineItems();
-        private IOrdersBL _ordBL;
+        private static List<LineItems> _itemList = new List<LineItems>();
+        private ICustomersBL _custBL;
+        private ILineItemBL _itemBL;
         public static int _newQuan;
-        public AddOrder(IOrdersBL p_ordBL)
+        public AddOrder(ICustomersBL p_custBL, ILineItemBL p_itemBL)
         {
-            _ordBL = p_ordBL;
+            _custBL = p_custBL;
+            _itemBL = p_itemBL;
+            _itemList = _itemBL.GetAllLineItems(ShowProducts._findProd);
         }
         
         public void Menu()
         {
+            LineItems listOfItems = _itemBL.GetItemsByID(_itemList[0].Id);
+            
             Console.WriteLine("Welcome to the Shopping Center!");
-            Console.WriteLine("To place an order, type in what you need");
-            Console.WriteLine("What would you like to do?");
-            Console.WriteLine("Product ID - "+ _ord.Id);
-            Console.WriteLine("Quantity - "+ _ord.Quantity);
-            Console.WriteLine("[a] - Add product");
-            Console.WriteLine("[b] - Add quantity");
-            Console.WriteLine("[c] - Add to Order and return to product list");
+            // foreach (LineItems item in listOfItems)
+            // {
+            //     Console.WriteLine("--------------------");
+            //     Console.WriteLine(item);
+            //     Console.WriteLine("--------------------");
+            // }
+            Console.WriteLine(listOfItems);
+            //Console.WriteLine("To place an order, type in what you need");
+            //Console.WriteLine("What would you like to do?");
+            //Console.WriteLine("Product ID - "+ _ord.Id);
+            Console.WriteLine("Quantity you wish to purchase - "+ _newQuan);
+            Console.WriteLine("[a] - Change quantity");
+            Console.WriteLine("[b] - Add to Order and return to product list");
             Console.WriteLine("[x] - Go back to Main Menu");
         }
 
@@ -34,16 +45,12 @@ namespace P0UI
             switch (userChoice)
             {
                 case "a":
-                    Console.WriteLine("Type in value for Product ID");
-                    _ord.Id = Int32.Parse(Console.ReadLine());
+                    Console.WriteLine("Type in value for Quantity");
+                    _newQuan = Int32.Parse(Console.ReadLine());
+                    _itemList[0].Quantity = _itemList[0].Quantity - _newQuan; //doesn't show in interface 
                     return MenuType.AddOrder;
                 case "b":
-                    Console.WriteLine("Type in value for Quantity");
-                    _ord.Quantity = Int32.Parse(Console.ReadLine());
-                    return MenuType.AddOrder;
-                case "c":
-                    //_ordBL.AddOrder(_ord); //Won't work since can't convert item to order
-                    _newQuan = _ord.Quantity; 
+                    //_custBL.AddOrder();
                     return MenuType.ShowProducts;
                 case "x":
                     return MenuType.MainMenu;

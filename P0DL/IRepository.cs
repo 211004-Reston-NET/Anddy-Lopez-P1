@@ -32,13 +32,13 @@ namespace P0DL
 
 
         //Allows Order addition
-        Orders AddOrder(Orders p_ord);
+        Orders AddOrder(Customers p_cust, Orders p_ord); //placing an order
         /// <summary>
         /// Will give all orders from a customer
         /// </summary>
         /// <param name="p_cust"></param>
         /// <returns>returns a list of orders</returns>
-        List<Orders> GetAllOrders(Customers p_cust); //You are not ready for this in the slightest
+        List<Orders> GetAllOrders(Customers p_cust);
         List<Orders> GetAllStoreOrders(StoreFronts p_store);
 
 
@@ -46,7 +46,8 @@ namespace P0DL
         List<LineItems> GetAllLineItems(LineItems p_item);
         //Allows Line Item addition
         void UpdateLineItem(int p_itemID, int p_quan);
-        LineItems GetItemsById(int p_itemI);
+        LineItems GetItemsById(int p_itemId);
+        //List<LineItems> GetLineItems(string p_item);
 
 
         //List the Inventory

@@ -123,18 +123,17 @@ namespace P0DL
         
 
         //Allows order addition
-        public Model.Orders AddOrder(Model.Orders p_ord)
+        public Model.Orders AddOrder(Model.Customers p_cust, Model.Orders p_ord) //placing an order, hopefully
         {
-            _context.MyOrders.Add
-            (
-                new Entity.MyOrder()
-                {
-                    OrderAddress = p_ord.SLocation,
-                    OrderPrice = p_ord.TotalPrice,
-                    CustId = p_ord.CustId,
-                    StoreId = p_ord.StoreId
-                }
-            );
+            var customer = _context.Customers
+                .First<Entity.Customer>(cust => cust.CustId == p_cust.Id);
+            customer.MyOrders.Add(new Entity.MyOrder()
+            {
+                OrderAddress = p_ord.SLocation,
+                OrderPrice = p_ord.TotalPrice,
+                StoreId = p_ord.StoreId,
+                CustId = p_ord.CustId
+            });
 
             //This method wil save the changes made to the database
             _context.SaveChanges();
@@ -223,10 +222,11 @@ namespace P0DL
             return new Model.LineItems(){
                 Id = itemToFind.LiId,
                 Product = itemToFind.LiProduct,
-                //OrderId = itemToFind.OrderId,
+                OrderId = itemToFind.OrderId,
                 Quantity = itemToFind.LiQuantity
             };
         }
+        //List<LineItems> GetLineItems(string p_item);
 
 
         // Converts from Entity to Model for Inventory?

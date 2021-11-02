@@ -27,7 +27,8 @@ namespace P0UI
                 Console.WriteLine("--------------------");
             }
             Console.WriteLine("[a] - Search for specific Product");
-            Console.WriteLine("[b] - Search for Product by ID");
+            Console.WriteLine("[b] - Search for Product by ID and refill inventory");
+            Console.WriteLine("[c] - Search for Product by ID and add to order");
             Console.WriteLine("[x] - Exit");
         }
 
@@ -54,6 +55,20 @@ namespace P0UI
                         return MenuType.ShowProducts;
                     }
                     return MenuType.ItemMenu;
+                case "c":
+                    Console.WriteLine("Enter a Product ID:");
+                    try
+                    {
+                         _findProd.Id = Int32.Parse(Console.ReadLine());
+                    }
+                    catch (System.Exception)
+                    {
+                        Console.WriteLine("Please put in a number");
+                        Console.WriteLine("Press Enter to continue");
+                        Console.ReadLine();
+                        return MenuType.ShowProducts;
+                    }
+                    return MenuType.AddOrder;
                 case "x":
                     return MenuType.MainMenu;
                 default:
