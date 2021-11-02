@@ -37,9 +37,10 @@ namespace P0UI
             switch (userChoice)
             {
                 case "a":
+                    int _currentItem = _itemList.Count-1;
                     Console.WriteLine("Type in new value for Quantity");
                     _addAmount = Int32.Parse(Console.ReadLine());
-                    _itemBL.UpdateLineItem(_itemList[0].Id , _addAmount);
+                    _itemBL.UpdateLineItem(_itemList[_currentItem].Id , _addAmount);
                     return MenuType.ReplenishInventory;
                 case "x":
                     return MenuType.MainMenu;

@@ -14,10 +14,7 @@ namespace P0UI
             _custBL = p_custBL;
         }
         public static Customers _findCust = new Customers();
-        public static string _findCustName;
-        public static string _findCustAddress;
-        public static string _findCustEmail;
-        public static string _findCustPhone;
+        public static int _searchOption;
         
         public void Menu()
         {
@@ -32,7 +29,7 @@ namespace P0UI
                 Console.WriteLine(c);
                 Console.WriteLine("--------------------");
             }
-            Console.WriteLine("[a] - Select and search for Customer by name (Case Sensitive)");
+            Console.WriteLine("[a] - Select and search for Customer by name (Case Sensitive)"); //Must be done first for whatever reason
             Console.WriteLine("[b] - Select and search for Customer by address (Case Sensitive)");
             Console.WriteLine("[c] - Select and search for Customer by email (Case Sensitive)");
             Console.WriteLine("[d] - Select and search for Customer by phone number (Case Sensitive)");
@@ -46,32 +43,24 @@ namespace P0UI
             switch (userChoice)
             {
                 case "a":
+                    _searchOption = 1;
                     Console.WriteLine("Enter a name for the Customer you want to find");
-                    _findCustName = Console.ReadLine();
-                    _findCustAddress = null;
-                    _findCustEmail = null;
-                    _findCustPhone = null;
+                    _findCust.Name = Console.ReadLine();
                     return MenuType.CurrentCustomer;
                 case "b":
+                    _searchOption = 2;
                     Console.WriteLine("Enter an address for the Customer you want to find");
-                    _findCustAddress = Console.ReadLine();
-                    _findCustName = null;
-                    _findCustEmail = null;
-                    _findCustPhone = null;
+                    _findCust.Address = Console.ReadLine();
                     return MenuType.CurrentCustomer;
                 case "c":
+                    _searchOption = 3;
                     Console.WriteLine("Enter an email for the Customer you want to find");
-                    _findCustEmail = Console.ReadLine();
-                    _findCustAddress = null;
-                    _findCustName = null;
-                    _findCustPhone = null;
+                    _findCust.Email = Console.ReadLine();
                     return MenuType.CurrentCustomer;
                 case "d":
+                    _searchOption = 4;
                     Console.WriteLine("Enter a phone number for the Customer you want to find");
-                    _findCustPhone = Console.ReadLine();
-                    _findCustAddress = null;
-                    _findCustEmail = null;
-                    _findCustName = null;
+                    _findCust.PhoneNumber = Console.ReadLine();
                     return MenuType.CurrentCustomer;
                 case "e":
                     Console.WriteLine("Enter Customer ID:");
@@ -86,10 +75,6 @@ namespace P0UI
                         Console.ReadLine();
                         return MenuType.ShowCustomers;
                     }
-                    _findCustName = null;
-                    _findCustAddress = null;
-                    _findCustEmail = null;
-                    _findCustPhone = null;
                     return MenuType.OrderMenu;
                 case "x":
                     return MenuType.MainMenu;

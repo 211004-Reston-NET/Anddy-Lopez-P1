@@ -13,7 +13,7 @@ namespace P0UI
         public CurrentCustomer(ICustomersBL p_custBL)
         {
             this._custBL = p_custBL;
-            _custList = _custBL.GetCustomers(ShowCustomers._findCustName);
+            _custList = _custBL.GetCustomers(ShowCustomers._findCust.Name);
         }
         // This will be used to sign in as a user, so it can save one's order to the right location
         public static int _userSelected;
@@ -21,9 +21,9 @@ namespace P0UI
         
         public void Menu()
         {
-            if (ShowCustomers._findCustName != null)
+            if (ShowCustomers._searchOption == 1)
             {
-                List<Customers> listOfCust = _custBL.GetCustomers(ShowCustomers._findCustName);
+                List<Customers> listOfCust = _custBL.GetCustomers(ShowCustomers._findCust.Name);
 
                 Console.WriteLine("The following are the search results:");
                 foreach (Customers cust in listOfCust)
@@ -49,9 +49,9 @@ namespace P0UI
                     Console.WriteLine("[x] - Exit");
                 }
             }
-            else if (ShowCustomers._findCustAddress != null)
+            else if (ShowCustomers._searchOption == 2)
             {
-                List<Customers> listOfCust = _custBL.GetCustomersAdd(ShowCustomers._findCustAddress);
+                List<Customers> listOfCust = _custBL.GetCustomersAdd(ShowCustomers._findCust.Address);
 
                 Console.WriteLine("The following are the search results:");
                 foreach (Customers cust in listOfCust)
@@ -77,9 +77,9 @@ namespace P0UI
                     Console.WriteLine("[x] - Exit");
                 }
             }
-            else if (ShowCustomers._findCustEmail != null)
+            else if (ShowCustomers._searchOption == 3)
             {
-                List<Customers> listOfCust = _custBL.GetCustomersEmail(ShowCustomers._findCustEmail);
+                List<Customers> listOfCust = _custBL.GetCustomersEmail(ShowCustomers._findCust.Email);
 
                 Console.WriteLine("The following are the search results:");
                 foreach (Customers cust in listOfCust)
@@ -105,9 +105,9 @@ namespace P0UI
                     Console.WriteLine("[x] - Exit");
                 }
             }
-            else if (ShowCustomers._findCustPhone != null)
+            else if (ShowCustomers._searchOption == 4)
             {
-                List<Customers> listOfCust = _custBL.GetCustomersPhone(ShowCustomers._findCustPhone);
+                List<Customers> listOfCust = _custBL.GetCustomersPhone(ShowCustomers._findCust.PhoneNumber);
 
                 Console.WriteLine("The following are the search results:");
                 foreach (Customers cust in listOfCust)
@@ -170,8 +170,9 @@ namespace P0UI
             switch (userChoice)
             {
                 case "a":
-                    _userSelected = _custList[0].Id;
-                    _userName = _custList[0].Name;
+                    int _currentUser = _custList.Count-1;
+                    _userSelected = _custList[_currentUser].Id;
+                    _userName = _custList[_currentUser].Name;
                     Console.WriteLine("You are now signed in as "+ _userName);
                     Console.WriteLine("Press Enter to proceed to select a store to shop from");
                     Console.ReadLine();

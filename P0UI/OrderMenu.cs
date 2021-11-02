@@ -41,7 +41,7 @@ namespace P0UI
             switch (userChoice)
             {
                 case "a":
-                    return MenuType.OrderMenu;
+                    return MenuType.ShowCustomers;
                 case "x":
                     return MenuType.MainMenu;
                 default:
