@@ -18,7 +18,7 @@ namespace P0UI
         {
             Console.WriteLine("Welcome to Inventory Replenishor!");
             Console.WriteLine("What would you like to do?");
-            Console.WriteLine("Quantity - "+ _item.Quantity);
+            Console.WriteLine("Quantity - "+ ItemMenu._itemQ);
             Console.WriteLine("[a] - Add quantity amount to current inventory");
             Console.WriteLine("[b] - Set new inventory amount");
             Console.WriteLine("[c] - Implement changes");
@@ -33,7 +33,7 @@ namespace P0UI
                 case "a":
                     Console.WriteLine("Type in value for Quantity to add");
                     _addAmount = Int32.Parse(Console.ReadLine());
-                    _item.Quantity += _addAmount;
+                    ItemMenu._itemQ += _addAmount;
                     _item.Id = _item.Id;
                     _item.Product = _item.Product;
                     _item.OrderId = _item.OrderId;
@@ -41,7 +41,7 @@ namespace P0UI
                 case "b":
                     Console.WriteLine("Type in new value for Quantity");
                     _addAmount = Int32.Parse(Console.ReadLine());
-                    _item.Quantity = _addAmount;
+                    ItemMenu._itemQ = _addAmount;
                     _item.Id = _item.Id;
                     _item.Product = _item.Product;
                     _item.OrderId = _item.OrderId;

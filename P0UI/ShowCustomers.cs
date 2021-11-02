@@ -95,7 +95,7 @@ namespace P0UI
                     _findCustAddress = null;
                     _findCustEmail = null;
                     _findCustPhone = null;
-                    return MenuType.OrderMenu;
+                    return MenuType.UpdateCustomer;
                 case "x":
                     return MenuType.MainMenu;
                 default:

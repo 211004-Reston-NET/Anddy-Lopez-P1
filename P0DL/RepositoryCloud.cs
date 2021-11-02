@@ -35,6 +35,17 @@ namespace P0DL
         //Modifies Customer?
         public Model.Customers UpdateCustomer(Model.Customers p_update)
         {
+            // var query = 
+            //     from cust in _context.Customers
+            //     where cust.CustId == p_update.Id
+            //     select cust; 
+            // foreach (Entity.Customer cust in query)
+            // {
+            //     cust.CustName = p_update.Name;
+            //     cust.CustAddres = p_update.Address;
+            //     cust.CustEmail = p_update.Email;
+            //     cust.CustPhonenumber = p_update.PhoneNumber;
+            // }
             _context.Customers.Update
             (
                 new Entity.Customer()

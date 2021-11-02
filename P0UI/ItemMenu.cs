@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using P0BL;
 using P0Models;
 
@@ -13,6 +14,8 @@ namespace P0UI
         {
             this._itemBL = p_itemBL;
         }
+        public static int _itemQ;
+        public static string _itemString;
         public void Menu()
         {
             Console.WriteLine("List of Items");
@@ -31,6 +34,9 @@ namespace P0UI
             }
             else
             {
+                _itemString = string.Join("test",listOfItems);
+                _itemQ = Int32.Parse(Regex.Match(_itemString, @"\d+").Value);
+                Console.WriteLine("[a] - Refill Inventory");
                 Console.WriteLine("[x] - Exit");
             }
         }
@@ -40,6 +46,8 @@ namespace P0UI
             string userChoice = Console.ReadLine();
             switch (userChoice)
             {
+                case "a":
+                    return MenuType.ReplenishInventory;
                 case "x":
                     return MenuType.ShowProducts;
                 default:

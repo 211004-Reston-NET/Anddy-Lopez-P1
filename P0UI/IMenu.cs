@@ -15,6 +15,7 @@ namespace P0UI
         StoreInventory,
         ReplenishInventory,
         ItemMenu,
+        UpdateCustomer,
         Exit
     }
 

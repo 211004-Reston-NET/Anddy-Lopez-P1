@@ -48,6 +48,8 @@ namespace P0UI
                     return new OrderMenu(new CustomersBL(new RepositoryCloud(new P0DatabaseContext(options))));
                 case MenuType.ItemMenu:
                     return new ItemMenu(new LineItemBL(new RepositoryCloud(new P0DatabaseContext(options))));
+                case MenuType.UpdateCustomer:
+                    return new UpdateCustomer(new CustomersBL(new RepositoryCloud(new P0DatabaseContext(options))));
                 default:
                     return null;
             }
