@@ -32,11 +32,11 @@ namespace P0UI
                 Console.WriteLine(c);
                 Console.WriteLine("--------------------");
             }
-            Console.WriteLine("[a] - Search for Customer by name (Case Sensitive)");
-            Console.WriteLine("[b] - Search for Customer by address (Case Sensitive)");
-            Console.WriteLine("[c] - Search for Customer by email (Case Sensitive)");
-            Console.WriteLine("[d] - Search for Customer by phone number (Case Sensitive)");
-            Console.WriteLine("[e] - Search for Customer Order History");
+            Console.WriteLine("[a] - Select and search for Customer by name (Case Sensitive)");
+            Console.WriteLine("[b] - Select and search for Customer by address (Case Sensitive)");
+            Console.WriteLine("[c] - Select and search for Customer by email (Case Sensitive)");
+            Console.WriteLine("[d] - Select and search for Customer by phone number (Case Sensitive)");
+            Console.WriteLine("[e] - Select and search for Customer Order History");
             Console.WriteLine("[x] - Exit");
         }
 

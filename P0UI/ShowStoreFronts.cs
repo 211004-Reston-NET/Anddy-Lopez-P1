@@ -26,10 +26,6 @@ namespace P0UI
                 Console.WriteLine(sf);
                 Console.WriteLine("--------------------");
             }
-            // if (MyUser == 1)
-            // {
-            //     Console.WriteLine("[a] - Search for specific Store Front");
-            // }
             Console.WriteLine("[a] - Search for specific Store Front");
             Console.WriteLine("[b] - Search for Store Order History");
             Console.WriteLine("[x] - Exit");
@@ -45,19 +41,29 @@ namespace P0UI
                     _findStoreName = Console.ReadLine();
                     return MenuType.CurrentStoreFront;
                 case "b":
-                    Console.WriteLine("Enter Customer ID:");
-                    try
+                    if (CurrentCustomer._userSelected != 0)
                     {
-                         _findStore.Id = Int32.Parse(Console.ReadLine());
+                        Console.WriteLine("Enter Store Front ID:");
+                        try
+                        {
+                                _findStore.Id = Int32.Parse(Console.ReadLine());
+                        }
+                        catch (System.Exception)
+                        {
+                            Console.WriteLine("Please put in a number");
+                            Console.WriteLine("Press Enter to continue");
+                            Console.ReadLine();
+                            return MenuType.ShowStoreFronts;
+                        }
+                        return MenuType.StoreOrderMenu;
                     }
-                    catch (System.Exception)
+                    else
                     {
-                        Console.WriteLine("Please put in a number");
+                        Console.WriteLine("You must be signed in as a Customer to Search Store Order History");
                         Console.WriteLine("Press Enter to continue");
                         Console.ReadLine();
                         return MenuType.ShowStoreFronts;
-                    }
-                    return MenuType.StoreOrderMenu;
+                    } 
                 case "x":
                     return MenuType.MainMenu;
                 default:

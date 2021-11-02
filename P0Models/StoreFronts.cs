@@ -22,7 +22,7 @@ namespace P0Models
 
         public override string ToString()
         {
-            return $"Store name: {SName}\nAddress: {SAddress}";
+            return $"Store Front ID: {Id}\nStore name: {SName}\nAddress: {SAddress}";
         }
     }
 }

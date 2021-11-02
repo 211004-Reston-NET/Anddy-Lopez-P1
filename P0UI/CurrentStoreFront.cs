@@ -8,6 +8,7 @@ namespace P0UI
 {
     public class CurrentStoreFront : IMenu
     {
+        private static List<StoreFronts> _storeList = new List<StoreFronts>();
         private IStoreFrontsBL _storefBL;
         public CurrentStoreFront(IStoreFrontsBL p_storefBL)
         {
@@ -56,10 +57,18 @@ namespace P0UI
             switch (userChoice)
             {
                 case "a":
-                    Console.WriteLine("You have now chosen a shopping center"); //Perhaps show which Store Front
-                    Console.WriteLine("Press Enter to proceed to select the products you wish to buy");
-                    Console.ReadLine();
-                    return MenuType.ShowProducts;
+                    if (CurrentCustomer._userSelected != 0)
+                    {
+                        Console.WriteLine("You have now chosen a shopping center"); //Perhaps show which Store Front
+                        Console.WriteLine("Press Enter to proceed to select the products you wish to buy");
+                        Console.ReadLine();
+                        return MenuType.ShowProducts;
+                    }
+                    else
+                    {
+                        Console.WriteLine("You must be signed in as a Customer to Search Store Order History");
+                        return MenuType.CurrentStoreFront;
+                    } 
                 case "x":
                     return MenuType.ShowStoreFronts;
                 default:

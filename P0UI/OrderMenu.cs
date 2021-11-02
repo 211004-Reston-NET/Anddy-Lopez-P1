@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using P0BL;
 using P0Models;
 
@@ -23,7 +24,15 @@ namespace P0UI
                 Console.WriteLine(ord);
                 Console.WriteLine("--------------------");
             }
-            Console.WriteLine("[x] - Exit");
+            if (listOfOrders.Any() == false)
+            {
+                Console.WriteLine("\nNo orders to report. Please choose another store.\n");
+                Console.WriteLine("[a] - Try again");
+            }
+            else
+            {
+                Console.WriteLine("[x] - Exit");
+            }
         }
 
         public MenuType YourChoice()
@@ -31,6 +40,8 @@ namespace P0UI
             string userChoice = Console.ReadLine();
             switch (userChoice)
             {
+                case "a":
+                    return MenuType.OrderMenu;
                 case "x":
                     return MenuType.MainMenu;
                 default:

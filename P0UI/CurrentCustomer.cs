@@ -8,18 +8,16 @@ namespace P0UI
 {
     public class CurrentCustomer : IMenu
     {
+        private static List<Customers> _custList = new List<Customers>();
         private ICustomersBL _custBL;
         public CurrentCustomer(ICustomersBL p_custBL)
         {
             this._custBL = p_custBL;
+            _custList = _custBL.GetCustomers(ShowCustomers._findCustName);
         }
         // This will be used to sign in as a user, so it can save one's order to the right location
-        // private Customers _custMo;
-        // public CurrentCustomer(Customers p_custMo)
-        // {
-        //     this._custMo = p_custMo;
-        // }
         public static int _userSelected;
+        public static string _userName;
         
         public void Menu()
         {
@@ -172,10 +170,9 @@ namespace P0UI
             switch (userChoice)
             {
                 case "a":
-                    //_userSelected = _custMo.Id; 
-                    _userSelected = 1;
-                    Console.WriteLine("You are now proceeding as your chosen Customer");
-                    //Console.WriteLine(_userSelected);
+                    _userSelected = _custList[0].Id;
+                    _userName = _custList[0].Name;
+                    Console.WriteLine("You are now signed in as "+ _userName);
                     Console.WriteLine("Press Enter to proceed to select a store to shop from");
                     Console.ReadLine();
                     return MenuType.ShowStoreFronts;
