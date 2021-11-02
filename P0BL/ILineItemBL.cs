@@ -12,7 +12,7 @@ namespace P0BL
         List<LineItems> GetLineItems(string p_item);
 
         //Allows LineItem modification
-        LineItems UpdateLineItem(LineItems p_item);
+        void UpdateLineItem(int p_itemID, int p_quan);
 
         //returns items based on ID
         LineItems GetItemsByID(int p_itemId);

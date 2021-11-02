@@ -34,8 +34,8 @@ namespace P0UI
             }
             else
             {
-                _itemString = string.Join("test",listOfItems);
-                _itemQ = Int32.Parse(Regex.Match(_itemString, @"\d+").Value);
+                // _itemString = string.Join("test",listOfItems);
+                // _itemQ = Int32.Parse(Regex.Match(_itemString, @"\d+").Value);
                 Console.WriteLine("[a] - Refill Inventory");
                 Console.WriteLine("[x] - Exit");
             }

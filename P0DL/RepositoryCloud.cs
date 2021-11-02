@@ -209,22 +209,12 @@ namespace P0DL
             ).ToList();
         }
         //line item addition
-        public Model.LineItems UpdateLineItem(Model.LineItems p_item)
+        void IRepository.UpdateLineItem(int p_itemID, int p_quan)
         {
-            _context.LineItems.Update
-            (
-                new Entity.LineItem()
-                {
-                    LiProduct = p_item.Product,
-                    LiQuantity = p_item.Quantity,
-                    //OrderId = p_item.OrderId,
-                    LiId = p_item.Id
-                }
-            );
-
-            //This method wil save the changes made to the database
+            var query = _context.LineItems
+                .FirstOrDefault<Entity.LineItem>(item => item.LiId == p_itemID);
+            query.LiQuantity = p_quan;
             _context.SaveChanges();
-            return p_item;
         }
         public Model.LineItems GetItemsById(int p_itemId)
         {

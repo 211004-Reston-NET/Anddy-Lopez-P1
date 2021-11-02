@@ -45,8 +45,8 @@ namespace P0DL
         //List the Line Items
         List<LineItems> GetAllLineItems(LineItems p_item);
         //Allows Line Item addition
-        LineItems UpdateLineItem(LineItems p_item);
-        LineItems GetItemsById(int p_itemId);
+        void UpdateLineItem(int p_itemID, int p_quan);
+        LineItems GetItemsById(int p_itemI);
 
 
         //List the Inventory

@@ -16,14 +16,9 @@ namespace P0BL
         }
 
         //allows line item modification - not even close
-        public LineItems UpdateLineItem(LineItems p_item)
+        void ILineItemBL.UpdateLineItem(int p_itemID, int p_quan)
         {
-            if (p_item.Quantity== 0)
-            {
-                // Will only be seen by coder
-                throw new Exception("Must have value in designated properties");
-            }
-            return _repo.UpdateLineItem(p_item);
+            _repo.UpdateLineItem(p_itemID, p_quan);
         }
 
 
