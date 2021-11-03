@@ -23,13 +23,14 @@ namespace P0UI
             List<StoreFronts> listOfStoreF = _storefBL.GetStoreFronts(ShowStoreFronts._findStoreName);
 
             Console.WriteLine("The following are the search results:");
+            Console.WriteLine("");
             foreach (StoreFronts sf in listOfStoreF)
             {
                 Console.WriteLine("--------------");
                 Console.WriteLine(sf);
                 Console.WriteLine("--------------");
             }
-            
+            Console.WriteLine("");
             //checks to see if any store is found
             if (listOfStoreF.Any() == false)
             {
@@ -52,6 +53,7 @@ namespace P0UI
             {
                 Console.WriteLine("[x] - Exit");
             }
+            Console.WriteLine("");
         }
 
         public MenuType YourChoice()

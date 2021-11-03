@@ -18,6 +18,7 @@ namespace P0UI
         public void Menu()
         {
             Console.WriteLine("List of Store Fronts");
+            Console.WriteLine("");
             List<StoreFronts> listOfStoreFronts = _storefBL.GetAllStoreFronts();
 
             foreach (StoreFronts sf in listOfStoreFronts)
@@ -26,9 +27,11 @@ namespace P0UI
                 Console.WriteLine(sf);
                 Console.WriteLine("--------------------");
             }
+            Console.WriteLine("");
             Console.WriteLine("[a] - Search for specific Store Front");
             Console.WriteLine("[b] - Search for Store Order History");
             Console.WriteLine("[x] - Exit");
+            Console.WriteLine("");
         }
 
         public MenuType YourChoice()

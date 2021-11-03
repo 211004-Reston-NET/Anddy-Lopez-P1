@@ -8,12 +8,14 @@ namespace P0UI
         {
             Console.WriteLine("Welcome to the Main Menu of the Store App!");
             Console.WriteLine("What would you like to do?");
+            Console.WriteLine("");
             Console.WriteLine("[a] - Add a new customer");
             Console.WriteLine("[b] - See exisiting customers");
             Console.WriteLine("[c] - See all store fronts");
             Console.WriteLine("[d] - Place an order");
             Console.WriteLine("[e] - View Order History");
             Console.WriteLine("[x] - Exit");
+            Console.WriteLine("");
         }
 
         public MenuType YourChoice()
@@ -42,6 +44,7 @@ namespace P0UI
                 case "g":
                     return MenuType.ReplenishInventory;
                 case "x":
+                    Console.WriteLine("");
                     return MenuType.Exit;
                 default:
                     Console.WriteLine("Please input a valid response!");

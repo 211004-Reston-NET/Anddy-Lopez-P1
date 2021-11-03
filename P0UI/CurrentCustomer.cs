@@ -26,13 +26,14 @@ namespace P0UI
                 List<Customers> listOfCust = _custBL.GetCustomers(ShowCustomers._findCust.Name);
 
                 Console.WriteLine("The following are the search results:");
+                Console.WriteLine("");
                 foreach (Customers cust in listOfCust)
                 {
                     Console.WriteLine("--------------");
                     Console.WriteLine(cust);
                     Console.WriteLine("--------------");
                 }
-                
+                Console.WriteLine("");
                 //checks to see if any customer is found
                 if (listOfCust.Any() == false)
                 {
@@ -161,6 +162,7 @@ namespace P0UI
             //         Console.WriteLine("[x] - Exit");
             //     }
             // }
+            Console.WriteLine("");
         }
 
         public MenuType YourChoice()

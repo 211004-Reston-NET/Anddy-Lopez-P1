@@ -19,6 +19,7 @@ namespace P0UI
         public void Menu()
         {
             Console.WriteLine("List of Customers");
+            Console.WriteLine("");
             // make sure you are in P0UI directory
             // cd .. ---> cd .\P0UI\ ---> dotnet add reference ..\P0Models\P0Models.csproj ------ Do 1st
             List<Customers> listOfCustomers = _custBL.GetAllCustomers();
@@ -29,12 +30,14 @@ namespace P0UI
                 Console.WriteLine(c);
                 Console.WriteLine("--------------------");
             }
+            Console.WriteLine("");
             Console.WriteLine("[a] - Select and search for Customer by name (Case Sensitive)"); //Must be done first for whatever reason
             Console.WriteLine("[b] - Select and search for Customer by address (Case Sensitive)");
             Console.WriteLine("[c] - Select and search for Customer by email (Case Sensitive)");
-            Console.WriteLine("[d] - Select and search for Customer by phone number (Case Sensitive)");
+            Console.WriteLine("[d] - Select and search for Customer by phone number (Length Sensitive - Enter 7 or 10 digits)");
             Console.WriteLine("[e] - Search for Customer Order History");
             Console.WriteLine("[x] - Exit");
+            Console.WriteLine("");
         }
 
         public MenuType YourChoice()
@@ -60,7 +63,17 @@ namespace P0UI
                 case "d":
                     _searchOption = 4;
                     Console.WriteLine("Enter a phone number for the Customer you want to find");
-                    _findCust.PhoneNumber = Console.ReadLine();
+                    try
+                    {
+                         _findCust.PhoneNumber = Console.ReadLine();
+                    }
+                    catch (System.Exception)
+                    {
+                        Console.WriteLine("Please put in a number 7 or 10 digits long");
+                        Console.WriteLine("Press Enter to continue");
+                        Console.ReadLine();
+                        return MenuType.ShowCustomers;
+                    }
                     return MenuType.CurrentCustomer;
                 case "e":
                     Console.WriteLine("Enter Customer ID:");

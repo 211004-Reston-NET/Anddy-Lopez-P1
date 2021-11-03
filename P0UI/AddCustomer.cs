@@ -17,16 +17,19 @@ namespace P0UI
         {
             Console.WriteLine("Welcome to Customer Addition!");
             Console.WriteLine("What would you like to do?");
+            Console.WriteLine("");
             Console.WriteLine("Name - "+ _cust.Name);
             Console.WriteLine("Address - "+ _cust.Address);
             Console.WriteLine("Email - "+ _cust.Email);
             Console.WriteLine("Phone Number - "+ _cust.PhoneNumber);
+            Console.WriteLine("");
             Console.WriteLine("[a] - Add customer name");
             Console.WriteLine("[b] - Add customer address");
             Console.WriteLine("[c] - Add customer email");
             Console.WriteLine("[d] - Add customer phone number");
             Console.WriteLine("[e] - Add Customer");
             Console.WriteLine("[x] - Go back to Main Menu");
+            Console.WriteLine("");
         }
 
         public MenuType YourChoice()
