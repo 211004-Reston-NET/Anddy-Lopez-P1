@@ -17,7 +17,7 @@ namespace P0UI
 
         public void Menu()
         {
-            Console.WriteLine("List of Products");
+            Console.WriteLine("List of Products and their price");
             List<Products> listOfProds = _prodBL.GetAllProducts();
 
             foreach (Products prod in listOfProds)
@@ -27,8 +27,8 @@ namespace P0UI
                 Console.WriteLine("--------------------");
             }
             Console.WriteLine("[a] - Search for specific Product");
-            Console.WriteLine("[b] - Search for Product by ID and refill inventory");
-            Console.WriteLine("[c] - Search for Product by ID and add to order");
+            Console.WriteLine("[b] - Search for Product and refill inventory");
+            Console.WriteLine("[c] - Search for Product and add to order");
             Console.WriteLine("[x] - Exit");
         }
 
@@ -68,6 +68,8 @@ namespace P0UI
                         Console.ReadLine();
                         return MenuType.ShowProducts;
                     }
+                    Console.WriteLine("Enter the Product name");
+                    _findProdName = Console.ReadLine();
                     return MenuType.AddOrder;
                 case "x":
                     return MenuType.MainMenu;

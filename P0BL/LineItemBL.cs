@@ -41,9 +41,9 @@ namespace P0BL
             throw new NotImplementedException();
         }
 
-        public LineItems UpdateItemQuantity(LineItems p_li, int p_addedQuantity)
+        public LineItems UpdateItemQuantity(LineItems p_li, int p_Quantity)
         {
-            p_li.Quantity += p_addedQuantity;
+            p_li.Quantity -= p_Quantity;
 
             return _repo.UpdateItemQuantity(p_li);
         }

@@ -13,7 +13,7 @@ namespace P0BL
 
         //Allows LineItem modification
         void UpdateLineItem(int p_itemID, int p_quan);
-        LineItems UpdateItemQuantity(LineItems p_li, int p_addedQuantity);
+        LineItems UpdateItemQuantity(LineItems p_li, int p_Quantity);
 
         //returns items based on ID
         LineItems GetItemsByID(int p_itemId);

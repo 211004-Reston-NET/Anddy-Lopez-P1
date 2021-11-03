@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using Entity = P0DL.Entities; 
 using Model = P0Models;
 
@@ -95,7 +96,9 @@ namespace P0DL
         // Finds customer by Id
         public Model.Customers GetCustomersById(int p_Id)
         {
-            Entity.Customer custToFind = _context.Customers.Find(p_Id);
+            Entity.Customer custToFind = _context.Customers
+                                            .AsNoTracking()
+                                            .FirstOrDefault(cust => cust.CustId == p_Id);
 
             return new Model.Customers(){
                 Id = custToFind.CustId,
@@ -125,9 +128,9 @@ namespace P0DL
         //Allows order addition
         public Model.Orders AddOrder(Model.Customers p_cust, Model.Orders p_ord) //placing an order, hopefully
         {
-            var customer = _context.Customers
+            var cust = _context.Customers
                 .First<Entity.Customer>(cust => cust.CustId == p_cust.Id);
-            customer.MyOrders.Add(new Entity.MyOrder()
+            cust.MyOrders.Add(new Entity.MyOrder()
             {
                 OrderAddress = p_ord.SLocation,
                 OrderPrice = p_ord.TotalPrice,
@@ -230,7 +233,9 @@ namespace P0DL
         }
         public Model.LineItems GetItemsById(int p_itemId)
         {
-            Entity.LineItem itemToFind = _context.LineItems.Find(p_itemId);
+            Entity.LineItem itemToFind = _context.LineItems
+                                            .AsNoTracking()
+                                            .FirstOrDefault(item => item.LiId == p_itemId);
 
             return new Model.LineItems(){
                 Id = itemToFind.LiId,
@@ -239,7 +244,21 @@ namespace P0DL
                 Quantity = itemToFind.LiQuantity
             };
         }
-        //List<LineItems> GetLineItems(string p_item);
+        // List<Model.LineItems> GetLineItems(int p_Id)
+        // {
+        //     return _context.LineItems
+        //         .Where(item => item.OrderId == p_Id.) 
+        //         .Select(ord => new Model.Orders() 
+        //         {
+        //             //model = entity
+        //             SLocation = ord.OrderAddress,
+        //             TotalPrice = ord.OrderPrice,
+        //             CustId = ord.CustId,
+        //             StoreId = ord.StoreId,
+        //             Id = ord.OrderId
+        //         }
+        //     ).ToList();
+        // }
 
 
         // Converts from Entity to Model for Inventory?

@@ -48,7 +48,7 @@ namespace P0DL
         void UpdateLineItem(int p_itemID, int p_quan);
         LineItems UpdateItemQuantity(LineItems p_li);
         LineItems GetItemsById(int p_itemId);
-        //List<LineItems> GetLineItems(string p_item);
+        //List<LineItems> GetLineItems(int p_Id);
 
 
         //List the Inventory
