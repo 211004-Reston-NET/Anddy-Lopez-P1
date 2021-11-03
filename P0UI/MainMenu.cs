@@ -6,7 +6,7 @@ namespace P0UI
     {
         public void Menu()
         {
-            Console.WriteLine("Welcome to the Main Menu!");
+            Console.WriteLine("Welcome to the Main Menu of the Store App!");
             Console.WriteLine("What would you like to do?");
             Console.WriteLine("[a] - Add a new customer");
             Console.WriteLine("[b] - See exisiting customers");

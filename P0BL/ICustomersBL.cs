@@ -42,6 +42,6 @@ namespace P0BL
         //list the orders from stores
         List<Orders> GetAllStoreOrders(StoreFronts p_store);
         //Order placement by customer
-        Orders AddOrder(Customers p_cust, Orders p_ord);
+        Orders AddOrder(Orders p_ord);
     }
 }

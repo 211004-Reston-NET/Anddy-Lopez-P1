@@ -15,14 +15,14 @@ namespace P0BL
         }
 
         //adds an order
-        public Orders AddOrder(Customers p_cust, Orders p_ord)
+        public Orders AddOrder(Orders p_ord)
         {
             if (p_ord.SLocation == null || p_ord.TotalPrice == 0 || p_ord.StoreId == 0 || p_ord.CustId == 0)
             {
                 // Will only be seen by coder
                 throw new Exception("Must have value in all properties");
             }
-            return _repo.AddOrder(p_cust, p_ord);
+            return _repo.AddOrder(p_ord);
         }
 
         public List<Orders> GetAllOrders(Customers p_cust)

@@ -126,17 +126,18 @@ namespace P0DL
         
 
         //Allows order addition
-        public Model.Orders AddOrder(Model.Customers p_cust, Model.Orders p_ord) //placing an order, hopefully
+        public Model.Orders AddOrder(Model.Orders p_ord) //placing an order, hopefully
         {
-            var cust = _context.Customers
-                .First<Entity.Customer>(cust => cust.CustId == p_cust.Id);
-            cust.MyOrders.Add(new Entity.MyOrder()
-            {
-                OrderAddress = p_ord.SLocation,
-                OrderPrice = p_ord.TotalPrice,
-                StoreId = p_ord.StoreId,
-                CustId = p_ord.CustId
-            });
+            _context.MyOrders.Add
+            (
+                new Entity.MyOrder()
+                {
+                    OrderAddress = p_ord.SLocation,
+                    OrderPrice = p_ord.TotalPrice,
+                    StoreId = p_ord.StoreId,
+                    CustId = p_ord.CustId
+                }
+            );
 
             //This method wil save the changes made to the database
             _context.SaveChanges();

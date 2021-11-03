@@ -7,19 +7,18 @@ namespace P0UI
 {
     public class AddOrder : IMenu
     {
+        private static Orders _ord = new Orders();
         private static List<LineItems> _itemList = new List<LineItems>();
         private static List<Products> _prodList = new List<Products>();
-        
-        private ICustomersBL _custBL;
         private ILineItemBL _itemBL;
         private IProductsBL _prodBL;
+        private IOrdersBL _ordBL;
         public static int _newQuan = 0;
-        public static int _price;
-        public AddOrder(ICustomersBL p_custBL, ILineItemBL p_itemBL, ProductsBL p_prodBL)
+        public AddOrder(ILineItemBL p_itemBL, ProductsBL p_prodBL, OrdersBL p_ordBL)
         {
-            _custBL = p_custBL;
             _itemBL = p_itemBL;
             _prodBL = p_prodBL;
+            _ordBL = p_ordBL;
             _itemList = _itemBL.GetAllLineItems(ShowProducts._findProd);
             _prodList = _prodBL.GetProducts(ShowProducts._findProdName);
         }
@@ -28,9 +27,7 @@ namespace P0UI
         public void Menu()
         {
             LineItems Item = _itemBL.GetItemsByID(_itemList[_currentItem].Id);
-            //Products Prod = _prodBL
-            //List<LineItems> listOfItems = _itemBL.GetItemsByID(User.order.StoreId);
-            
+
             Console.WriteLine("Welcome to the Shopping Center!");
             Console.WriteLine(Item);
             Console.WriteLine("Quantity you wish to purchase - "+ _newQuan);
@@ -61,13 +58,26 @@ namespace P0UI
                     }
                     _itemBL.UpdateItemQuantity(_itemList[_currentItem], _newQuan);
                     
-                    User.order.TotalPrice += (_newQuan * _prodList[_currentItem].Price);
-                    LineItems Item = _itemBL.GetItemsByID(_itemList[0].Id);
-                    //User.order.LineItems.Add(Item);
+                    _ord.TotalPrice += (_newQuan * _prodList[_currentItem].Price);
+
                     return MenuType.AddOrder;
                 case "b":
                     return MenuType.ShowProducts;
                 case "c":
+                    _ord.SLocation = CurrentStoreFront._storeLocation;
+                    _ord.CustId = CurrentCustomer._userSelected;
+                    _ord.StoreId = CurrentStoreFront._storeID;
+                    try
+                    {
+                        _ordBL.AddOrder(_ord);
+                    }
+                    catch (System.Exception)
+                    {
+                        Console.WriteLine("Please input a value in all fields!");
+                        Console.WriteLine("Press Enter to continue");
+                        Console.ReadLine();
+                        return MenuType.AddCustomer;
+                    }
                     //_ord.SLocation = _storeList[0].SAddress;
                     Console.WriteLine("Your Order has been placed");
                     Console.WriteLine("You will be sent back to the Main Menu");

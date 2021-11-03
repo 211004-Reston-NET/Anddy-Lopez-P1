@@ -32,7 +32,7 @@ namespace P0DL
 
 
         //Allows Order addition
-        Orders AddOrder(Customers p_cust, Orders p_ord); //placing an order
+        Orders AddOrder(Orders p_ord); //placing an order
         /// <summary>
         /// Will give all orders from a customer
         /// </summary>

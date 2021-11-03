@@ -13,7 +13,10 @@ namespace P0UI
         public CurrentStoreFront(IStoreFrontsBL p_storefBL)
         {
             this._storefBL = p_storefBL;
+            _storeList = _storefBL.GetStoreFronts(ShowStoreFronts._findStoreName);
         }
+        public static int _storeID;
+        public static string _storeLocation;
 
         public void Menu()
         {
@@ -26,6 +29,7 @@ namespace P0UI
                 Console.WriteLine(sf);
                 Console.WriteLine("--------------");
             }
+            
             //checks to see if any store is found
             if (listOfStoreF.Any() == false)
             {
@@ -59,6 +63,13 @@ namespace P0UI
                 case "a":
                     if (CurrentCustomer._userSelected != 0)
                     {
+                        int _currentStore = _storeList.Count-1;
+                        if (_currentStore < 0)
+                        {
+                            _currentStore = 0;
+                        }
+                        _storeID = _storeList[_currentStore].Id;
+                        _storeLocation = _storeList[_currentStore].SAddress;
                         Console.WriteLine("You have now chosen a shopping center"); //Perhaps show which Store Front
                         Console.WriteLine("Press Enter to proceed to select the products you wish to buy");
                         Console.ReadLine();
