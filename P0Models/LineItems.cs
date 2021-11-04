@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 /* Will Hold:
@@ -15,8 +16,8 @@ namespace P0Models
         public int Quantity { get; set; }
         public int? OrderId { get; set; }
 
-        public Inventory Inv { get; set; }
         public Orders Orders { get; set; }
+        public List<Products> Products { get; set; } 
 
         public override string ToString()
         {

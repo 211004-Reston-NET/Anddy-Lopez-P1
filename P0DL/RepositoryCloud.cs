@@ -1,40 +1,31 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using Entity = P0DL.Entities; 
-using Model = P0Models;
+using P0Models;
 
 namespace P0DL
 {
     public class RepositoryCloud : IRepository
     {
         //Dependency Injection for variables
-        private Entity.P0DatabaseContext _context;
-        public RepositoryCloud(Entity.P0DatabaseContext p_context)
+        private P0DatabaseContext _context;
+        public RepositoryCloud(P0DatabaseContext p_context)
         {
             _context = p_context;
         }
 
 
         // Adds customers
-        public Model.Customers AddCustomer(Model.Customers p_cust)
+        public Customers AddCustomer(Customers p_cust)
         {
-            _context.Customers.Add
-            (
-                new Entity.Customer()
-                {
-                    CustName = p_cust.Name,
-                    CustAddres = p_cust.Address,
-                    CustEmail = p_cust.Email,
-                    CustPhonenumber = p_cust.PhoneNumber
-                }
-            );
-            //This method wil save the changes made to the database
+            _context.Customers.Add(p_cust);
+
             _context.SaveChanges();
+
             return p_cust;
         }
         //Modifies Customer?
-        public Model.Customers UpdateCustomer(Model.Customers p_update)
+        public Customers UpdateCustomer(Customers p_update)
         {
             // var query = 
             //     from cust in _context.Customers
@@ -47,33 +38,15 @@ namespace P0DL
             //     cust.CustEmail = p_update.Email;
             //     cust.CustPhonenumber = p_update.PhoneNumber;
             // }
-            _context.Customers.Update
-            (
-                new Entity.Customer()
-                {
-                    CustName = p_update.Name,
-                    CustAddres = p_update.Address,
-                    CustEmail = p_update.Email,
-                    CustPhonenumber = p_update.PhoneNumber
-                }
-            );
+            _context.Customers.Update(p_update);
             _context.SaveChanges();
             return p_update;
         }
         // Converts from Entity to Model for Customers
-        public List<Model.Customers> GetAllCustomers()
+        public List<Customers> GetAllCustomers()
         {
             // Method Syntax
-            return _context.Customers.Select(cust =>
-                new Model.Customers()
-                {
-                    Name = cust.CustName,
-                    Address = cust.CustAddres, 
-                    Email = cust.CustEmail,
-                    PhoneNumber = cust.CustPhonenumber,
-                    Id = cust.CustId
-                }
-            ).ToList();
+            return _context.Customers.ToList();
 
             //Query Syntax for Inner Joins
             // var result = (from cust in _context.Customers
@@ -94,156 +67,119 @@ namespace P0DL
             // return listOfCust;
         }
         // Finds customer by Id
-        public Model.Customers GetCustomersById(int p_Id)
+        public Customers GetCustomersById(int p_Id)
         {
-            Entity.Customer custToFind = _context.Customers
-                                            .AsNoTracking()
-                                            .FirstOrDefault(cust => cust.CustId == p_Id);
+            // Customers custToFind = _context.Customers
+            //                                 .AsNoTracking()
+            //                                 .FirstOrDefault(cust => cust.Id == p_Id);
 
-            return new Model.Customers(){
-                Id = custToFind.CustId,
-                Name = custToFind.CustName,
-                Address = custToFind.CustAddres,
-                Email = custToFind.CustEmail,
-                PhoneNumber = custToFind.CustPhonenumber
-            };
+            // return new Model.Customers(){
+            //     Id = custToFind.CustId,
+            //     Name = custToFind.CustName,
+            //     Address = custToFind.CustAddres,
+            //     Email = custToFind.CustEmail,
+            //     PhoneNumber = custToFind.CustPhonenumber
+            // };
+
+            return _context.Customers.Find(p_Id);
         }
 
 
         // Converts from Entity to Model for Stores
-        public List<Model.StoreFronts> GetAllStoreFronts()
+        public List<StoreFronts> GetAllStoreFronts()
         {
             // Method Syntax
-            return _context.StoreFronts.Select(store =>
-                new Model.StoreFronts()
-                {
-                    SName = store.StoreName,
-                    SAddress = store.StoreAddres,
-                    Id = store.StoreId
-                }
-            ).ToList();
+            return _context.StoreFronts.ToList();
         }
         
 
         //Allows order addition
-        public Model.Orders AddOrder(Model.Orders p_ord) //placing an order, hopefully
+        public Orders AddOrder(Orders p_ord) //placing an order, hopefully
         {
-            _context.MyOrders.Add
-            (
-                new Entity.MyOrder()
-                {
-                    OrderAddress = p_ord.SLocation,
-                    OrderPrice = p_ord.TotalPrice,
-                    StoreId = p_ord.StoreId,
-                    CustId = p_ord.CustId
-                }
-            );
+            // _context.MyOrders.Add
+            // (
+            //     new Entity.MyOrder()
+            //     {
+            //         OrderAddress = p_ord.SLocation,
+            //         OrderPrice = p_ord.TotalPrice,
+            //         StoreId = p_ord.StoreId,
+            //         CustId = p_ord.CustId
+            //     }
+            // );
+            _context.Orders.Add(p_ord);
 
             //This method wil save the changes made to the database
             _context.SaveChanges();
             return p_ord;
         }
         // Will hopefully converts from Entity to Model for Order and matches to customer Id
-        public List<Model.Orders> GetAllOrders(Model.Customers p_cust)
+        public List<Orders> GetAllOrders(Customers p_cust)
         {
             // Method Syntax - looks cleaner
-            return _context.MyOrders
-                .Where(ord => ord.CustId == p_cust.Id) //we find the orders that match customer ID (entity == model)
-                .Select(ord => new Model.Orders() //convert to model.order
-                {
-                    //model = entity
-                    SLocation = ord.OrderAddress,
-                    TotalPrice = ord.OrderPrice,
-                    CustId = ord.CustId,
-                    StoreId = ord.StoreId,
-                    Id = ord.OrderId
-                }
-            ).ToList();
+            // return _context.MyOrders
+            //     .Where(ord => ord.CustId == p_cust.Id) //we find the orders that match customer ID (entity == model)
+            //     .Select(ord => new Model.Orders() //convert to model.order
+            //     {
+            //         //model = entity
+            //         SLocation = ord.OrderAddress,
+            //         TotalPrice = ord.OrderPrice,
+            //         CustId = ord.CustId,
+            //         StoreId = ord.StoreId,
+            //         Id = ord.OrderId
+            //     }
+            // ).ToList();
+
+            return _context.Orders.ToList();
         }
         // Will hopefully converts from Entity to Model for Order and matches to store Id
-        public List<Model.Orders> GetAllStoreOrders(Model.StoreFronts p_store)
+        public List<Orders> GetAllStoreOrders(StoreFronts p_store)
         {
             // Method Syntax - looks cleaner
-            return _context.MyOrders
-                .Where(ord => ord.StoreId == p_store.Id) //we find the orders that match customer ID (entity == model)
-                .Select(ord => new Model.Orders() //convert to model.order
-                {
-                    //model = entity
-                    SLocation = ord.OrderAddress,
-                    TotalPrice = ord.OrderPrice,
-                    CustId = ord.CustId,
-                    StoreId = ord.StoreId,
-                    Id = ord.OrderId
-                }
-            ).ToList();
+            return _context.Orders.ToList();
         }
 
 
         // Converts from Entity to Model for products
-        public List<Model.Products> GetAllProducts()
+        public List<Products> GetAllProducts()
         {
             // Method Syntax
-            return _context.Products
-                .Select(prod => new Model.Products()
-                {
-                    PName = prod.ProdName,
-                    Price = prod.ProdPrice,
-                    InvId = prod.InvId,
-                    LiId = prod.LiId,
-                    Id = prod.ProdId
-                }
-            ).ToList();
+            return _context.Products.ToList();
         }
 
 
         // Converts from Entity to Model for Line Items
-        public List<Model.LineItems> GetAllLineItems(Model.LineItems p_item)
+        public List<LineItems> GetAllLineItems(LineItems p_item)
         {
             // Method Syntax
-            return _context.LineItems
-                .Where(item => item.LiId == p_item.Id)
-                .Select(item => new Model.LineItems()
-                {
-                    Product = item.LiProduct,
-                    Quantity = item.LiQuantity,
-                    //OrderId = item.OrderId,
-                    Id = item.LiId
-                }
-            ).ToList();
+            return _context.LineItems.ToList();
         }
         //line item update
         void IRepository.UpdateLineItem(int p_itemID, int p_quan)
         {
             var query = _context.LineItems
-                .FirstOrDefault<Entity.LineItem>(item => item.LiId == p_itemID);
-            query.LiQuantity = p_quan;
+                .FirstOrDefault<LineItems>(item => item.Id == p_itemID);
+            query.Quantity = p_quan;
             _context.SaveChanges();
         }
-        Model.LineItems IRepository.UpdateItemQuantity(Model.LineItems p_li)
+        LineItems IRepository.UpdateItemQuantity(LineItems p_li)
         {
-            Entity.LineItem itemUpdated = new Entity.LineItem()
-            {
-                LiId = p_li.Id,
-                LiProduct = p_li.Product,
-                LiQuantity = p_li.Quantity,
-                OrderId = p_li.OrderId
-            };
-            _context.LineItems.Update(itemUpdated);
+            _context.LineItems.Update(p_li);
             _context.SaveChanges();
             return p_li;
         }
-        public Model.LineItems GetItemsById(int p_itemId)
+        public LineItems GetItemsById(int p_itemId)
         {
-            Entity.LineItem itemToFind = _context.LineItems
-                                            .AsNoTracking()
-                                            .FirstOrDefault(item => item.LiId == p_itemId);
+            // LineItem itemToFind = _context.LineItems
+            //                                 .AsNoTracking()
+            //                                 .FirstOrDefault(item => item.LiId == p_itemId);
 
-            return new Model.LineItems(){
-                Id = itemToFind.LiId,
-                Product = itemToFind.LiProduct,
-                OrderId = itemToFind.OrderId,
-                Quantity = itemToFind.LiQuantity
-            };
+            // return new Model.LineItems(){
+            //     Id = itemToFind.LiId,
+            //     Product = itemToFind.LiProduct,
+            //     OrderId = itemToFind.OrderId,
+            //     Quantity = itemToFind.LiQuantity
+            // };
+            return _context.LineItems.Find(p_itemId);
         }
         // List<Model.LineItems> GetLineItems(int p_Id)
         // {
@@ -263,18 +199,10 @@ namespace P0DL
 
 
         // Converts from Entity to Model for Inventory?
-        public List<Model.Inventory> GetAllInventory()
+        public List<Inventory> GetAllInventory()
         {
             // Method Syntax
-            return _context.Inventories.Select(inv =>
-                new Model.Inventory()
-                {
-                    Product = inv.InvProduct,
-                    Quantity = inv.InvQuantity,
-                    StoreId = inv.StoreId,
-                    Id = inv.InvId
-                }
-            ).ToList();
+            return _context.Inventory.ToList();
         }
     }
 }
