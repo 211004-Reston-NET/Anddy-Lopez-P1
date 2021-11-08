@@ -1,9 +1,12 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using P0BL;
+using P0DL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +24,16 @@ namespace P0WebUI
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
+        // This method will essentially tell this MVC app what projects it will depned on
+        // Note: Cool thing about this is that is essentially will do MenuFactory for us
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddDbContext<P0DatabaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Reference2DB")));
+            services.AddScoped<IRepository, RepositoryCloud>();
+            services.AddScoped<ICustomersBL, CustomersBL>();
+            services.AddScoped<IStoreFrontsBL, StoreFrontsBL>();
+
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
