@@ -17,20 +17,17 @@ namespace P0WebUI.Controllers
         {
             _custBL = p_custBL;
         }
-        
+
         // GET: CustomerController
         public ActionResult Index()
         {
-            //We got our list of customers from our business layer
-            //We converted that Model customer into CustomerVM using Select method
-            //Finally we changed it to a List with ToList()
             return View(_custBL.GetAllCustomers()
                         .Select(cust => new CustomerVM(cust))
-                        .ToList()
+                        .ToList()            
             );
         }
 
-        //[HttpGet] - don't have to specify since it is the default
+        //[HttpGet] -- don't have to specify since it is the default
         public IActionResult Create()
         {
             return View();
@@ -39,24 +36,15 @@ namespace P0WebUI.Controllers
         [HttpPost]
         public IActionResult Create(CustomerVM custVM)
         {
-            //This if statement checks if the current model that is being passed is valid
-            //If not, the asp-validation-for attribute elements will appear and autofill in the proper feedback for the user
-            //to correct themselves
-            if (ModelState.IsValid)
+            _custBL.AddCustomer(new Customers()
             {
-                _custBL.AddCustomer(new Customers()
-                {
-                    Name = custVM.Name,
-                    Address = custVM.Address,
-                    Email = custVM.Email,
-                    PhoneNumber = custVM.PhoneNumber
-                });
+                Name = custVM.Name,
+                Address = custVM.Address,
+                Email = custVM.Email,
+                PhoneNumber = custVM.PhoneNumber
+            });
 
-                return RedirectToAction(nameof(Index));
-            }
-
-            //Will return back to the creat view if user didn't specify the right input
-            return View();
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: CustomerController/Details/5
