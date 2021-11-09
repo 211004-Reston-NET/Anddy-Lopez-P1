@@ -10,8 +10,8 @@ using P0DL;
 namespace P0DL.Migrations
 {
     [DbContext(typeof(P0DatabaseContext))]
-    [Migration("20211105181623_AddedCustomerModelandView")]
-    partial class AddedCustomerModelandView
+    [Migration("20211109184808_InfoMigration")]
+    partial class InfoMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

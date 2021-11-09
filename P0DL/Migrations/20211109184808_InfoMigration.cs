@@ -2,7 +2,7 @@
 
 namespace P0DL.Migrations
 {
-    public partial class MyTestMigration : Migration
+    public partial class InfoMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
