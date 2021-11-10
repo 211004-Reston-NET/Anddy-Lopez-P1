@@ -43,5 +43,12 @@ namespace P0BL
         List<Orders> GetAllStoreOrders(StoreFronts p_store);
         //Order placement by customer
         Orders AddOrder(Orders p_ord);
+
+        /// <summary>
+        /// Will delete a customer from the db
+        /// </summary>
+        /// <param name="p_cust">the deleted customer</param>
+        /// <returns>return deleted customer</returns>
+        Customers DeleteCustomer(Customers p_cust);
     }
 }

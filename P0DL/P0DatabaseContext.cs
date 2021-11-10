@@ -85,7 +85,7 @@ namespace P0DL
                 entity.HasOne(d => d.StoreFronts)
                     .WithMany(p => p.Inventory)
                     .HasForeignKey(d => d.StoreId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .OnDelete(DeleteBehavior.Cascade) // Original is ClientSetNull. Change it to Cascade to delete properly
                     .HasConstraintName("FK__Inventory__store__3F115E1A");
             });
 

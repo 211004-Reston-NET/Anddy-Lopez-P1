@@ -78,19 +78,21 @@ namespace P0WebUI.Controllers
             }
         }
 
-        // GET: CustomerController/Delete/5
-        public ActionResult Delete(int id)
+        // GET: CustomerController/Delete/5 --- Will delete a customer
+        public ActionResult Delete(int p_id)
         {
-            return View();
+            return View(new CustomerVM(_custBL.GetCustomersById(p_id)));
         }
 
         // POST: CustomerController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int Id, IFormCollection collection)
         {
             try
             {
+                Customers toBeDeleted = _custBL.GetCustomersById(Id);
+                _custBL.DeleteCustomer(toBeDeleted);
                 return RedirectToAction(nameof(Index));
             }
             catch

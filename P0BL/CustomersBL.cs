@@ -102,5 +102,10 @@ namespace P0BL
         {
             return _repo.AddOrder(p_ord);
         }
+
+        public Customers DeleteCustomer(Customers p_cust)
+        {
+            return _repo.DeleteCustomer(p_cust);
+        }
     }
 }
