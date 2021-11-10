@@ -29,6 +29,7 @@ namespace P0WebUI
             services.AddDbContext<P0DatabaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Reference2DB")));
             services.AddScoped<IRepository, RepositoryCloud>();
             services.AddScoped<ICustomersBL, CustomersBL>();
+            services.AddScoped<IStoreFrontsBL, StoreFrontsBL>();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
         }
 

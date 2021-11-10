@@ -1,0 +1,26 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model P0WebUI.Models.StoreFrontVM
+
+<h1 class="display-4">Create Store Front</h1>
+
+<form asp-action="Create">
+    <div asp-validation-summary="ModelOnly"></div>
+    <div class="mb-3">
+        <label asp-for="SName" class="form-label">Name *</label>
+        <input asp-for="SName" type="text" class="form-control">
+        <span asp-validation-for="SName" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="SAddress" class="form-label">Address *</label>
+        <input asp-for="SAddress" type="text" class="form-control">
+        <span asp-validation-for="SAddress" class="text-danger"></span>
+    </div>
+    <div>* - Required Fields</div>
+    <br />
+    <button type="submit" class="btn btn-primary" value="Create">Submit</button>
+</form>

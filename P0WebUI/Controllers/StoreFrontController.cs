@@ -20,38 +20,39 @@ namespace P0WebUI.Controllers
         // GET: StoreFrontController
         public ActionResult Index()
         {
+            return View(_storeBL.GetAllStoreFronts()
+                        .Select(store => new StoreFrontVM(store))
+                        .ToList()
+            );
+        }
+
+        public IActionResult Create()
+        {
             return View();
         }
 
-        //_storeBL.GetAllStoreFronts()
-        //                .Select(store => new StoreFrontVM(store))
-        //                .ToList()
+        [HttpPost]
+        public IActionResult Create(StoreFrontVM storeVM)
+        {
+            //if (ModelState.IsValid)
+            //{
+            //    _custBL.AddCustomer(new Customers()
+            //    {
+            //        Name = custVM.Name,
+            //        Address = custVM.Address,
+            //        Email = custVM.Email,
+            //        PhoneNumber = custVM.PhoneNumber
+            //    });
+
+            //    return RedirectToAction(nameof(Index));
+            //}
+            return View();
+        }
 
         // GET: StoreFrontController/Details/5
         public ActionResult Details(int id)
         {
             return View();
-        }
-
-        // GET: StoreFrontController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: StoreFrontController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
         }
 
         // GET: StoreFrontController/Edit/5
