@@ -21,6 +21,8 @@ namespace P0DL
 
         //List Store Fronts
         List<StoreFronts> GetAllStoreFronts();
+        //Adds a store
+        StoreFronts AddStore(StoreFronts p_store);
 
 
         /// <summary>
@@ -53,5 +55,12 @@ namespace P0DL
 
         //List the Inventory
         List<Inventory> GetAllInventory();
+
+        /// <summary>
+        /// Will delete a customer from the db
+        /// </summary>
+        /// <param name="p_cust">the deleted customer</param>
+        /// <returns>return deleted customer</returns>
+        Customers DeleteCustomer(Customers p_cust);
     }
 }

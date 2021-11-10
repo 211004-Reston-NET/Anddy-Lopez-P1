@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using P0BL;
+using P0Models;
 using P0WebUI.Models;
 using System;
 using System.Collections.Generic;
@@ -34,18 +35,16 @@ namespace P0WebUI.Controllers
         [HttpPost]
         public IActionResult Create(StoreFrontVM storeVM)
         {
-            //if (ModelState.IsValid)
-            //{
-            //    _custBL.AddCustomer(new Customers()
-            //    {
-            //        Name = custVM.Name,
-            //        Address = custVM.Address,
-            //        Email = custVM.Email,
-            //        PhoneNumber = custVM.PhoneNumber
-            //    });
+            if (ModelState.IsValid)
+            {
+                _storeBL.AddStore(new StoreFronts()
+                {
+                    SName = storeVM.SName,
+                    SAddress = storeVM.SAddress
+                });
 
-            //    return RedirectToAction(nameof(Index));
-            //}
+                return RedirectToAction(nameof(Index));
+            }
             return View();
         }
 

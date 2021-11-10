@@ -92,6 +92,16 @@ namespace P0DL
             return _context.StoreFronts.ToList();
         }
         
+        //Adds a store
+        public StoreFronts AddStore(StoreFronts p_store)
+        {
+            _context.StoreFronts.Add(p_store);
+
+            _context.SaveChanges();
+
+            return p_store;
+        }
+        
 
         //Allows order addition
         public Orders AddOrder(Orders p_ord) //placing an order, hopefully
@@ -203,6 +213,13 @@ namespace P0DL
         {
             // Method Syntax
             return _context.Inventory.ToList();
+        }
+
+        public Customers DeleteCustomer(Customers p_cust)
+        {
+            _context.Customers.Remove(p_cust);
+            _context.SaveChanges();
+            return p_cust;
         }
     }
 }

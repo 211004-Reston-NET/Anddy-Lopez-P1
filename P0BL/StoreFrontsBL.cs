@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using P0DL;
@@ -12,6 +13,16 @@ namespace P0BL
         public StoreFrontsBL(IRepository p_repo) 
         {
             _repo = p_repo;
+        }
+
+        public StoreFronts AddStore(StoreFronts p_store)
+        {
+            if (p_store.SName == null || p_store.SAddress == null)
+            {
+                // Will only be seen by coder
+                throw new Exception("Must have value in all properties");
+            }
+            return _repo.AddStore(p_store);
         }
 
         //Returns Stores with no changes

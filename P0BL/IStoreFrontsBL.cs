@@ -10,6 +10,8 @@ namespace P0BL
 
         //Allows store fronts search by name
         List<StoreFronts> GetStoreFronts(string p_sname);
+        //Adds a store
+        StoreFronts AddStore(StoreFronts p_store);
 
         //list the orders from stores
         List<Orders> GetAllStoreOrders(StoreFronts p_store);
