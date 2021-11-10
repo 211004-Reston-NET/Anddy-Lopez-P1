@@ -36,15 +36,19 @@ namespace P0WebUI.Controllers
         [HttpPost]
         public IActionResult Create(CustomerVM custVM)
         {
-            _custBL.AddCustomer(new Customers()
+            if (ModelState.IsValid)
             {
-                Name = custVM.Name,
-                Address = custVM.Address,
-                Email = custVM.Email,
-                PhoneNumber = custVM.PhoneNumber
-            });
+                _custBL.AddCustomer(new Customers()
+                {
+                    Name = custVM.Name,
+                    Address = custVM.Address,
+                    Email = custVM.Email,
+                    PhoneNumber = custVM.PhoneNumber
+                });
 
-            return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index));
+            }
+            return View();
         }
 
         // GET: CustomerController/Details/5

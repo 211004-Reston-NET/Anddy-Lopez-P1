@@ -9,21 +9,28 @@
 <h1 class="display-4">Create Customer</h1>
 
 <form asp-action="Create">
+    <div asp-validation-summary="ModelOnly"></div>
     <div class="mb-3">
-        <label asp-for="Name" class="form-label">Name</label>
+        <label asp-for="Name" class="form-label">Name *</label>
         <input asp-for="Name" type="text" class="form-control">
+        <span asp-validation-for="Name" class="text-danger"></span>
     </div>
     <div class="mb-3">
-        <label asp-for="Address" class="form-label">Address</label>
+        <label asp-for="Address" class="form-label">Address *</label>
         <input asp-for="Address" type="text" class="form-control">
+        <span asp-validation-for="Address" class="text-danger"></span>
     </div>
     <div class="mb-3">
-        <label asp-for="Email" class="form-label">Email address</label>
+        <label asp-for="Email" class="form-label">Email address *</label>
         <input asp-for="Email" type="email" class="form-control">
+        <span asp-validation-for="Email" class="text-danger"></span>
     </div>
     <div class="mb-3">
-        <label asp-for="PhoneNumber" class="form-label">Phone Number</label>
+        <label asp-for="PhoneNumber" class="form-label">Phone Number *</label>
         <input asp-for="PhoneNumber" type="tel" class="form-control">
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
     </div>
+    <div>* - Required Fields</div>
+    <br />
     <button type="submit" class="btn btn-primary" value="Create">Submit</button>
 </form>
