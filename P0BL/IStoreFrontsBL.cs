@@ -15,5 +15,11 @@ namespace P0BL
 
         //list the orders from stores
         List<Orders> GetAllStoreOrders(StoreFronts p_store);
+        /// <summary>
+        /// Returns a specific store based on ID
+        /// </summary>
+        /// <param name="p_Id">ID that it will check</param>
+        /// <returns>Returns store</returns>
+        StoreFronts GetStoresById(int p_Id);
     }
 }

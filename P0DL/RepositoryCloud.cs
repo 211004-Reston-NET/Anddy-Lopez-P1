@@ -221,5 +221,10 @@ namespace P0DL
             _context.SaveChanges();
             return p_cust;
         }
+
+        public StoreFronts GetStoresById(int p_Id)
+        {
+            return _context.StoreFronts.Find(p_Id);
+        }
     }
 }

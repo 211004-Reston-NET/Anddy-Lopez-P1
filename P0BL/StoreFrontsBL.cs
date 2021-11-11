@@ -44,6 +44,9 @@ namespace P0BL
             return listOfStoreFronts.Where(storef => storef.SName.Contains(p_sname)).ToList();
         }
 
-        
+        public StoreFronts GetStoresById(int p_Id)
+        {
+            return _repo.GetStoresById(p_Id);
+        }
     }
 }
