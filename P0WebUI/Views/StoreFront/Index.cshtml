@@ -15,12 +15,17 @@
     <tr>
         <th>Name</th>
         <th>Address</th>
+        <th>
     </tr>
     @foreach (var item in Model)
     {
-        <tr>
-            <td>@Html.DisplayFor(modelitem => item.SName)</td>
-            <td>@Html.DisplayFor(modelitem => item.SAddress)</td>
-        </tr>
+<tr>
+    <td>@Html.DisplayFor(modelitem => item.SName)</td>
+    <td>@Html.DisplayFor(modelitem => item.SAddress)</td>
+    <td>
+        <!--<button class="btn btn-primary" asp-controller="Product" asp-action="Index">Shop</button>-->
+        <a asp-controller="Product" asp-action="Index">Shop</a>
+    </td>
+</tr>
     }
 </table>

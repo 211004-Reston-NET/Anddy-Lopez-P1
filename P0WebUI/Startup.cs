@@ -30,6 +30,9 @@ namespace P0WebUI
             services.AddScoped<IRepository, RepositoryCloud>();
             services.AddScoped<ICustomersBL, CustomersBL>();
             services.AddScoped<IStoreFrontsBL, StoreFrontsBL>();
+            services.AddScoped<IProductsBL, ProductsBL>();
+            services.AddScoped<ILineItemBL, LineItemBL>();
+            services.AddScoped<IOrdersBL, OrdersBL>();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
         }
 
