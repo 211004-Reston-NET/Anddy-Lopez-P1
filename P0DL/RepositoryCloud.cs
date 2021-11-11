@@ -139,13 +139,17 @@ namespace P0DL
             //     }
             // ).ToList();
 
-            return _context.Orders.ToList();
+            return _context.Orders
+            .Where(order => order.CustId == p_cust.Id)
+            .ToList();
         }
         // Will hopefully converts from Entity to Model for Order and matches to store Id
         public List<Orders> GetAllStoreOrders(StoreFronts p_store)
         {
             // Method Syntax - looks cleaner
-            return _context.Orders.ToList();
+            return _context.Orders
+            .Where(order => order.StoreId == p_store.Id)
+            .ToList();
         }
 
 

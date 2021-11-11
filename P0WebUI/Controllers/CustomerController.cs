@@ -27,6 +27,14 @@ namespace P0WebUI.Controllers
             );
         }
 
+        public IActionResult CustomerOrder()
+        {
+            return View(_custBL.GetAllCustomers()
+                        .Select(cust => new CustomerVM(cust))
+                        .ToList()
+            );
+        }
+
         //[HttpGet] -- don't have to specify since it is the default
         public IActionResult Create()
         {

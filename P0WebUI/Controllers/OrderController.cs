@@ -12,14 +12,34 @@ namespace P0WebUI.Controllers
     public class OrderController : Controller
     {
         private IOrdersBL _ordBL;
-        public OrderController(IOrdersBL p_ordBL)
+        private ICustomersBL _custBL;
+        private IStoreFrontsBL _storeBL;
+        public OrderController(IOrdersBL p_ordBL, ICustomersBL p_custBL, IStoreFrontsBL p_storeBL)
         {
             _ordBL = p_ordBL;
+            _custBL = p_custBL;
+            _storeBL = p_storeBL;
         }
-        
+
         public IActionResult Index()
         {
             return View();
+        }
+        public IActionResult CustomerOrder(int p_Id)
+        {
+            Customers theCustomer = _custBL.GetCustomersById(p_Id);
+            return View(_ordBL.GetAllOrders(theCustomer)
+                        .Select(ord => new OrderVM(ord))
+                        .ToList()
+            );
+        }
+        public IActionResult StoreOrder(int p_Id)
+        {
+            StoreFronts theStore = _storeBL.GetStoresById(p_Id);
+            return View(_ordBL.GetAllStoreOrders(theStore)
+                        .Select(ord => new OrderVM(ord))
+                        .ToList()
+            );
         }
         public IActionResult Create()
         {
