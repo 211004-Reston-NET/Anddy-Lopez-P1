@@ -94,6 +94,38 @@ namespace P0Test
             }
         }
 
+        [Fact]
+        public void GetCustomersByIdShouldWork()
+        {
+            using (var context = new P0DatabaseContext(_options))
+            {
+                 //Arrange
+                 IRepository repo = new RepositoryCloud(context);
+
+                 //Act
+                 Customers foundCust = repo.GetCustomersById(1);
+                 
+                 //Assert
+                 Assert.Equal("Stephen", foundCust.Name);
+            }
+        }
+
+        [Fact]
+        public void GetStoresByIdShouldWork()
+        {
+            using (var context = new P0DatabaseContext(_options))
+            {
+                 //Arrange
+                 IRepository repo = new RepositoryCloud(context);
+
+                 //Act
+                 StoreFronts foundStore = repo.GetStoresById(1);
+                 
+                 //Assert
+                 Assert.Equal("Tony's", foundStore.SName);
+            }
+        }
+
         private void Seed()
         {
             using (var context = new P0DatabaseContext(_options))
@@ -116,6 +148,15 @@ namespace P0Test
                          Address = "Disney",
                          Email = "danny@email.com",
                          PhoneNumber = "8089097766"
+                     }
+                 );
+
+                 context.StoreFronts.AddRange
+                 (
+                     new StoreFronts
+                     {
+                         SName = "Tony's",
+                         SAddress = "Miami"
                      }
                  );
 
