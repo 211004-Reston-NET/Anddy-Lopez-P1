@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using P0DL;
 using P0Models;
 
@@ -35,10 +36,22 @@ namespace P0BL
              return _repo.GetAllStoreOrders(p_store);
         }
 
+        public List<Orders> GetEveryOrder()
+        {
+            return _repo.GetEveryOrder();
+        }
+
         //List out the orders
         public List<Orders> GetOrders(string p_item)
         {
-            throw new System.NotImplementedException();
+            List<Orders> listOfOrders = _repo.GetEveryOrder();
+            
+            return listOfOrders.Where(ord => ord.SLocation.Contains(p_item)).ToList();
+        }
+
+        public Orders UpdateOrder(Orders p_update)
+        {
+            return _repo.UpdateOrder(p_update);
         }
     }
 }

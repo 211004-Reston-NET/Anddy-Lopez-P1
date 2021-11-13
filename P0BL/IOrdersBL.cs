@@ -14,7 +14,13 @@ namespace P0BL
         //Allows Order addition
         Orders AddOrder(Orders p_ord);
 
-        //Allows order search -- might not need
+        //Returns every single order --no filter
+        List<Orders> GetEveryOrder();
+
+        //Allows order search by store location
         List<Orders> GetOrders(string p_item);
+
+        //updates order
+        Orders UpdateOrder(Orders p_update);
     }
 }

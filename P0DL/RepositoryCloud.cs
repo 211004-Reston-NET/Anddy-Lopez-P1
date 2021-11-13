@@ -238,5 +238,17 @@ namespace P0DL
         {
             return _context.LineItems.ToList();
         }
+
+        public Orders UpdateOrder(Orders p_update)
+        {
+            _context.Orders.Update(p_update);
+            _context.SaveChanges();
+            return p_update;
+        }
+
+        public List<Orders> GetEveryOrder()
+        {
+            return _context.Orders.ToList();
+        }
     }
 }

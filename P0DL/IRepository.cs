@@ -44,11 +44,19 @@ namespace P0DL
         /// <summary>
         /// Will give all orders from a customer
         /// </summary>
-        /// <param name="p_cust"></param>
+        /// <param name="p_cust">the customer model you want the order history of</param>
         /// <returns>returns a list of orders</returns>
         List<Orders> GetAllOrders(Customers p_cust);
+        /// <summary>
+        /// Will give all order placed at a store
+        /// </summary>
+        /// <param name="p_store">the store model you want to order history from</param>
+        /// <returns>returns a list of orders</returns>
         List<Orders> GetAllStoreOrders(StoreFronts p_store);
-
+        //Edits an order
+        Orders UpdateOrder(Orders p_update);
+        //Returns every order --no filter
+        List<Orders> GetEveryOrder();
 
         //List the Line Items
         List<LineItems> GetAllLineItems(LineItems p_item);
