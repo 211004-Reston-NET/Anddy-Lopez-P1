@@ -1,0 +1,37 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model P0WebUI.Models.CustomerVM
+
+<h1 class="display-4">Customer Select</h1>
+<h3>Are you sure you want to select this Customer?</h3>
+
+<div>
+    <dl>
+        <dt>
+            Id:
+            <span class="col-sm-10" style="font-weight: normal">@Html.DisplayFor(model => model.Id)</span>
+        </dt>
+        <dt>
+            Name:
+            <span class="col-sm-10" style="font-weight: normal">@Html.DisplayFor(model => model.Name)</span>
+        </dt>
+        <dt>
+            Address:
+            <span class="col-sm-10" style="font-weight: normal">@Html.DisplayFor(model => model.Address)</span>
+        </dt>
+        <dt>
+            Email:
+            <span class="col-sm-10" style="font-weight: normal">@Html.DisplayFor(model => model.Email)</span>
+        </dt>
+        <dt>
+            Phone Number:
+            <span class="col-sm-10" style="font-weight: normal">@Html.DisplayFor(model => model.PhoneNumber)</span>
+        </dt>
+    </dl>
+</div>
+
+<a asp-controller="StoreFront" asp-action="Index1">Confirm</a>

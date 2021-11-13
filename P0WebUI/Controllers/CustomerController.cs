@@ -23,8 +23,21 @@ namespace P0WebUI.Controllers
         {
             return View(_custBL.GetAllCustomers()
                         .Select(cust => new CustomerVM(cust))
-                        .ToList()            
+                        .ToList()
             );
+        }
+        public ActionResult Index1()
+        {
+            return View(_custBL.GetAllCustomers()
+                        .Select(cust => new CustomerVM(cust))
+                        .ToList()
+            );
+        }
+        public ActionResult Select(int p_id)
+        {
+            Customers toBeSelected = _custBL.GetCustomersById(p_id);
+            int theCustomerID = toBeSelected.Id;
+            return View(new CustomerVM(toBeSelected));
         }
 
         public IActionResult CustomerOrder()
@@ -58,7 +71,7 @@ namespace P0WebUI.Controllers
             }
             return View();
         }
-
+        
         // GET: CustomerController/Details/5
         public ActionResult Details(int id)
         {

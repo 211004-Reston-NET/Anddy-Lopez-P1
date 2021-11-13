@@ -27,6 +27,21 @@ namespace P0WebUI.Controllers
             );
         }
 
+        public ActionResult Index1()
+        {
+            return View(_storeBL.GetAllStoreFronts()
+                        .Select(store => new StoreFrontVM(store))
+                        .ToList()
+            );
+            
+        }
+        public ActionResult Select(int p_id)
+        {
+            StoreFronts toBeSelected = _storeBL.GetStoresById(p_id);
+            int theStoreID = toBeSelected.Id;
+            string theStoreAddress = toBeSelected.SAddress;
+            return View(new StoreFrontVM(toBeSelected));
+        }
         public IActionResult StoreOrder()
         {
             return View(_storeBL.GetAllStoreFronts()
