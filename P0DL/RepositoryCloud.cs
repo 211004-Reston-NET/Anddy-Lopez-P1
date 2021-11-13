@@ -162,12 +162,13 @@ namespace P0DL
 
 
         // Converts from Entity to Model for Line Items
+        // Only returns a single Line Item. Poor planning on my part
         public List<LineItems> GetAllLineItems(LineItems p_item)
         {
             // Method Syntax
             return _context.LineItems.ToList();
         }
-        //line item update
+        //line item update --- adds qunatity to inventory
         void IRepository.UpdateLineItem(int p_itemID, int p_quan)
         {
             var query = _context.LineItems
@@ -229,6 +230,13 @@ namespace P0DL
         public StoreFronts GetStoresById(int p_Id)
         {
             return _context.StoreFronts.Find(p_Id);
+        }
+
+        //Gets all the items 
+        //I am using this for restock
+        public List<LineItems> GetEveryItem()
+        {
+            return _context.LineItems.ToList();
         }
     }
 }

@@ -17,5 +17,7 @@ namespace P0BL
 
         //returns items based on ID
         LineItems GetItemsByID(int p_itemId);
+        //Gets all available item
+        List<LineItems> GetEveryItem();
     }
 }

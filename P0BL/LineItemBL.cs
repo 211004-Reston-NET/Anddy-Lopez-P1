@@ -24,10 +24,10 @@ namespace P0BL
         public LineItems GetItemsByID(int p_itemId)
         {
             LineItems itemFound = _repo.GetItemsById(p_itemId);
-            if (itemFound == null)
-            {
-                throw new Exception("Item not found!");
-            }
+            //if (itemFound == null)
+            //{
+            //    throw new Exception("Item not found!");
+            //}
             return itemFound;
         }
 
@@ -46,6 +46,11 @@ namespace P0BL
             p_li.Quantity -= p_Quantity;
 
             return _repo.UpdateItemQuantity(p_li);
+        }
+
+        public List<LineItems> GetEveryItem()
+        {
+            return _repo.GetEveryItem();
         }
     }
 }
