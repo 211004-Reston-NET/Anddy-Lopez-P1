@@ -4,6 +4,7 @@
 @{
 }
 
+@* This is the Store Front Index *@
 @model IEnumerable<P0WebUI.Models.StoreFrontVM>
 
 <h1 class="display-4">List of Store Fronts</h1>
@@ -24,6 +25,8 @@
             <td>
                 <!--<button class="btn btn-primary" asp-controller="Product" asp-action="Index">Shop</button>-->
                 <a asp-controller="Product" asp-action="Index">Shop</a>
+                <a> | </a>
+                <a asp-controller="LineItem" asp-action="EveryIndex">Restock</a>
             </td>
         </tr>
     }
