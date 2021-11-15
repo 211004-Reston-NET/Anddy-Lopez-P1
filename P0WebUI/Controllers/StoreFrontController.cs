@@ -38,8 +38,6 @@ namespace P0WebUI.Controllers
         public ActionResult Select(int p_id)
         {
             StoreFronts toBeSelected = _storeBL.GetStoresById(p_id);
-            int theStoreID = toBeSelected.Id;
-            string theStoreAddress = toBeSelected.SAddress;
             return View(new StoreFrontVM(toBeSelected));
         }
         public IActionResult StoreOrder()

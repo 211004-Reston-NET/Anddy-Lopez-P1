@@ -36,7 +36,6 @@ namespace P0WebUI.Controllers
         public ActionResult Select(int p_id)
         {
             Customers toBeSelected = _custBL.GetCustomersById(p_id);
-            int theCustomerID = toBeSelected.Id;
             return View(new CustomerVM(toBeSelected));
         }
 

@@ -24,7 +24,7 @@
             <td>@Html.DisplayFor(modelitem => item.Product)</td>
             <td>@Html.DisplayFor(modelitem => item.Quantity)</td>
             <td>
-                <button class="btn btn-primary">@Html.ActionLink("Select", "Restock", "LineItem", new { p_id = item.Id }, new { @style = "color:white;" })</button>
+                <button class="btn btn-primary">@Html.ActionLink("Restock", "Restock", "LineItem", new { p_id = item.Id }, new { @style = "color:white;" })</button>
                 <!--                                                                                     ^ this must be the same as in the controller
                                                                                                            doesn't have to be the same as BL tho -->
             </td>

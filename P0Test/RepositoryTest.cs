@@ -126,6 +126,24 @@ namespace P0Test
             }
         }
 
+        // [Fact]
+        // public void GetNewestOrderShouldGetNewestOrder()
+        // {
+        //     using (var context = new P0DatabaseContext(_options))
+        //     {
+        //          //Arange
+        //          IRepository repo = new RepositoryCloud(context);
+
+        //          //Act
+        //          Orders foundOrder = repo.GetNewestOrder();
+
+        //          //Assert
+        //          Assert.NotNull(foundOrder);
+        //          Assert.Equal(2, foundOrder.Id);
+
+        //     }
+        // }
+
         private void Seed()
         {
             using (var context = new P0DatabaseContext(_options))
@@ -140,14 +158,14 @@ namespace P0Test
                          Name = "Stephen",
                          Address = "Houston",
                          Email = "steph@email.com",
-                         PhoneNumber = "9098087766"
+                         PhoneNumber = "9098087766",
                      },
                      new Customers
                      {
                          Name = "Danny",
                          Address = "Disney",
                          Email = "danny@email.com",
-                         PhoneNumber = "8089097766"
+                         PhoneNumber = "8089097766",
                      }
                  );
 
@@ -156,7 +174,7 @@ namespace P0Test
                      new StoreFronts
                      {
                          SName = "Tony's",
-                         SAddress = "Miami"
+                         SAddress = "Miami",
                      }
                  );
 
