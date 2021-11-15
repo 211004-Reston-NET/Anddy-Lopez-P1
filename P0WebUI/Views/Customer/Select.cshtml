@@ -35,3 +35,9 @@
 </div>
 
 <a asp-controller="StoreFront" asp-action="Index1">Confirm</a>
+<form asp-controller="Order" asp-action="Create">
+    <!-- This input element is hidden because we don't wnat the user to input some id. We are supplying it instead -->
+    <div asp-validation-summary="ModelOnly"></div>
+    <input type="hidden" asp-for="Id" />
+    <input type="submit" value="Do not press" class="btn btn-primary" />
+</form>

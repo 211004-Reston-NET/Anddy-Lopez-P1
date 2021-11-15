@@ -18,8 +18,9 @@ namespace P0WebUI.Controllers
             _itemBL = p_itemBL;
         }
         
-        public IActionResult Index(int p_id)
+        public IActionResult Index(int p_id, int p_price)
         {
+            ViewData.Add("Price", p_price);
             return View(new LineItemVM(_itemBL.GetItemsByID(p_id)));
         }
         public ActionResult EveryIndex()

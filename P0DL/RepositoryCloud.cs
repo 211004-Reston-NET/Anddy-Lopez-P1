@@ -250,5 +250,12 @@ namespace P0DL
         {
             return _context.Orders.ToList();
         }
+
+        public Orders GetNewestOrder()
+        {
+            List<Orders> listOfOrders = _context.Orders.ToList();
+            
+            return listOfOrders.FirstOrDefault(ord => ord.Id.Equals(int.MaxValue));
+        }
     }
 }

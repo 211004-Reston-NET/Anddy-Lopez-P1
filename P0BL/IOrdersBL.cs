@@ -18,9 +18,15 @@ namespace P0BL
         List<Orders> GetEveryOrder();
 
         //Allows order search by store location
-        List<Orders> GetOrders(string p_item);
+        Orders GetOrder(string p_item);
 
-        //updates order
-        Orders UpdateOrder(Orders p_update);
+        //Selects the most recently made order by order ID
+        Orders GetNewestOrder();
+
+        //updates order by adding store ID and address
+        Orders UpdateOrderStoreInfo(Orders p_update, int sID, string sAddress);
+
+        //updates the total price of the order
+        Orders UpdateOrderTotal(Orders p_update, int p_quan, int p_price);
     }
 }

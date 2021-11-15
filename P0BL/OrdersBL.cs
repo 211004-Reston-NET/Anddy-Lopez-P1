@@ -41,16 +41,32 @@ namespace P0BL
             return _repo.GetEveryOrder();
         }
 
-        //List out the orders
-        public List<Orders> GetOrders(string p_item)
+        public Orders GetNewestOrder()
         {
             List<Orders> listOfOrders = _repo.GetEveryOrder();
             
-            return listOfOrders.Where(ord => ord.SLocation.Contains(p_item)).ToList();
+            return listOfOrders.FirstOrDefault(ord => ord.Id.Equals(int.MaxValue));
         }
 
-        public Orders UpdateOrder(Orders p_update)
+        //List out the orders from a store location
+        public Orders GetOrder(string p_item)
         {
+            List<Orders> listOfOrders = _repo.GetEveryOrder();
+            
+            return listOfOrders.FirstOrDefault(ord => ord.SLocation.Contains(p_item));
+        }
+        public Orders UpdateOrderStoreInfo(Orders p_update, int sID, string sAddress)
+        {
+            p_update.StoreId = sID;
+            p_update.SLocation = sAddress;
+            return _repo.UpdateOrder(p_update);
+        }
+
+        public Orders UpdateOrderTotal(Orders p_update, int p_quan, int p_price)
+        {
+            int newTotal = p_update.TotalPrice;
+            newTotal = p_price*p_quan;
+            p_update.TotalPrice = newTotal;
             return _repo.UpdateOrder(p_update);
         }
     }

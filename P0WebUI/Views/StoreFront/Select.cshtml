@@ -27,3 +27,10 @@
 </div>
 
 <a asp-controller="Product" asp-action="Index">Confirm</a>
+<form asp-controller="Order" asp-action="Edit1">
+    <div asp-validation-summary="ModelOnly"></div>
+    <!-- This input element is hidden because we don't wnat the user to input some id. We are supplying it instead -->
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="SAddress" />
+    <input type="submit" value="Do not press" class="btn btn-primary" />
+</form>

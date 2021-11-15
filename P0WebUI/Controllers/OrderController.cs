@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using P0BL;
 using P0Models;
 using P0WebUI.Models;
@@ -47,21 +48,53 @@ namespace P0WebUI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(OrderVM ordVM)
+        public IActionResult Create(int Id)
         {
             if (ModelState.IsValid)
             {
                 _ordBL.AddOrder(new Orders()
                 {
-                    SLocation = ordVM.SLocation,
-                    TotalPrice = ordVM.TotalPrice,
-                    CustId = ordVM.CustId,
-                    StoreId = ordVM.StoreId
+                    SLocation = "Place Holder",
+                    TotalPrice = 0,
+                    CustId = Id,
+                    StoreId = 0
                 });
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index1","StoreFront");
             }
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit1(int Id, string SAddress, IFormCollection collection)
+        {
+            try
+            {
+                Orders toBeUpdated = _ordBL.GetOrder("Place Holder");
+                _ordBL.UpdateOrderStoreInfo(toBeUpdated, Id, SAddress);
+                return RedirectToAction("Index", "Product");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit2(int Quantity, int Price, IFormCollection collection)
+        {
+            try
+            {
+                Orders toBeUpdated = _ordBL.GetNewestOrder();
+                _ordBL.UpdateOrderTotal(toBeUpdated, Quantity, Price);
+                return RedirectToAction("Index", "Product");
+            }
+            catch
+            {
+                return View();
+            }
         }
     }
 }

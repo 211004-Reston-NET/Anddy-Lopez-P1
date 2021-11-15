@@ -23,10 +23,11 @@
             <td>@Html.DisplayFor(modelitem => item.PName)</td>
             <td>@Html.DisplayFor(modelitem => item.Price)</td>
             <td>
-                <button class="btn btn-primary">@Html.ActionLink("Select", "Index", "LineItem", new { p_id = item.Id }, new { @style = "color:white;" })</button>
+                <button class="btn btn-primary">@Html.ActionLink("Select", "Index", "LineItem", new { p_id = item.Id , p_price = item.Price }, new { @style = "color:white;" })</button>
                 <!--                                                                                    ^ this must be the same as in the controller
                                                                                                         doesn't have to be the same as BL tho -->
             </td>
         </tr>
     }
 </table>
+
