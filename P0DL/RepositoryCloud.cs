@@ -254,8 +254,8 @@ namespace P0DL
         public Orders GetNewestOrder()
         {
             List<Orders> listOfOrders = _context.Orders.ToList();
-            
-            return listOfOrders.FirstOrDefault(ord => ord.Id.Equals(int.MaxValue));
+            int maxID = listOfOrders.Max(t => t.Id);
+            return listOfOrders.FirstOrDefault(ord => ord.Id == maxID);
         }
     }
 }

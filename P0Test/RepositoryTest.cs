@@ -126,23 +126,23 @@ namespace P0Test
             }
         }
 
-        // [Fact]
-        // public void GetNewestOrderShouldGetNewestOrder()
-        // {
-        //     using (var context = new P0DatabaseContext(_options))
-        //     {
-        //          //Arange
-        //          IRepository repo = new RepositoryCloud(context);
+        [Fact]
+        public void GetNewestOrderShouldGetNewestOrder()
+        {
+            using (var context = new P0DatabaseContext(_options))
+            {
+                 //Arange
+                 IRepository repo = new RepositoryCloud(context);
 
-        //          //Act
-        //          Orders foundOrder = repo.GetNewestOrder();
+                 //Act
+                 Orders foundOrder = repo.GetNewestOrder();
 
-        //          //Assert
-        //          Assert.NotNull(foundOrder);
-        //          Assert.Equal(2, foundOrder.Id);
+                 //Assert
+                 Assert.NotNull(foundOrder);
+                 Assert.Equal(3, foundOrder.Id);
 
-        //     }
-        // }
+            }
+        }
 
         private void Seed()
         {
@@ -175,8 +175,40 @@ namespace P0Test
                      {
                          SName = "Tony's",
                          SAddress = "Miami",
+                     },
+                     new StoreFronts
+                     {
+                         SName = "Test",
+                         SAddress = "Chicago",
                      }
                  );
+
+                context.SaveChanges();
+
+                context.Orders.AddRange
+                (
+                    new Orders
+                    {
+                        SLocation = "Miami",
+                        TotalPrice = 25,
+                        CustId = 1,
+                        StoreId = 1,
+                    },
+                    new Orders
+                    {
+                        SLocation = "Chicago",
+                        TotalPrice = 31,
+                        CustId = 1,
+                        StoreId = 2,
+                    },
+                    new Orders
+                    {
+                        SLocation = "Miami",
+                        TotalPrice = 47,
+                        CustId = 2,
+                        StoreId = 1,
+                    }
+                );
 
                 context.SaveChanges();
             }
