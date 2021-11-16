@@ -33,6 +33,13 @@ namespace P0WebUI.Controllers
                         .ToList()
             );
         }
+        public ActionResult Index2(string p_name)
+        {
+            return View(_custBL.GetCustomers(p_name)
+                        .Select(cust => new CustomerVM(cust))
+                        .ToList()
+            );
+        }
         public ActionResult Select(int p_id)
         {
             Customers toBeSelected = _custBL.GetCustomersById(p_id);
