@@ -41,8 +41,10 @@
 
 <!-- We need a form to do a post request -->
 <form asp-action="Index2">
-    <input type="text" placeholder="Work in Progress...">
+    @Html.Label("Search by Name:")
+    <br />
+    @Html.TextBox("p_name")
     <br />
     <br />
-    <input type="submit" value="Submit" class="btn btn-primary" />
+    <input type="submit" value="Search" class="btn btn-primary" />
 </form>
