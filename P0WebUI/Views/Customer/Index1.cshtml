@@ -25,7 +25,6 @@
             <td>@Html.DisplayFor(modelitem => item.Email)</td>
             <td>@Html.DisplayFor(modelitem => item.PhoneNumber)</td>
             <td>
-                <a asp-controller="StoreFront" asp-action="Index1">Select</a>
                 <button class="btn btn-primary">@Html.ActionLink("Select", "Select", "Customer", new { p_id = item.Id }, new { @style = "color:white;" })</button>
                 <!--                                                                                    ^ this must be the same as in the controller
                                                                                                         doesn't have to be the same as BL tho -->
