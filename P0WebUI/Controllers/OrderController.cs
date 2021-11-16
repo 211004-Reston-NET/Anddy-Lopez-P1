@@ -44,10 +44,6 @@ namespace P0WebUI.Controllers
                         .ToList()
             );
         }
-        public IActionResult Create()
-        {
-            return View();
-        }
 
         [HttpPost]
         public IActionResult Create(int Id)
@@ -85,20 +81,14 @@ namespace P0WebUI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit2(int Id, int Quantity, int Price, IFormCollection collection)
+        public ActionResult Edit2(int Id, int Quantity, IFormCollection form)
         {
-            try
-            {
-                LineItems itemFound = _itemBL.GetItemsByID(Id);
-                _itemBL.UpdateItemQuantity(itemFound, Quantity);
-                Orders toBeUpdated = _ordBL.GetNewestOrder();
-                _ordBL.UpdateOrderTotal(toBeUpdated, Quantity, Price);
-                return RedirectToAction("Index", "Product");
-            }
-            catch
-            {
-                return View();
-            }
+            LineItems itemFound = _itemBL.GetItemsByID(Id);
+            _itemBL.UpdateItemQuantity(itemFound, Quantity);
+            Orders toBeUpdated = _ordBL.GetNewestOrder();
+            int p_price = Convert.ToInt32(form["Price"].ToString()); //This doesn't work!!!
+            _ordBL.UpdateOrderTotal(toBeUpdated, Quantity, p_price); 
+            return RedirectToAction("Index", "Product");
         }
     }
 }

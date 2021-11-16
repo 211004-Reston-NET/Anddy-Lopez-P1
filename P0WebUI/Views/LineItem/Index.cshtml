@@ -34,10 +34,10 @@
 
 <!-- We need a form to do a post request -->
 <form asp-controller="Order" asp-action="Edit2">
-    <input type="hidden" asp-for="Id" />
+    <input asp-for="Id" type="hidden" />
     <input asp-for="Quantity" type="number">
-    <!-- This input element is hidden because we don't want the user to input some id. We are supplying it instead -->
-    <input type="hidden" asp-for="@ViewData["Price"]" /> <!--Ask someone about this. Is this the proper way to retrive that information?-->
+    <br />
+    @Html.Hidden("Price") <!--Ask someone about this. Is this the proper way to retrive that information?-->
     <br />
     <br />
     <input type="submit" value="Add to Order" class="btn btn-primary" />
