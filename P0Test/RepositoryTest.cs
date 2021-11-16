@@ -65,6 +65,64 @@ namespace P0Test
         }
 
         [Fact]
+        public void AddStoreShouldAddStore()
+        {
+            using (var context = new P0DatabaseContext(_options))
+            {
+                //Arrange
+                IRepository repo = new RepositoryCloud(context);
+                StoreFronts addedstore = new StoreFronts
+                {
+                    SName = "The Store",
+                    SAddress = "Atlanta"
+                };
+
+                //Act
+                repo.AddStore(addedstore);
+            }
+
+            //Assert
+            using (P0DatabaseContext contexts = new P0DatabaseContext(_options))
+            {
+                StoreFronts result = contexts.StoreFronts.Find(3);
+
+                Assert.NotNull(result);
+                Assert.Equal("The Store", result.SName);
+                Assert.Equal("Atlanta", result.SAddress);
+            }
+        }
+
+        [Fact]
+        public void AddOrderShouldAddOrder()
+        {
+            using (var context = new P0DatabaseContext(_options))
+            {
+                //Arrange
+                IRepository repo = new RepositoryCloud(context);
+                Orders addedorder = new Orders
+                {
+                    SLocation = "Austin",
+                    TotalPrice = 67,
+                    CustId = 1,
+                    StoreId = 1,
+                };
+
+                //Act
+                repo.AddOrder(addedorder);
+            }
+
+            //Assert
+            using (P0DatabaseContext contexts = new P0DatabaseContext(_options))
+            {
+                Orders result = contexts.Orders.Find(3);
+
+                Assert.NotNull(result);
+                Assert.Equal("Austin", result.SLocation);
+                Assert.Equal(67, result.TotalPrice);
+            }
+        }
+
+        [Fact]
         public void DeleteCustomerShouldDeleteCustomer()
         {
             using (var context = new P0DatabaseContext(_options))
@@ -160,6 +218,24 @@ namespace P0Test
                  Assert.NotNull(foundOrder);
                  Assert.Equal(2, foundOrder.Id);
                  Assert.Equal(30, updatedOrder.TotalPrice);
+            }
+        }
+        [Fact]
+        public void UpdateCustomerTotalShouldWork()
+        {
+            using (var context = new P0DatabaseContext(_options))
+            {
+                 //Arange
+                 IRepository repo = new RepositoryCloud(context);
+
+                 //Act
+                 Customers foundCust = repo.GetCustomersById(1);
+                 foundCust.Email = "stephen@gmail.com";
+
+                 //Assert
+                 Assert.NotNull(foundCust);
+                 Assert.Equal(1, foundCust.Id);
+                 Assert.Equal("stephen@gmail.com", foundCust.Email);
             }
         }
 
