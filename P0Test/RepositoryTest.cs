@@ -139,8 +139,27 @@ namespace P0Test
 
                  //Assert
                  Assert.NotNull(foundOrder);
-                 Assert.Equal(3, foundOrder.Id);
+                 Assert.Equal(2, foundOrder.Id);
 
+            }
+        }
+
+        [Fact]
+        public void UpdateOrderTotalShouldWork()
+        {
+            using (var context = new P0DatabaseContext(_options))
+            {
+                 //Arange
+                 IRepository repo = new RepositoryCloud(context);
+
+                 //Act
+                 Orders foundOrder = repo.GetNewestOrder();
+                 Orders updatedOrder = repo.UpdateOrderTotal(foundOrder, 5, 1);
+
+                 //Assert
+                 Assert.NotNull(foundOrder);
+                 Assert.Equal(2, foundOrder.Id);
+                 Assert.Equal(30, updatedOrder.TotalPrice);
             }
         }
 
@@ -153,14 +172,14 @@ namespace P0Test
 
                  context.Customers.AddRange
                  (
-                     new Customers
+                     new Customers //this id is 1
                      {
                          Name = "Stephen",
                          Address = "Houston",
                          Email = "steph@email.com",
                          PhoneNumber = "9098087766",
                      },
-                     new Customers
+                     new Customers //this id is 2
                      {
                          Name = "Danny",
                          Address = "Disney",
@@ -171,12 +190,12 @@ namespace P0Test
 
                  context.StoreFronts.AddRange
                  (
-                     new StoreFronts
+                     new StoreFronts //this id is 1 too
                      {
                          SName = "Tony's",
                          SAddress = "Miami",
                      },
-                     new StoreFronts
+                     new StoreFronts //this id is 2 also
                      {
                          SName = "Test",
                          SAddress = "Chicago",
@@ -187,26 +206,19 @@ namespace P0Test
 
                 context.Orders.AddRange
                 (
-                    new Orders
+                    new Orders //this ID is somehow 2
                     {
                         SLocation = "Miami",
                         TotalPrice = 25,
                         CustId = 1,
                         StoreId = 1,
                     },
-                    new Orders
+                    new Orders //this ID is somehow 1
                     {
                         SLocation = "Chicago",
                         TotalPrice = 31,
-                        CustId = 1,
-                        StoreId = 2,
-                    },
-                    new Orders
-                    {
-                        SLocation = "Miami",
-                        TotalPrice = 47,
                         CustId = 2,
-                        StoreId = 1,
+                        StoreId = 2,
                     }
                 );
 

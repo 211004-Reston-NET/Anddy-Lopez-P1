@@ -257,5 +257,14 @@ namespace P0DL
             int maxID = listOfOrders.Max(t => t.Id);
             return listOfOrders.FirstOrDefault(ord => ord.Id == maxID);
         }
+        public Orders UpdateOrderTotal(Orders p_update, int p_quan, int p_price)
+        {
+            int newTotal = p_update.TotalPrice;
+            newTotal += p_price*p_quan;
+            p_update.TotalPrice = newTotal;
+            _context.Orders.Update(p_update);
+            _context.SaveChanges();
+            return p_update;
+        }
     }
 }

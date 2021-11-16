@@ -18,7 +18,7 @@ namespace P0BL
         //adds an order
         public Orders AddOrder(Orders p_ord)
         {
-            if (p_ord.SLocation == null || p_ord.TotalPrice == 0 || p_ord.StoreId == 0 || p_ord.CustId == 0)
+            if (p_ord.SLocation == null || p_ord.StoreId == 0 || p_ord.CustId == 0) //|| p_ord.TotalPrice == 0 
             {
                 // Will only be seen by coder
                 throw new Exception("Must have value in all properties");
@@ -44,8 +44,8 @@ namespace P0BL
         public Orders GetNewestOrder()
         {
             List<Orders> listOfOrders = _repo.GetEveryOrder();
-            
-            return listOfOrders.FirstOrDefault(ord => ord.Id.Equals(int.MaxValue));
+            int maxID = listOfOrders.Max(t => t.Id);
+            return listOfOrders.FirstOrDefault(ord => ord.Id == maxID);
         }
 
         //List out the orders from a store location
@@ -64,9 +64,7 @@ namespace P0BL
 
         public Orders UpdateOrderTotal(Orders p_update, int p_quan, int p_price)
         {
-            int newTotal = p_update.TotalPrice;
-            newTotal = p_price*p_quan;
-            p_update.TotalPrice = newTotal;
+            p_update.TotalPrice += p_price*p_quan;
             return _repo.UpdateOrder(p_update);
         }
     }

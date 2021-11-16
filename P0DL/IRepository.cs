@@ -67,6 +67,8 @@ namespace P0DL
         //Returns every order --no filter
         List<Orders> GetEveryOrder();
         Orders GetNewestOrder();
+        //updates the total price of the order
+        Orders UpdateOrderTotal(Orders p_update, int p_quan, int p_price);
 
 
 
