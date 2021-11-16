@@ -15,11 +15,13 @@ namespace P0WebUI.Controllers
         private IOrdersBL _ordBL;
         private ICustomersBL _custBL;
         private IStoreFrontsBL _storeBL;
-        public OrderController(IOrdersBL p_ordBL, ICustomersBL p_custBL, IStoreFrontsBL p_storeBL)
+        private ILineItemBL _itemBL;
+        public OrderController(IOrdersBL p_ordBL, ICustomersBL p_custBL, IStoreFrontsBL p_storeBL, ILineItemBL p_itemBL)
         {
             _ordBL = p_ordBL;
             _custBL = p_custBL;
             _storeBL = p_storeBL;
+            _itemBL = p_itemBL;
         }
 
         public IActionResult Index()
@@ -57,7 +59,7 @@ namespace P0WebUI.Controllers
                     SLocation = "Place Holder",
                     TotalPrice = 0,
                     CustId = Id,
-                    StoreId = 0
+                    StoreId = 1
                 });
 
                 return RedirectToAction("Index1","StoreFront");
@@ -83,10 +85,12 @@ namespace P0WebUI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit2(int Quantity, int Price, IFormCollection collection)
+        public ActionResult Edit2(int Id, int Quantity, int Price, IFormCollection collection)
         {
             try
             {
+                LineItems itemFound = _itemBL.GetItemsByID(Id);
+                _itemBL.UpdateItemQuantity(itemFound, Quantity);
                 Orders toBeUpdated = _ordBL.GetNewestOrder();
                 _ordBL.UpdateOrderTotal(toBeUpdated, Quantity, Price);
                 return RedirectToAction("Index", "Product");
