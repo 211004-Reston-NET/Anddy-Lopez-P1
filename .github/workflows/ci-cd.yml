@@ -70,12 +70,6 @@ jobs:
       run: |
             cd P0WebUI/
             dotnet publish --configuration Release -o ./publish
-            
-    - name: Upload sonarscanner report
-      uses: actions/upload-artifacts@v2
-      with:
-        name: P0WebUI
-        path: ./POWebUI/publish
     
     - name: Deploy
       uses: azure/webapps-deploy@v2
