@@ -41,6 +41,14 @@ namespace P0WebUI.Controllers
                         .ToList()
             );
         }
+        [HttpPost]
+        public ActionResult Index3(IFormCollection form)
+        {
+            return View(_custBL.GetCustomers(form["p_name"])
+                        .Select(cust => new CustomerVM(cust))
+                        .ToList()
+            );
+        }
         public ActionResult Select(int p_id)
         {
             Customers toBeSelected = _custBL.GetCustomersById(p_id);
