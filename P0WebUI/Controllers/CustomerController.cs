@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using P0BL;
 using P0Models;
 using P0WebUI.Models;
+using Serilog;
+using Serilog.Formatting.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -72,8 +74,13 @@ namespace P0WebUI.Controllers
         [HttpPost]
         public IActionResult Create(CustomerVM custVM)
         {
+            Log.Logger = new LoggerConfiguration()
+                .Enrich.FromLogContext()
+                .WriteTo.File(new JsonFormatter(), "Logs/CustomerLogs.json")
+                .CreateLogger();
             if (ModelState.IsValid)
             {
+                Log.Information("Adding customer");
                 _custBL.AddCustomer(new Customers()
                 {
                     Name = custVM.Name,
@@ -81,9 +88,11 @@ namespace P0WebUI.Controllers
                     Email = custVM.Email,
                     PhoneNumber = custVM.PhoneNumber
                 });
-
+                Log.CloseAndFlush();
                 return RedirectToAction(nameof(Index));
             }
+            Log.Information("Could not add Customer");
+            Log.CloseAndFlush();
             return View();
         }
         

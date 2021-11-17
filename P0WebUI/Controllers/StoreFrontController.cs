@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using P0BL;
 using P0Models;
 using P0WebUI.Models;
+using Serilog;
+using Serilog.Formatting.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,8 +39,25 @@ namespace P0WebUI.Controllers
         }
         public ActionResult Select(int p_id)
         {
-            StoreFronts toBeSelected = _storeBL.GetStoresById(p_id);
-            return View(new StoreFrontVM(toBeSelected));
+            Log.Logger = new LoggerConfiguration()
+                .Enrich.FromLogContext()
+                .WriteTo.File(new JsonFormatter(), "Logs/StoreFrontLogs.json")
+                .CreateLogger();
+            try
+            {
+                Log.Information("Store is being selected from its ID");
+                StoreFronts toBeSelected = _storeBL.GetStoresById(p_id);
+                return View(new StoreFrontVM(toBeSelected));
+            }
+            catch (Exception)
+            {
+                Log.Information("Store could not be selected form ID");
+                return View();
+            }
+            finally
+            {
+                Log.CloseAndFlush();
+            }
         }
         public IActionResult StoreOrder()
         {

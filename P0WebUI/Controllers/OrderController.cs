@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using P0BL;
 using P0Models;
 using P0WebUI.Models;
+using Serilog;
+using Serilog.Formatting.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,8 +50,13 @@ namespace P0WebUI.Controllers
         [HttpPost]
         public IActionResult Create(int Id)
         {
+            Log.Logger = new LoggerConfiguration()
+                .Enrich.FromLogContext()
+                .WriteTo.File(new JsonFormatter(), "Logs/OrderLogs.json")
+                .CreateLogger();
             if (ModelState.IsValid)
             {
+                Log.Information("Adding an Order");
                 _ordBL.AddOrder(new Orders()
                 {
                     SLocation = "Place Holder",
@@ -57,9 +64,11 @@ namespace P0WebUI.Controllers
                     CustId = Id,
                     StoreId = 1
                 });
-
+                Log.CloseAndFlush();
                 return RedirectToAction("Index1","StoreFront");
             }
+            Log.Information("Could not create a new Order");
+            Log.CloseAndFlush();
             return View();
         }
 
