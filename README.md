@@ -6,13 +6,14 @@ Why shop anywhere else?
 Thanks for stopping by!
 ## Technoogies Used
 - C# programming language
-- MVC.NET Framework
+- ASP.NET MVC Framework
 - HTML
 - CSS
+- Bootstrap
 - DevOps
 - Microsoft Azure
-- SQL Server
-- DevOps
+- SQL Database
+- DBeaver
 - SonarCloud
 ## Features
 - Create a customer profile
